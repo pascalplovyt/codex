@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pack Thuraya Prepay Airtime - step by step</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root{
+    --bg:#f4f8fb; --panel:#ffffff; --ink:#173246; --mute:#607587;
+    --accent:#0c2d48; --accent2:#1c8f78; --soft:#edf4f8; --line:#dbe6ee;
+    --ok:#2f855a; --warn:#c05621;
+  }
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",system-ui,sans-serif}
+  .wrap{max-width:980px;margin:0 auto;padding:36px 22px 70px}
+  .hero{background:linear-gradient(135deg,var(--accent),#123e64);color:#fff;padding:26px 28px;border-radius:16px;margin-bottom:24px}
+  .hero h1{margin:0 0 6px;font-size:30px}
+  .hero p{margin:0;opacity:.92}
+  .panel,.step{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .panel{padding:22px 24px;margin-bottom:24px}
+  .step{padding:24px 26px;margin:18px 0}
+  .step h3{margin:0 0 8px;font-size:21px}
+  .step p,.step li{margin:8px 0}
+  .tag{display:inline-block;background:#d9e7ef;color:var(--accent);border-radius:999px;padding:3px 10px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  button{border:0;border-radius:999px;padding:11px 16px;background:var(--accent);color:#fff;cursor:pointer;font:inherit}
+  button.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+  pre{background:#0f1419;color:#e6edf3;border-radius:12px;padding:14px 16px;overflow:auto;min-height:240px}
+  code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font:13px Consolas,monospace}
+  .muted{color:var(--mute)}
+  .pillrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}
+  .pill{background:var(--soft);border-radius:999px;padding:4px 10px;color:var(--mute);font-size:13px}
+  .box{background:#eef7f3;border-left:4px solid var(--ok);padding:12px 14px;border-radius:10px;margin:12px 0}
+  .warn{background:#fff5ea;border-left-color:var(--warn)}
+  table{border-collapse:collapse;width:100%;margin-top:10px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="tag">Pack</div>
+    <h1>Pack the Thuraya Prepay Airtime system</h1>
+    <p>Create one portable archive containing the full Windows desktop app, the SQLite database, the local vendor dependencies, the PDF assets, and the launch scripts so the same setup can be moved to another computer.</p>
+  </section>
+
+  <section class="panel">
+    <h2 style="margin:0 0 6px">Run the pack job from here</h2>
+    <p class="muted" style="margin:0 0 10px">Use these controls if you opened this page through <code>Run Thuraya Pack.cmd</code>.</p>
+    <div id="summary" class="pillrow"></div>
+    <div class="actions">
+      <button id="dryRunBtn" class="secondary">Run Dry-Run Pack</button>
+      <button id="fullRunBtn">Run Full Pack</button>
+      <button id="refreshBtn" class="secondary">Refresh Status</button>
+    </div>
+    <div id="jobMeta" class="muted">No pack job has run yet.</div>
+    <pre id="jobLog">Waiting for a pack command.</pre>
+  </section>
+
+  <section class="step">
+    <h3>1. What the portable archive includes</h3>
+    <table>
+      <tr><th>Included</th><th>Why it matters</th></tr>
+      <tr><td><code>app.py</code>, <code>rcs_module.py</code>, launchers, HTML kit</td><td>The application logic and the operator entry points move together.</td></tr>
+      <tr><td><code>data/thuraya_airtime.sqlite3</code></td><td>This is the actual Thuraya and RCS database.</td></tr>
+      <tr><td><code>vendor/</code></td><td>The currently installed Python dependencies travel with the app.</td></tr>
+      <tr><td><code>assets/</code></td><td>The PDF branding images now live inside the project, so they remain portable.</td></tr>
+      <tr><td><code>THURAYA IMPORT FILE.xlsx</code></td><td>The import template is available on the new machine too.</td></tr>
+    </table>
+    <div class="box warn">
+      Files already generated into <code>C:\Users\PASCA\OneDrive\Downloads</code> are not part of the project folder. If you want old sale exports on the new machine too, copy those separately.
+    </div>
+  </section>
+
+  <section class="step">
+    <h3>2. Before you pack</h3>
+    <ol>
+      <li>Close the Thuraya app so the SQLite database is not being edited while the archive is built.</li>
+      <li>Make sure the project is in its canonical OneDrive folder.</li>
+      <li>If you recently changed anything, launch the app once and confirm the latest data is visible before packing.</li>
+      <li>If you want a quick safety check first, use <b>Run Dry-Run Pack</b>.</li>
+    </ol>
+  </section>
+
+  <section class="step">
+    <h3>3. What happens during pack</h3>
+    <ol>
+      <li>The tool scans the project tree and excludes only temporary cache/archive folders.</li>
+      <li>It calculates a SHA-256 manifest for each included file.</li>
+      <li>It writes a single <code>.tar.gz</code> archive into <code>G:\My Drive\PG_Backups\codex_thuraya_rcs</code>.</li>
+      <li>That archive can then be copied to USB, network share, cloud storage, or any other transfer method.</li>
+    </ol>
+  </section>
+
+  <section class="step">
+    <h3>4. How to use the result</h3>
+    <ol>
+      <li>After pack finishes, open <code>G:\My Drive\PG_Backups\codex_thuraya_rcs</code>.</li>
+      <li>Copy the newest <code>thuraya_prepay_airtime_YYYYMMDDThhmmss.tar.gz</code> file to the destination computer.</li>
+      <li>On the destination computer, open this same project kit and run <code>Run Thuraya Unpack.cmd</code>.</li>
+    </ol>
+  </section>
+</div>
+<script>
+async function getJson(url, options){
+  const res = await fetch(url, options);
+  return res.json();
+}
+async function refreshConfig(){
+  const payload = await getJson('/api/config');
+  const cfg = payload.config;
+  document.getElementById('summary').innerHTML = [
+    `Project: ${cfg.project_root}`,
+    `Database: ${cfg.database_type}`,
+    `DB file present: ${cfg.database_exists ? 'yes' : 'no'}`,
+    `Archives: ${cfg.archive_dir}`,
+    `Vendor bundled: ${cfg.includes_vendor ? 'yes' : 'no'}`
+  ].map(item => `<span class="pill">${item}</span>`).join('');
+}
+async function refreshStatus(){
+  const payload = await getJson('/api/status');
+  const job = payload.job;
+  document.getElementById('jobMeta').textContent =
+    job.started_at ? `Started: ${job.started_at} | Running: ${job.running ? 'yes' : 'no'} | Exit: ${job.exit_code ?? 'n/a'}` : 'No pack job has run yet.';
+  document.getElementById('jobLog').textContent = (job.lines || []).join('\n') || 'Waiting for a pack command.';
+}
+async function runPack(dryRun){
+  await getJson('/api/pack/run', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({dry_run:dryRun})
+  });
+  refreshStatus();
+}
+document.getElementById('dryRunBtn').addEventListener('click', () => runPack(true));
+document.getElementById('fullRunBtn').addEventListener('click', () => runPack(false));
+document.getElementById('refreshBtn').addEventListener('click', refreshStatus);
+refreshConfig();
+refreshStatus();
+setInterval(refreshStatus, 3000);
+</script>
+</body>
+</html>

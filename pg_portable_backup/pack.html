@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pack a backup - step by step</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root{
+    --bg:#f7f7f8; --panel:#ffffff; --ink:#15181c; --mute:#6a7382;
+    --accent:#2b6cb0; --accent-2:#1a4d82; --ok:#2f855a; --warn:#c05621;
+    --danger:#c53030; --soft:#eef2f7; --line:#e3e7ee;
+  }
+  html,body{background:var(--bg);color:var(--ink);margin:0;padding:0;
+    font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:940px;margin:0 auto;padding:40px 22px 80px}
+  .hero{background:linear-gradient(135deg,#2b6cb0 0%,#1a4d82 100%);
+    color:#fff;padding:26px 28px;border-radius:14px;margin:18px 0 28px;
+    box-shadow:0 6px 20px rgba(25,50,90,.15)}
+  .hero h1{color:#fff;font-size:28px;margin:0 0 6px}
+  .hero p{margin:0;opacity:.92}
+  .hero .lead-tag{display:inline-block;background:rgba(255,255,255,.18);
+    padding:3px 10px;border-radius:999px;font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;margin-bottom:10px}
+  nav.toc{background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:16px 20px;margin-bottom:28px}
+  nav.toc h2{margin:0 0 8px;font-size:14px;color:var(--mute);
+    letter-spacing:.08em;text-transform:uppercase}
+  nav.toc ol{margin:0;padding-left:22px}
+  nav.toc ol li{margin:3px 0}
+  nav.toc a{color:var(--accent);text-decoration:none}
+  nav.toc a:hover{text-decoration:underline}
+  .phase-label{margin:32px 0 6px;font-size:12px;letter-spacing:.12em;
+    color:var(--mute);text-transform:uppercase}
+  .step{background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;margin:20px 0;padding:26px 28px;
+    box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .step h3{margin:0 0 4px;display:flex;align-items:center;gap:12px;
+    font-size:20px}
+  .step h3 .num{background:var(--accent);color:#fff;width:32px;height:32px;
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:50%;font-size:15px;font-weight:600;flex:0 0 32px}
+  .step .est{color:var(--mute);font-size:13px;margin:0 0 14px 44px}
+  .step p,.step li{margin:8px 0}
+  .step .body{padding-left:44px}
+  .step h4.sub{margin:18px 0 6px;font-size:16px;color:var(--accent-2)}
+  code,kbd{background:var(--soft);border:1px solid var(--line);
+    padding:1px 6px;border-radius:4px;font:13.5px/1.45 ui-monospace,Consolas,Monaco,monospace}
+  pre{background:#0f1419;color:#e6e6e6;border-radius:10px;padding:14px 16px;
+    overflow:auto;position:relative;margin:10px 0;
+    font:13.5px/1.55 ui-monospace,Consolas,Monaco,monospace}
+  pre code{background:none;border:0;color:inherit;padding:0}
+  .copybtn{position:absolute;top:8px;right:8px;background:#2b6cb0;color:#fff;
+    border:0;border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer;
+    opacity:.85}
+  .copybtn:hover{opacity:1}
+  .copybtn.done{background:var(--ok)}
+  .box{border-radius:10px;padding:12px 16px;margin:12px 0;
+    border-left:4px solid var(--accent);background:#f0f6fd}
+  .box.tip{border-color:var(--ok);background:#effaf2}
+  .box.warn{border-color:var(--warn);background:#fef6ec}
+  .box.danger{border-color:var(--danger);background:#fdecec}
+  .box h4{margin:0 0 4px;font-size:13px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--mute)}
+  .check{display:flex;align-items:flex-start;gap:10px;margin:6px 0;
+    padding:8px 10px;border-radius:8px;background:var(--soft);
+    border:1px solid var(--line)}
+  .check input[type=checkbox]{margin-top:4px;flex:0 0 16px;
+    width:16px;height:16px;accent-color:var(--accent)}
+  .check label{cursor:pointer;flex:1}
+  .check.done{background:#effaf2;border-color:#c7e7d3}
+  .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;
+    background:var(--soft);color:var(--mute);margin-left:6px}
+  .control-panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:0 0 24px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .control-panel h2{margin:0 0 6px;font-size:22px}
+  .control-panel .sub{color:var(--mute);margin:0 0 14px}
+  .summary-pills{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 14px}
+  .summary-pills .pill{margin-left:0}
+  .action-row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px}
+  .action-row button{border:0;border-radius:999px;padding:11px 16px;cursor:pointer;
+    background:var(--accent);color:#fff;font:inherit}
+  .action-row button.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+  .status-meta{color:var(--mute);font-size:14px}
+  .status-log{min-height:260px;max-height:420px;overflow:auto}
+  .finish{background:linear-gradient(135deg,#2f855a,#225e42);color:#fff;
+    border-radius:14px;padding:22px 26px;margin-top:28px}
+  .finish h3{color:#fff;margin:0 0 6px}
+  table{border-collapse:collapse;width:100%;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;
+    font-size:14px;vertical-align:top}
+  th{background:var(--soft);color:var(--mute);font-weight:600}
+  footer{color:var(--mute);font-size:13px;text-align:center;margin-top:36px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<div class="hero">
+  <div class="lead-tag">Backup · Pack</div>
+  <h1>Pack a backup of the local OFBiz PostgreSQL clone</h1>
+  <p>A full step-by-step guide. At the end you will have a single backup file on
+  Google Drive containing the portable logical dump, the fast same-version
+  PostgreSQL snapshot, the code tree, the encrypted <code>sync_config.json</code>,
+  and an integrity manifest.</p>
+</div>
+</header>
+
+<section class="control-panel">
+  <h2>Run The Backup From Here</h2>
+  <p class="sub">Use these controls if you opened this page through <code>run_pack.bat</code>. The longer steps below remain the full operator procedure.</p>
+  <div id="summary" class="summary-pills"></div>
+  <div class="action-row">
+    <button id="dryRunBtn">Run Dry-Run Pack</button>
+    <button id="fullRunBtn">Run Full Pack</button>
+    <button id="refreshBtn" class="secondary">Refresh Status</button>
+  </div>
+  <div id="jobMeta" class="status-meta">No job has run yet.</div>
+  <pre id="jobLog" class="status-log"><code>Waiting for a backup command.</code></pre>
+</section>
+
+<nav class="toc">
+  <h2>What you are about to do</h2>
+  <p style="margin:6px 0 10px;color:var(--mute);font-size:14px">
+    Steps 1-4 are one-time software setup. Steps 5-9 are the actual backup.
+    Steps 10-11 are the finishing touches that make future recovery easier.
+  </p>
+  <ol>
+    <li><a href="#prep-pg">Install PostgreSQL command-line tools</a></li>
+    <li><a href="#prep-py">Install Python and the backup dependency</a></li>
+    <li><a href="#prep-gdrive">Install Google Drive for Desktop</a></li>
+    <li><a href="#prep-rclone">Optional: install rclone</a></li>
+    <li><a href="#config">Check the config file</a></li>
+    <li><a href="#drive">Make sure the Google Drive destination exists</a></li>
+    <li><a href="#firstrun">Run a dry-run pack</a></li>
+    <li><a href="#real">Run the real backup</a></li>
+    <li><a href="#verify">Verify the archive reached Google Drive</a></li>
+    <li><a href="#schedule">Optional: schedule weekly backups</a></li>
+    <li><a href="#key">Store the encryption key safely</a></li>
+  </ol>
+</nav>
+
+<div class="phase-label">Phase A — one-time prerequisite install</div>
+
+<section class="step" id="prep-pg">
+  <h3><span class="num">1</span>Install PostgreSQL command-line tools</h3>
+  <div class="est">~ 10 minutes · only once per machine</div>
+  <div class="body">
+  <p>The backup uses <code>pg_dump.exe</code>, <code>pg_dumpall.exe</code>,
+  <code>pg_restore.exe</code>, and <code>pg_ctl.exe</code>. They come from the
+  PostgreSQL Windows installer. If PostgreSQL 18 is already installed at
+  <code>C:\Program Files\PostgreSQL\18</code>, you can skip to Step 2.</p>
+
+  <h4 class="sub">1a. Download the installer</h4>
+  <ol>
+    <li>Open <a href="https://www.postgresql.org/download/windows/" target="_blank" rel="noopener">postgresql.org/download/windows</a>.</li>
+    <li>Click the Windows installer link and download the x64 installer.</li>
+    <li>Pick PostgreSQL <b>18</b>. This backup is currently configured for
+    <code>C:\Program Files\PostgreSQL\18\bin</code>.</li>
+  </ol>
+
+  <h4 class="sub">1b. Run the installer</h4>
+  <ol>
+    <li>Right-click the installer and choose <b>Run as administrator</b>.</li>
+    <li>Accept the default install folder
+    <code>C:\Program Files\PostgreSQL\18</code>.</li>
+    <li>Keep <b>PostgreSQL Server</b>, <b>pgAdmin 4</b>, and
+    <b>Command Line Tools</b> selected.</li>
+    <li>You may accept the default data directory. The pack tool does not use
+    that data directory directly; it only needs the binaries.</li>
+    <li>Set a password for the <code>postgres</code> user. Write it down in case
+    you need to maintain PostgreSQL manually later.</li>
+    <li>Complete the installation and skip Stack Builder unless you want it.</li>
+  </ol>
+
+  <h4 class="sub">1c. Verify</h4>
+  <p>Open <kbd>cmd</kbd> and run:</p>
+  <pre><code>"C:\Program Files\PostgreSQL\18\bin\pg_dump.exe" --version</code><button class="copybtn" data-copy="&quot;C:\Program Files\PostgreSQL\18\bin\pg_dump.exe&quot; --version">Copy</button></pre>
+  <p>You should see something like <code>pg_dump (PostgreSQL) 18.x</code>.</p>
+
+  <div class="check"><input type="checkbox" id="pg1"><label for="pg1">Folder <code>C:\Program Files\PostgreSQL\18\bin</code> exists.</label></div>
+  <div class="check"><input type="checkbox" id="pg2"><label for="pg2"><code>pg_dump --version</code> printed a PostgreSQL version.</label></div>
+
+  <div class="box warn">
+    <h4>Already have another PostgreSQL version?</h4>
+    <p>That is acceptable, but then you must update
+    <code>config.codex.json</code> so <code>postgres.bin_dir</code> points at the
+    correct <code>bin</code> folder.</p>
+  </div>
+  </div>
+</section>
+
+<section class="step" id="prep-py">
+  <h3><span class="num">2</span>Install Python and the backup dependency</h3>
+  <div class="est">~ 5 minutes · only once per machine</div>
+  <div class="body">
+  <h4 class="sub">2a. Install Python 3</h4>
+  <ol>
+    <li>Open <a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">python.org/downloads/windows</a>.</li>
+    <li>Download the latest Python 3 installer for Windows.</li>
+    <li>When the installer starts, tick <b>Add python.exe to PATH</b>.</li>
+    <li>Click <b>Install Now</b>.</li>
+  </ol>
+
+  <h4 class="sub">2b. Verify Python</h4>
+  <p>Open a <b>new</b> <kbd>cmd</kbd> window and run:</p>
+  <pre><code>py --version
+py -3 -m pip --version</code><button class="copybtn" data-copy="py --version
+py -3 -m pip --version">Copy</button></pre>
+
+  <h4 class="sub">2c. Install the required package</h4>
+  <p>This tool uses the <code>cryptography</code> package to encrypt
+  <code>sync_config.json</code> inside the archive. From this
+  <code>pg_portable_backup</code> folder run:</p>
+  <pre><code>py -3 -m pip install -r requirements.txt</code><button class="copybtn" data-copy="py -3 -m pip install -r requirements.txt">Copy</button></pre>
+
+  <div class="check"><input type="checkbox" id="py1"><label for="py1"><code>py --version</code> works.</label></div>
+  <div class="check"><input type="checkbox" id="py2"><label for="py2"><code>py -3 -m pip install -r requirements.txt</code> completed successfully.</label></div>
+
+  <div class="box warn">
+    <h4>Pip blocked by proxy or SSL inspection?</h4>
+    <p>Try:
+    <code>py -3 -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt</code></p>
+  </div>
+  </div>
+</section>
+
+<section class="step" id="prep-gdrive">
+  <h3><span class="num">3</span>Install Google Drive for Desktop</h3>
+  <div class="est">~ 5 minutes · only once per machine</div>
+  <div class="body">
+  <p>This is the simplest remote target for this backup. The current config
+  expects the archive to be copied to
+  <code>G:\My Drive\PG_Backups\codex_ofbiz_local</code>.</p>
+
+  <h4 class="sub">3a. Download and install</h4>
+  <ol>
+    <li>Open <a href="https://support.google.com/drive/answer/10838124" target="_blank" rel="noopener">Google Drive for Desktop</a>.</li>
+    <li>Download the installer and sign in with the Google account that should hold the backups.</li>
+    <li>Let it mount Drive in File Explorer. It is usually the <code>G:</code> drive.</li>
+  </ol>
+
+  <h4 class="sub">3b. Verify</h4>
+  <ol>
+    <li>Open File Explorer.</li>
+    <li>Confirm that <code>Google Drive</code> is visible and opens.</li>
+    <li>Browse to <code>G:\My Drive</code>.</li>
+  </ol>
+
+  <div class="check"><input type="checkbox" id="gd1"><label for="gd1">The Google Drive desktop mount opens in File Explorer.</label></div>
+  <div class="check"><input type="checkbox" id="gd2"><label for="gd2">I can browse to <code>G:\My Drive</code>.</label></div>
+  </div>
+</section>
+
+<section class="step" id="prep-rclone">
+  <h3><span class="num">4</span>Optional: install rclone</h3>
+  <div class="est">~ 5 minutes · only if you plan to switch remote mode</div>
+  <div class="body">
+  <p>You can skip this step if you are staying with Google Drive for Desktop.
+  rclone is only needed if you later change <code>remote.mode</code> from
+  <code>gdrive_desktop</code> to <code>rclone</code>.</p>
+  <ol>
+    <li>Open <a href="https://rclone.org/downloads/" target="_blank" rel="noopener">rclone.org/downloads</a>.</li>
+    <li>Download the Windows build and place <code>rclone.exe</code> somewhere on your PATH.</li>
+    <li>Run <code>rclone config</code> and create a remote named
+    <code>gdrive</code> if you want to use the config default.</li>
+  </ol>
+  <div class="box tip">
+    <h4>Recommended default</h4>
+    <p>For this system, staying on Google Drive for Desktop is simpler. It is
+    already the configured default and matches the pack/unpack flow on these
+    pages.</p>
+  </div>
+  </div>
+</section>
+
+<div class="phase-label">Phase B — the actual backup setup and run</div>
+
+<section class="step" id="config">
+  <h3><span class="num">5</span>Check the config file</h3>
+  <div class="est">~ 3 minutes</div>
+  <div class="body">
+  <p>Open <code>config.codex.json</code> in Notepad or VS Code and confirm these
+  values are still correct for this machine:</p>
+  <table>
+    <tr><th>Setting</th><th>Expected value</th><th>Why it matters</th></tr>
+    <tr><td><code>postgres.bin_dir</code></td><td><code>C:\Program Files\PostgreSQL\18\bin</code></td><td>Where <code>pg_dump</code> and <code>pg_restore</code> come from.</td></tr>
+    <tr><td><code>postgres.host</code> / <code>port</code></td><td><code>127.0.0.1</code> / <code>55432</code></td><td>The local OFBiz clone listens there.</td></tr>
+    <tr><td><code>postgres.database</code></td><td><code>ofbiz_world_local</code></td><td>The logical dump targets this database.</td></tr>
+    <tr><td><code>local_cluster.data_dir</code></td><td><code>C:\Users\PASCA\OneDrive\Documents\Codex\2026-04-19-before-we-start-can-you-access\.local-postgres\data</code></td><td>The fast physical snapshot comes from here.</td></tr>
+    <tr><td><code>sources[0].path</code></td><td><code>C:\Users\PASCA\OneDrive\Documents\Codex\2026-04-19-before-we-start-can-you-access</code></td><td>The code tree and scripts are copied from here.</td></tr>
+    <tr><td><code>env_file</code></td><td><code>C:\Users\PASCA\OneDrive\Documents\Codex\2026-04-19-before-we-start-can-you-access\sync_config.json</code></td><td>This file is encrypted into the archive.</td></tr>
+    <tr><td><code>remote.gdrive_desktop_path</code></td><td><code>G:\My Drive\PG_Backups\codex_ofbiz_local</code></td><td>Where the final archive is uploaded.</td></tr>
+  </table>
+
+  <div class="box">
+    <h4>What gets backed up?</h4>
+    <p>The archive contains two database recovery forms: a portable logical dump
+    and a fast physical snapshot of the local clone. It also includes the OFBiz
+    code folder, operator scripts, and an encrypted copy of
+    <code>sync_config.json</code>.</p>
+  </div>
+
+  <div class="box warn">
+    <h4>About the local clone</h4>
+    <p>The pack command can start the local PostgreSQL clone automatically if it
+    is down. That clone lives under <code>.local-postgres</code> and is excluded
+    from the ordinary code copy because it is already captured separately as the
+    fast snapshot payload.</p>
+  </div>
+  </div>
+</section>
+
+<section class="step" id="drive">
+  <h3><span class="num">6</span>Make sure the Drive destination exists</h3>
+  <div class="est">~ 1 minute</div>
+  <div class="body">
+  <ol>
+    <li>Open File Explorer.</li>
+    <li>Browse to <code>G:\My Drive\PG_Backups</code>.</li>
+    <li>If <code>codex_ofbiz_local</code> does not exist yet, create it.</li>
+  </ol>
+  <p>The real backup run copies the final <code>.tar.gz</code> file into that
+  folder. If the folder does not exist, upload will fail.</p>
+  <div class="check"><input type="checkbox" id="dr1"><label for="dr1"><code>G:\My Drive\PG_Backups\codex_ofbiz_local</code> exists.</label></div>
+  </div>
+</section>
+
+<section class="step" id="firstrun">
+  <h3><span class="num">7</span>Run a dry-run pack first</h3>
+  <div class="est">~ 3-10 minutes</div>
+  <div class="body">
+  <p>This validates the whole flow without uploading anything. It is the safe
+  first test after changing config or moving the tool to another machine.</p>
+  <div class="action-row">
+    <button onclick="document.getElementById('dryRunBtn').click()">Run Dry-Run Pack Above</button>
+  </div>
+  <p>You can also run it manually from <kbd>cmd</kbd>:</p>
+  <pre><code>py -3 backup.py --config config.codex.json --dry-run</code><button class="copybtn" data-copy="py -3 backup.py --config config.codex.json --dry-run">Copy</button></pre>
+  <p>Expected progress lines include:</p>
+  <pre><code>step 1/7: pg_dump -Fc ...
+step 2/7: pg_dumpall --globals-only ...
+step 3/8: capturing fast-recovery cluster snapshot ...
+step 4/8: copying source trees ...
+step 5/8: encrypting .env ...
+step 6/8: building manifest ...
+step 7/8: creating tar.gz ...
+step 8/8: DRY-RUN - skipping upload + prune</code></pre>
+
+  <div class="box tip">
+    <h4>If the database clone is not running</h4>
+    <p>The backup now preflights the local cluster. If port
+    <code>127.0.0.1:55432</code> is down, it will try to start the local clone
+    before running <code>pg_dump</code>.</p>
+  </div>
+  </div>
+</section>
+
+<section class="step" id="real">
+  <h3><span class="num">8</span>Run the real backup</h3>
+  <div class="est">~ 5-30 minutes · depends on archive size</div>
+  <div class="body">
+  <p>Now run the full pack. This performs the same local work as the dry-run and
+  then uploads the final archive to Google Drive and prunes older remote copies
+  beyond <code>retention_weeks</code>.</p>
+  <div class="action-row">
+    <button onclick="document.getElementById('fullRunBtn').click()">Run Full Pack Above</button>
+  </div>
+  <p>Manual command:</p>
+  <pre><code>py -3 backup.py --config config.codex.json</code><button class="copybtn" data-copy="py -3 backup.py --config config.codex.json">Copy</button></pre>
+  <p>Or simply double-click <code>run_backup.bat</code>.</p>
+  <p>Wait for the final line <code>=== DONE OK ===</code>. Large archives can sit
+  for a while on the <code>creating tar.gz</code> step because compression takes
+  time.</p>
+  </div>
+</section>
+
+<section class="step" id="verify">
+  <h3><span class="num">9</span>Verify the archive reached Google Drive</h3>
+  <div class="est">~ 1 minute</div>
+  <div class="body">
+  <ol>
+    <li>Open <code>G:\My Drive\PG_Backups\codex_ofbiz_local</code>.</li>
+    <li>Look for a file named like
+    <code>codex_ofbiz_local_20260423T061922.tar.gz</code>.</li>
+    <li>Open <a href="https://drive.google.com" target="_blank" rel="noopener">drive.google.com</a> and confirm the same file appears after Drive sync finishes.</li>
+  </ol>
+  <div class="check"><input type="checkbox" id="vf1"><label for="vf1">I can see the new <code>.tar.gz</code> in File Explorer.</label></div>
+  <div class="check"><input type="checkbox" id="vf2"><label for="vf2">I can also see it in Google Drive on the web.</label></div>
+  </div>
+</section>
+
+<div class="phase-label">Phase C — optional automation and recovery readiness</div>
+
+<section class="step" id="schedule">
+  <h3><span class="num">10</span>Optional: schedule weekly backups in Windows</h3>
+  <div class="est">~ 3 minutes</div>
+  <div class="body">
+  <p>This package does not ship a dedicated scheduler script, but Windows Task
+  Scheduler works well with <code>run_backup.bat</code>.</p>
+  <ol>
+    <li>Open <b>Task Scheduler</b>.</li>
+    <li>Choose <b>Create Basic Task</b>.</li>
+    <li>Name it something like <code>pg_portable_backup_codex</code>.</li>
+    <li>Choose <b>Weekly</b>, then pick the day and time you want.</li>
+    <li>Choose <b>Start a Program</b>.</li>
+    <li>Program/script: <code>cmd.exe</code></li>
+    <li>Add arguments:</li>
+  </ol>
+  <pre><code>/c "C:\Users\PASCA\OneDrive\Documents\Codex\pg_portable_backup\run_backup.bat"</code><button class="copybtn" data-copy="/c &quot;C:\Users\PASCA\OneDrive\Documents\Codex\pg_portable_backup\run_backup.bat&quot;">Copy</button></pre>
+  <ol start="8">
+    <li>Start in:
+    <code>C:\Users\PASCA\OneDrive\Documents\Codex\pg_portable_backup</code></li>
+    <li>Finish the wizard and run the task once manually to verify it works.</li>
+  </ol>
+  <div class="box tip">
+    <h4>Best time to schedule</h4>
+    <p>Pick a quiet time when the machine is on, Google Drive is signed in, and
+    the local clone is not being actively used.</p>
+  </div>
+  </div>
+</section>
+
+<section class="step" id="key">
+  <h3><span class="num">11</span>Store the encryption key safely <span class="pill">critical</span></h3>
+  <div class="est">~ 1 minute</div>
+  <div class="body">
+  <p>The archive stores <code>sync_config.json</code> in encrypted form. The key
+  to decrypt it is kept locally at:</p>
+  <pre><code>secrets\env_key.bin</code></pre>
+  <p>Without that file, unpack can restore the database and code, but it cannot
+  recreate the encrypted config payload.</p>
+  <ul>
+    <li>Copy <code>env_key.bin</code> to a USB stick in a safe place, or</li>
+    <li>store it in a secure password manager as an attachment, or</li>
+    <li>save it in another protected location that is not the same Google Drive folder as the archives.</li>
+  </ul>
+  <div class="box danger">
+    <h4>Do not store the key next to the backups</h4>
+    <p>If someone gets both the archive and <code>env_key.bin</code>, they get the
+    secrets too. Keep them separate on purpose.</p>
+  </div>
+  </div>
+</section>
+
+<div class="finish">
+  <h3>You are done.</h3>
+  <p>The backup package is now both usable and recoverable: it can make a fresh
+  archive on demand, it can be scheduled, and the decrypt key is preserved for
+  future unpack on another computer.</p>
+</div>
+
+<footer>
+  <p>pg_portable_backup — local pack guide. Safely close this page when you are done.</p>
+</footer>
+
+</div>
+<script>
+  async function getJson(url){
+    const response = await fetch(url);
+    return response.json();
+  }
+  async function postJson(url,payload){
+    const response = await fetch(url,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(payload||{})
+    });
+    return response.json();
+  }
+  function renderSummary(config){
+    const root = document.getElementById("summary");
+    if(!root) return;
+    root.innerHTML = `
+      <span class="pill">System: ${config.system_name || "-"}</span>
+      <span class="pill">Database: ${config.database || "-"}</span>
+      <span class="pill">Host: ${config.host || "-"}:${config.port || "-"}</span>
+      <span class="pill">Remote: ${config.remote_target || "-"}</span>
+      <span class="pill">Fast restore: ${config.has_fast_restore ? "Enabled" : "Not configured"}</span>
+    `;
+  }
+  function renderJob(job){
+    const meta = document.getElementById("jobMeta");
+    const log = document.getElementById("jobLog");
+    if(!meta || !log) return;
+    if(!job || !job.command || !job.command.length){
+      meta.textContent = "No job has run yet.";
+      log.textContent = "Waiting for a backup command.";
+      return;
+    }
+    const state = job.running ? "Running" : (job.exit_code === 0 ? "Finished OK" : `Finished with exit ${job.exit_code}`);
+    meta.innerHTML = `${state}<br>Started: ${job.started_at || "-"}<br>Ended: ${job.ended_at || "-"}`;
+    log.textContent = (job.lines || []).join("\n");
+    log.scrollTop = log.scrollHeight;
+  }
+  async function refreshAll(){
+    try{
+      const [configData,statusData] = await Promise.all([
+        getJson("/api/config"),
+        getJson("/api/status")
+      ]);
+      renderSummary(configData.config || {});
+      renderJob(statusData.job || {});
+    } catch (_err){
+      const meta = document.getElementById("jobMeta");
+      const log = document.getElementById("jobLog");
+      if(meta) meta.textContent = "Interactive controls are unavailable in this browser session.";
+      if(log && !log.textContent.trim()) log.textContent = "Open this page via run_pack.bat to enable live controls.";
+    }
+  }
+  async function startBackup(dryRun){
+    const result = await postJson("/api/backup/run", {dry_run: dryRun});
+    if(!result.ok){
+      alert(result.message || result.error || "Could not start backup.");
+    }
+    await refreshAll();
+  }
+  document.getElementById("dryRunBtn")?.addEventListener("click",()=>startBackup(true));
+  document.getElementById("fullRunBtn")?.addEventListener("click",()=>startBackup(false));
+  document.getElementById("refreshBtn")?.addEventListener("click",refreshAll);
+  refreshAll();
+  setInterval(refreshAll, 2000);
+
+  document.querySelectorAll(".copybtn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const t = btn.getAttribute("data-copy") || btn.parentElement.innerText;
+      navigator.clipboard.writeText(t).then(()=>{
+        const old = btn.textContent;
+        btn.textContent = "Copied!";
+        btn.classList.add("done");
+        setTimeout(()=>{btn.textContent=old;btn.classList.remove("done")},1400);
+      });
+    });
+  });
+  document.querySelectorAll(".check input[type=checkbox]").forEach(cb=>{
+    cb.addEventListener("change",()=>{
+      cb.closest(".check").classList.toggle("done", cb.checked);
+    });
+  });
+</script>
+</body>
+</html>

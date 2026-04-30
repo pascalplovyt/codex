@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OFBiz Local Control Center</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>OFBiz Local Control Center</h1>
+        <p>Local sync, table browsing, and report export.</p>
+      </div>
+
+      <section class="sidebar-panel object-panel">
+        <div class="panel-head sidebar-head">
+          <h3>Objects</h3>
+        </div>
+        <div class="panel-body sidebar-body">
+          <div id="metadata-status" class="helper sidebar-helper">Loading object list...</div>
+          <div class="search-wrap">
+            <input id="table-search" type="search" placeholder="Type part of a table or view name">
+          </div>
+          <div class="search-wrap compact">
+            <select id="object-type-filter">
+              <option value="all">All objects</option>
+              <option value="table">Tables only</option>
+              <option value="view">Views only</option>
+            </select>
+          </div>
+          <div class="stats">
+            <div class="stat-card">
+              <span class="stat-label">Database</span>
+              <strong id="health-status">Checking...</strong>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Objects</span>
+              <strong id="table-count">0</strong>
+            </div>
+          </div>
+          <div id="object-picker-status" class="helper sidebar-helper">Start typing to find a table or view, then click it to open it in the main pane.</div>
+          <div id="selected-object-chip" class="selected-object-chip">No object selected</div>
+          <div id="table-list" class="table-list"></div>
+        </div>
+      </section>
+
+      <section class="sidebar-panel bottom-controls">
+        <div class="panel-head sidebar-head">
+          <h3>Scope</h3>
+        </div>
+        <div class="panel-body sidebar-body">
+          <label class="field">
+            <span>Tables Filter</span>
+            <input id="tables-filter" type="text" placeholder="Optional, e.g. party,product">
+          </label>
+          <p class="helper sidebar-helper">Comma-separated table names work. Blocked tables are stripped automatically.</p>
+          <div class="button-row sidebar-button-row">
+            <button class="action-btn secondary compact-btn" id="open-excluded-tables">Edit Excluded Tables</button>
+          </div>
+          <div class="pill-list" id="excluded-tables"></div>
+          <div class="schedule-grid">
+            <label class="field">
+              <span>Day</span>
+              <select id="schedule-day">
+                <option>Sunday</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Time</span>
+              <input id="schedule-time" type="time" value="02:00">
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section class="sidebar-panel bottom-controls">
+        <div class="panel-head sidebar-head">
+          <h3>Control Tools</h3>
+        </div>
+        <div class="panel-body sidebar-body">
+          <div class="button-stack compact-stack">
+            <button class="action-btn primary compact-btn" id="open-settings">Credentials & Metadata</button>
+            <button class="action-btn secondary compact-btn" id="refresh-metadata">Refresh OFBiz Metadata</button>
+            <button class="action-btn primary compact-btn" data-action="setup_clone">Rebuild Local Clone</button>
+            <button class="action-btn primary compact-btn" data-action="full_sync">Run Full Sync</button>
+            <button class="action-btn accent compact-btn" data-action="incremental_sync">Run Incremental Sync</button>
+            <button class="action-btn secondary compact-btn" id="register-weekly">Register Weekly Incremental Sync</button>
+            <button class="action-btn danger compact-btn" id="exit-control-center">Exit Control Center</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="sidebar-panel bottom-secondary">
+        <div class="panel-head sidebar-head">
+          <h3>Jobs</h3>
+        </div>
+        <div class="panel-body sidebar-body">
+          <div id="job-status" class="status-box compact-status">No jobs launched yet.</div>
+          <div id="jobs-panel" class="mini-stack"></div>
+        </div>
+      </section>
+
+      <section class="sidebar-panel bottom-secondary">
+        <div class="panel-head sidebar-head">
+          <h3>Incremental Sync</h3>
+        </div>
+        <div class="panel-body sidebar-body" id="sync-summary-panel"></div>
+      </section>
+    </aside>
+
+    <main class="content">
+      <section class="hero">
+        <div>
+          <h2 id="table-title">Choose a table or view</h2>
+          <p id="table-subtitle">Select an object on the left to browse rows, search partial values, and build exports.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Object Schema</h3>
+        </div>
+        <div class="panel-body schema-panel-body">
+          <div class="overview compact-overview" id="overview"></div>
+          <div id="object-info-panel" class="object-summary-panel"></div>
+          <div class="schema-grid">
+            <section class="schema-main">
+              <h4>Columns</h4>
+              <div id="columns-panel"></div>
+            </section>
+            <section class="schema-side-stack">
+              <article class="schema-side-card">
+                <h4>Constraints</h4>
+                <div id="constraints-panel"></div>
+              </article>
+              <article class="schema-side-card">
+                <h4>Indexes</h4>
+                <div id="indexes-panel"></div>
+              </article>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Data Explorer</h3>
+        </div>
+        <div class="panel-body">
+          <div class="explorer-grid wide-main-grid">
+            <article class="control-card">
+              <h4>Search & Sort</h4>
+              <div class="field-grid explorer-fields">
+                <label class="field">
+                  <span>Global Search</span>
+                  <input id="data-search" type="search" placeholder="Partial match across all visible fields">
+                </label>
+                <label class="field">
+                  <span>Rows Per Page</span>
+                  <select id="page-size">
+                    <option value="50">50</option>
+                    <option value="100" selected>100</option>
+                    <option value="250">250</option>
+                    <option value="500">500</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Sort Column</span>
+                  <select id="sort-column"></select>
+                </label>
+                <label class="field">
+                  <span>Direction</span>
+                  <select id="sort-direction">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                  </select>
+                </label>
+              </div>
+              <div class="button-row tight-row">
+                <button class="action-btn accent" id="run-query">Run Query</button>
+                <span id="query-status" class="helper">Choose an object to begin.</span>
+              </div>
+            </article>
+
+            <article class="control-card">
+              <h4>Field Search</h4>
+              <p class="helper">Use up to three optional field searches at once. Each one matches partial text, so entering <code>8818</code> finds values like <code>*8818*</code>.</p>
+              <div id="column-filters" class="filter-list fixed-filter-list"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Query Output</h3>
+        </div>
+        <div class="panel-body">
+          <div class="query-output-grid">
+            <article class="output-card">
+              <span class="detail-label">Result Set</span>
+              <strong id="page-indicator">No query yet</strong>
+            </article>
+            <article class="output-card">
+              <span class="detail-label">Summary</span>
+              <strong id="query-result-summary">Run a query to open matching rows in a separate tab.</strong>
+            </article>
+            <article class="output-card output-action-card">
+              <button class="action-btn accent" id="open-results-tab">Open Results Tab</button>
+              <div id="results-tab-status" class="helper">The separate results tab uses the full browser width for rows.</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Saved Reports</h3>
+        </div>
+        <div class="panel-body">
+          <div class="report-grid wide-main-grid">
+            <article class="control-card">
+              <h4>Current Report Draft</h4>
+              <div class="field-grid explorer-fields">
+                <label class="field">
+                  <span>Report Name</span>
+                  <input id="report-name" type="text" value="My Saved Report">
+                </label>
+                <label class="field">
+                  <span>Export Max Rows Per Sheet</span>
+                  <input id="export-limit" type="number" min="1" max="50000" step="500" value="10000">
+                </label>
+              </div>
+              <div class="button-row">
+                <button class="action-btn secondary" id="add-selection">Add Current Selection</button>
+                <button class="action-btn secondary" id="replace-report">Replace Draft</button>
+                <button class="action-btn secondary" id="save-report">Save Report</button>
+                <button class="action-btn accent" id="export-report">Export XLSX</button>
+              </div>
+              <div id="report-status" class="status-box compact-status">Add the current filtered table or view to build a multi-sheet workbook.</div>
+              <div id="report-draft-summary" class="helper">No sheets in the current draft.</div>
+              <div id="report-draft-panel" class="draft-list"></div>
+            </article>
+
+            <article class="control-card">
+              <h4>Saved Report Library</h4>
+              <div id="saved-reports-panel" class="draft-list"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="settings-modal" class="modal-shell hidden">
+    <div class="modal-backdrop" id="close-settings"></div>
+    <div class="modal-card">
+      <div class="modal-head">
+        <div>
+          <h3>Credentials & Metadata</h3>
+          <p id="metadata-summary" class="helper">Remote settings and schema snapshot details.</p>
+        </div>
+        <button class="chip-btn" id="dismiss-settings">Close</button>
+      </div>
+
+      <div class="modal-grid">
+        <article class="control-card">
+          <h4>Remote OFBiz</h4>
+          <div class="field-grid">
+            <label class="field">
+              <span>Base URL</span>
+              <input id="remote-base-url" type="url">
+            </label>
+            <label class="field">
+              <span>Username</span>
+              <input id="remote-username" type="text" autocomplete="username">
+            </label>
+            <label class="field">
+              <span>Password</span>
+              <input id="remote-password" type="password" autocomplete="current-password" placeholder="Leave blank to keep saved password">
+            </label>
+            <label class="field">
+              <span>Group</span>
+              <input id="remote-group" type="text">
+            </label>
+            <label class="field">
+              <span>Timeout Seconds</span>
+              <input id="remote-timeout" type="number" min="30" step="30">
+            </label>
+          </div>
+          <div class="button-row">
+            <button class="action-btn secondary" id="save-credentials">Save Credentials</button>
+            <span id="credentials-status" class="helper">Password is hidden here and only rewritten when you enter a new value.</span>
+          </div>
+        </article>
+
+        <article class="control-card">
+          <h4>Schema Snapshot</h4>
+          <div id="schema-object-summary" class="overview compact-overview"></div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div id="excluded-tables-modal" class="modal-shell hidden">
+    <div class="modal-backdrop" id="close-excluded-tables"></div>
+    <div class="modal-card modal-card-wide">
+      <div class="modal-head">
+        <div>
+          <h3>Excluded Sync Tables</h3>
+          <p class="helper">Add exact table names or wildcard patterns like <code>site_*</code> or <code>*_archive</code>. One <code>*</code> prefix or suffix is supported.</p>
+        </div>
+        <button class="chip-btn" id="dismiss-excluded-tables">Close</button>
+      </div>
+
+      <div class="control-card">
+        <div class="button-row compact-toolbar">
+          <button class="action-btn secondary" id="add-excluded-pattern">Add Pattern</button>
+          <button class="action-btn accent" id="save-excluded-tables">Save Exclusions</button>
+          <span id="excluded-tables-status" class="helper">These exclusions will apply to dashboard-launched syncs and the sync engine defaults.</span>
+        </div>
+        <div id="excluded-table-editor" class="excluded-editor-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

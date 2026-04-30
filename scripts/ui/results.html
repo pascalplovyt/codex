@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OFBiz Query Results</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="results-body">
+  <main class="results-shell">
+    <section class="panel">
+      <div class="panel-head">
+        <h3 id="results-title">Query Results</h3>
+      </div>
+      <div class="panel-body results-panel-body">
+        <div class="query-output-grid results-summary-grid">
+          <article class="output-card">
+            <span class="detail-label">Object</span>
+            <strong id="results-object">n/a</strong>
+          </article>
+          <article class="output-card">
+            <span class="detail-label">Matches</span>
+            <strong id="results-count">0 rows</strong>
+          </article>
+          <article class="output-card">
+            <span class="detail-label">Page</span>
+            <strong id="results-page">1 / 1</strong>
+          </article>
+          <article class="output-card">
+            <span class="detail-label">Sort</span>
+            <strong id="results-sort">n/a</strong>
+          </article>
+        </div>
+        <div id="results-filter-summary" class="status-box compact-status">Loading query details...</div>
+        <div class="button-row tight-row pager-row">
+          <button class="chip-btn" id="results-prev">Previous</button>
+          <button class="chip-btn" id="results-refresh">Refresh</button>
+          <button class="chip-btn" id="results-next">Next</button>
+        </div>
+        <div id="results-table" class="results-table-host"></div>
+      </div>
+    </section>
+  </main>
+  <script src="/results.js"></script>
+</body>
+</html>

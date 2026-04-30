@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Unpack a backup onto a new computer - step by step</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root{
+    --bg:#f7f7f8; --panel:#ffffff; --ink:#15181c; --mute:#6a7382;
+    --accent:#7c3aed; --accent-2:#5b21b6; --ok:#2f855a; --warn:#c05621;
+    --danger:#c53030; --soft:#eef2f7; --line:#e3e7ee;
+  }
+  html,body{background:var(--bg);color:var(--ink);margin:0;padding:0;
+    font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:940px;margin:0 auto;padding:40px 22px 80px}
+  header h1{margin:0 0 6px;font-size:30px;letter-spacing:-.01em}
+  header .sub{color:var(--mute);font-size:15px}
+  .hero{background:linear-gradient(135deg,#7c3aed 0%,#5b21b6 100%);
+    color:#fff;padding:26px 28px;border-radius:14px;margin:18px 0 28px;
+    box-shadow:0 6px 20px rgba(80,30,170,.18)}
+  .hero h1{color:#fff;font-size:28px;margin:0 0 6px}
+  .hero p{margin:0;opacity:.92}
+  .hero .lead-tag{display:inline-block;background:rgba(255,255,255,.18);
+    padding:3px 10px;border-radius:999px;font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;margin-bottom:10px}
+  nav.toc{background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:16px 20px;margin-bottom:28px}
+  nav.toc h2{margin:0 0 8px;font-size:14px;color:var(--mute);
+    letter-spacing:.08em;text-transform:uppercase}
+  nav.toc ol{margin:0;padding-left:22px}
+  nav.toc ol li{margin:3px 0}
+  nav.toc a{color:var(--accent);text-decoration:none}
+  nav.toc a:hover{text-decoration:underline}
+  .phase-label{margin:32px 0 6px;font-size:12px;letter-spacing:.12em;
+    color:var(--mute);text-transform:uppercase}
+  .step{background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;margin:20px 0;padding:26px 28px;
+    box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .step h3{margin:0 0 4px;display:flex;align-items:center;gap:12px;
+    font-size:20px}
+  .step h3 .num{background:var(--accent);color:#fff;width:32px;height:32px;
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:50%;font-size:15px;font-weight:600;flex:0 0 32px}
+  .step .est{color:var(--mute);font-size:13px;margin:0 0 14px 44px}
+  .step p,.step li{margin:8px 0}
+  .step .body{padding-left:44px}
+  .step h4.sub{margin:18px 0 6px;font-size:16px;color:var(--accent-2)}
+  code,kbd{background:var(--soft);border:1px solid var(--line);
+    padding:1px 6px;border-radius:4px;font:13.5px/1.45 ui-monospace,Consolas,Monaco,monospace}
+  pre{background:#0f1419;color:#e6e6e6;border-radius:10px;padding:14px 16px;
+    overflow:auto;position:relative;margin:10px 0;
+    font:13.5px/1.55 ui-monospace,Consolas,Monaco,monospace}
+  pre code{background:none;border:0;color:inherit;padding:0}
+  .copybtn{position:absolute;top:8px;right:8px;background:#7c3aed;color:#fff;
+    border:0;border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer;
+    opacity:.85}
+  .copybtn:hover{opacity:1}
+  .copybtn.done{background:var(--ok)}
+  .box{border-radius:10px;padding:12px 16px;margin:12px 0;
+    border-left:4px solid var(--accent);background:#f3eefd}
+  .box.tip{border-color:var(--ok);background:#effaf2}
+  .box.warn{border-color:var(--warn);background:#fef6ec}
+  .box.danger{border-color:var(--danger);background:#fdecec}
+  .box h4{margin:0 0 4px;font-size:13px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--mute)}
+  .check{display:flex;align-items:flex-start;gap:10px;margin:6px 0;
+    padding:8px 10px;border-radius:8px;background:var(--soft);
+    border:1px solid var(--line)}
+  .check input[type=checkbox]{margin-top:4px;flex:0 0 16px;
+    width:16px;height:16px;accent-color:var(--accent)}
+  .check label{cursor:pointer;flex:1}
+  .check.done{background:#effaf2;border-color:#c7e7d3}
+  .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;
+    background:var(--soft);color:var(--mute);margin-left:6px}
+  .pill.crit{background:#fdecec;color:var(--danger)}
+  footer{color:var(--mute);font-size:13px;text-align:center;margin-top:36px}
+  .finish{background:linear-gradient(135deg,#2f855a,#225e42);color:#fff;
+    border-radius:14px;padding:22px 26px;margin-top:28px}
+  .finish h3{color:#fff;margin:0 0 6px}
+  table{border-collapse:collapse;width:100%;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;
+    font-size:14px;vertical-align:top}
+  th{background:var(--soft);color:var(--mute);font-weight:600}
+  .control-panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:0 0 24px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .control-panel h2{margin:0 0 6px;font-size:22px}
+  .control-panel .sub{color:var(--mute);margin:0 0 14px}
+  .summary-pills{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 14px}
+  .summary-pills .pill{margin-left:0}
+  .action-row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px}
+  .action-row button{border:0;border-radius:999px;padding:11px 16px;cursor:pointer;
+    background:var(--accent);color:#fff;font:inherit}
+  .action-row button.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+  .control-panel select{width:100%;padding:10px 12px;border:1px solid var(--line);
+    border-radius:10px;background:#fff;font:inherit;margin:10px 0 6px}
+  .status-meta{color:var(--mute);font-size:14px}
+  .status-log{min-height:260px;max-height:420px;overflow:auto}
+ </style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<div class="hero">
+  <div class="lead-tag">Restore &middot; Unpack</div>
+  <h1>Unpack a backup onto a new computer</h1>
+  <p>A step-by-step guide for anyone. At the end, the new computer will have
+  the same database and the same two application folders
+  (<code>RCSi - Catalog Export</code> and <code>ERP</code>) as the machine
+  where the backup was made.</p>
+</div>
+</header>
+
+<section class="control-panel">
+  <h2>Run The Restore From Here</h2>
+  <p class="sub">Use these controls if you opened this page through <code>run_unpack.bat</code>. The detailed procedure below remains the full reference walkthrough.</p>
+  <div id="summary" class="summary-pills"></div>
+  <label for="archiveSelect"><b>Archive</b></label>
+  <select id="archiveSelect">
+    <option value="latest">latest</option>
+  </select>
+  <div class="action-row">
+    <button id="refreshArchivesBtn" class="secondary">Refresh Archive List</button>
+    <button id="dryRunRestoreBtn" class="secondary">Run Dry-Run Unpack</button>
+    <button id="fastRestoreBtn">Run Fast Restore</button>
+    <button id="portableRestoreBtn">Run Portable Restore</button>
+  </div>
+  <div id="jobMeta" class="status-meta">No restore has run yet.</div>
+  <pre id="jobLog" class="status-log"><code>Waiting for a restore command.</code></pre>
+</section>
+
+<nav class="toc">
+  <h2>The plan</h2>
+  <p style="margin:6px 0 10px;color:var(--mute);font-size:14px">
+    Steps 1-2 explain what you need. Steps 3-6 are one-time software
+    installs. Steps 7-12 are the actual restore.
+  </p>
+  <ol>
+    <li><a href="#what">What the archive contains</a></li>
+    <li><a href="#prereq">Three things you need in hand</a></li>
+    <li><a href="#install-pg">Install PostgreSQL (one-time)</a></li>
+    <li><a href="#install-py">Install Python + dependencies (one-time)</a></li>
+    <li><a href="#install-drive">Install Google Drive for Desktop or rclone (one-time)</a></li>
+    <li><a href="#copy-kit">Copy the <code>pg_portable_backup</code> folder</a></li>
+    <li><a href="#copy-key">Put the encryption key back</a></li>
+    <li><a href="#config">Check the config file</a></li>
+    <li><a href="#list">List available backups</a></li>
+    <li><a href="#run">Run the restore</a></li>
+    <li><a href="#verify">Verify everything is back</a></li>
+    <li><a href="#schedule">(Optional) Schedule weekly backups here too</a></li>
+  </ol>
+</nav>
+
+<!-- STEP 1 -->
+<section class="step" id="what">
+  <h3><span class="num">1</span>What the archive contains</h3>
+  <div class="est">~ 2 minutes of reading</div>
+  <div class="body">
+  <p>Each <code>.tar.gz</code> produced by <code>pack</code> is a
+  self-contained bundle. When you unpack it with <code>restore.py</code>,
+  everything lands at its original location:</p>
+  <table>
+    <tr><th>Inside the archive</th><th>Is restored to</th></tr>
+    <tr><td><code>database/cluster.dump</code></td>
+        <td>Loaded into PostgreSQL on the new machine (database name from the config).</td></tr>
+    <tr><td><code>database/globals.sql</code></td>
+        <td>Roles &amp; grants applied to the new cluster.</td></tr>
+    <tr><td><code>app/rcsi-catalog-export/</code></td>
+        <td><code>C:\Users\&lt;you&gt;\OneDrive\Documents\Scripts\RCSi - Catalog Export\</code>
+        (the exact absolute path recorded when packing, from
+        <code>_sources.json</code>).</td></tr>
+    <tr><td><code>app/erp-scripts/</code></td>
+        <td><code>C:\Users\&lt;you&gt;\OneDrive\Documents\Scripts\ERP\</code></td></tr>
+    <tr><td><code>config/env.enc</code></td>
+        <td>Decrypted with <code>secrets/env_key.bin</code>, written to the
+        <code>env_file</code> path in the config.</td></tr>
+    <tr><td><code>manifest.json</code></td>
+        <td>SHA-256 of every file &mdash; verified before any restore starts.</td></tr>
+  </table>
+  <div class="box">
+    <h4>What the archive does NOT contain</h4>
+    <p>It does not include the PostgreSQL server binaries, Python, or Google
+    Drive for Desktop. Those are software installs you do once on the new
+    machine (Steps 3-5 below). The archive only contains your <em>data</em>
+    and <em>your code</em>.</p>
+  </div>
+  </div>
+</section>
+
+<!-- STEP 2 -->
+<section class="step" id="prereq">
+  <h3><span class="num">2</span>Three things need to be on the new computer</h3>
+  <div class="est">~ 1 minute</div>
+  <div class="body">
+  <table>
+    <tr><th>Item</th><th>Why</th><th>Where it comes from</th></tr>
+    <tr><td><b>Backup archive</b><br><code>rcsi_erp_YYYYMMDDThhmmss.tar.gz</code></td>
+        <td>Contains the database + both code folders + encrypted
+        <code>.env</code>.</td>
+        <td>Google Drive folder where weekly backups land.</td></tr>
+    <tr><td><b>The <code>pg_portable_backup</code> folder</b> (the one this page is inside)</td>
+        <td>The unpack program itself.</td>
+        <td>Copy it from the old computer, or from any sync / copy of it.</td></tr>
+    <tr><td><b>Encryption key</b><br><code>secrets\env_key.bin</code></td>
+        <td>Unlocks the encrypted <code>.env</code> inside the archive.</td>
+        <td>You saved it in the last step of the pack guide &mdash; retrieve it
+        from the USB stick / password manager you used.</td></tr>
+  </table>
+  <div class="box">
+    <h4>Why three things?</h4>
+    <p>The archive alone is enough to rebuild the database and the
+    applications, but to make them fully functional we also need the program
+    that does the unpacking, and the key that decrypts the secrets file.
+    Each one on its own is useless, which is why storing them separately is
+    safe.</p>
+  </div>
+  </div>
+</section>
+
+<div class="phase-label">Phase A &mdash; one-time software installs</div>
+
+<!-- STEP 3: Install PostgreSQL -->
+<section class="step" id="install-pg">
+  <h3><span class="num">3</span>Install PostgreSQL</h3>
+  <div class="est">~ 10 minutes &middot; only once per machine</div>
+  <div class="body">
+
+  <h4 class="sub">3a. Download the installer</h4>
+  <ol>
+    <li>Go to
+      <a href="https://www.postgresql.org/download/windows/" target="_blank" rel="noopener">
+        postgresql.org/download/windows</a>
+      and click <b>Download the installer</b> (EDB's interactive
+      installer).</li>
+    <li>Pick the <b>same major version as the original machine, or newer</b>.
+      The original machine for this system runs PostgreSQL <b>18</b>, so
+      install 18 or newer.</li>
+    <li>Download the x64 Windows <code>.exe</code>.</li>
+  </ol>
+
+  <h4 class="sub">3b. Run the installer</h4>
+  <ol>
+    <li>Right-click the <code>.exe</code> and choose <b>Run as
+      administrator</b>.</li>
+    <li>Accept the default install location:
+      <code>C:\Program Files\PostgreSQL\18</code>.</li>
+    <li>On the <b>Select Components</b> screen, keep <b>PostgreSQL
+      Server</b>, <b>pgAdmin 4</b>, and <b>Command Line Tools</b> ticked.
+      Stack Builder can be unticked.</li>
+    <li>Accept the default data directory
+      <code>C:\Program Files\PostgreSQL\18\data</code>.</li>
+    <li>Set a password for the <code>postgres</code> superuser. <b>Write it
+      down.</b> You will type it into <code>config.rcsi.json</code> in
+      Step 8.</li>
+    <li>Accept the default port <code>5432</code>.</li>
+    <li>Accept the default locale, click <b>Next</b>, and let it install.</li>
+    <li>Skip Stack Builder at the end.</li>
+  </ol>
+
+  <h4 class="sub">3c. Verify</h4>
+  <p>Open <kbd>cmd</kbd> and run:</p>
+  <pre><code>"C:\Program Files\PostgreSQL\18\bin\pg_restore.exe" --version</code><button class="copybtn" data-copy="&quot;C:\Program Files\PostgreSQL\18\bin\pg_restore.exe&quot; --version">Copy</button></pre>
+  <p>You should see <code>pg_restore (PostgreSQL) 18.x</code>.</p>
+
+  <div class="check"><input type="checkbox" id="pg1"><label for="pg1">Folder <code>C:\Program Files\PostgreSQL\18\bin</code> exists.</label></div>
+  <div class="check"><input type="checkbox" id="pg2"><label for="pg2">The <code>pg_restore --version</code> command printed a version number.</label></div>
+  <div class="check"><input type="checkbox" id="pg3"><label for="pg3">I know the new <code>postgres</code> password on this machine.</label></div>
+
+  <div class="box warn">
+    <h4>Older / different major version</h4>
+    <p>If you must use an older PostgreSQL (say 15 or 16), you can still
+    restore most data &mdash; but features that require the newer version may
+    fail. Best practice: install the same major version the source used
+    (18), or newer.</p>
+  </div>
+  </div>
+</section>
+
+<!-- STEP 4: Install Python -->
+<section class="step" id="install-py">
+  <h3><span class="num">4</span>Install Python 3.10+ and dependencies</h3>
+  <div class="est">~ 5 minutes &middot; only once per machine</div>
+  <div class="body">
+
+  <h4 class="sub">4a. Download and install Python</h4>
+  <ol>
+    <li>Go to
+      <a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">
+        python.org/downloads/windows</a>
+      and grab <b>Python 3.12</b> (3.10 / 3.11 / 3.13 also fine).</li>
+    <li>Run the installer. On the very first screen, <b>tick</b> the box
+      <b>"Add python.exe to PATH"</b>. Do not skip this.</li>
+    <li>Click <b>Install Now</b>.</li>
+  </ol>
+
+  <h4 class="sub">4b. Verify</h4>
+  <p>Open a <b>new</b> <kbd>cmd</kbd> window (a new one, so it picks up the
+  PATH change) and run:</p>
+  <pre><code>py --version
+py -3 -m pip --version</code><button class="copybtn" data-copy="py --version
+py -3 -m pip --version">Copy</button></pre>
+
+  <h4 class="sub">4c. Install the one required package</h4>
+  <p>You will do this <b>after</b> you copy the
+  <code>pg_portable_backup</code> folder onto this machine in Step 6, but
+  the command to run then is:</p>
+  <pre><code>py -3 -m pip install -r requirements.txt</code><button class="copybtn" data-copy="py -3 -m pip install -r requirements.txt">Copy</button></pre>
+  <p>(The only dep is <code>cryptography</code>, used to decrypt the
+  <code>.env</code> file.)</p>
+
+  <div class="check"><input type="checkbox" id="py1"><label for="py1"><code>py --version</code> prints <code>Python 3.1x</code>.</label></div>
+  <div class="check"><input type="checkbox" id="py2"><label for="py2"><code>pip --version</code> prints a version.</label></div>
+  </div>
+</section>
+
+<!-- STEP 5: Install Google Drive for Desktop (or rclone) -->
+<section class="step" id="install-drive">
+  <h3><span class="num">5</span>Install Google Drive for Desktop (or rclone)</h3>
+  <div class="est">~ 5 minutes &middot; only once per machine</div>
+  <div class="body">
+  <p>Pick one of the two options below. It must match the
+  <code>remote.mode</code> set in <code>config.rcsi.json</code>. The default
+  is <code>gdrive_desktop</code>.</p>
+
+  <h4 class="sub">Option A &mdash; Google Drive for Desktop (default, simplest)</h4>
+  <ol>
+    <li>Go to
+      <a href="https://www.google.com/drive/download/" target="_blank" rel="noopener">
+        google.com/drive/download</a>
+      &rarr; <b>Download Drive for Desktop</b>.</li>
+    <li>Run the installer, accept defaults.</li>
+    <li>Sign in with the Google account that holds the backups.</li>
+    <li>Wait until you see a drive letter (usually <code>G:\</code>) in
+      File Explorer.</li>
+    <li>Navigate to
+      <code>G:\My Drive\PG_Backups\rcsi_erp</code> and confirm the
+      <code>.tar.gz</code> files are visible.</li>
+  </ol>
+  <div class="box tip">
+    <h4>File not downloading?</h4>
+    <p>In streaming mode, a file in Drive is only a placeholder until you
+    open it. If a file has a little cloud icon, right-click &rarr;
+    <b>Offline access &rarr; Available offline</b> to pull the bytes before you
+    feed it to <code>restore.py</code>. Or let <code>restore.py</code>
+    trigger the download for you &mdash; it will still work, just a bit slower
+    the first time.</p>
+  </div>
+
+  <h4 class="sub">Option B &mdash; rclone</h4>
+  <ol>
+    <li>Download <code>rclone.exe</code> from
+      <a href="https://rclone.org/downloads/" target="_blank" rel="noopener">
+      rclone.org/downloads</a> (Windows AMD64 zip).</li>
+    <li>Unzip and place <code>rclone.exe</code> somewhere on PATH, e.g.
+      <code>C:\Tools\rclone\</code>.</li>
+    <li>Run <code>rclone config</code> and create a new remote of type
+      <b>Google Drive</b>, named to match the config's
+      <code>rclone_remote</code> prefix (default: <code>gdrive</code>).
+      Sign in through the browser when prompted.</li>
+    <li>Verify: <code>rclone lsd gdrive:PG_Backups/rcsi_erp</code> lists the
+      archives.</li>
+    <li>In <code>config.rcsi.json</code>, set <code>remote.mode</code> to
+      <code>"rclone"</code>.</li>
+  </ol>
+  </div>
+</section>
+
+<div class="phase-label">Phase B &mdash; move the restore tool into place</div>
+
+<!-- STEP 6: Copy the kit -->
+<section class="step" id="copy-kit">
+  <h3><span class="num">6</span>Copy the <code>pg_portable_backup</code> folder onto the new computer</h3>
+  <div class="est">~ 2 minutes</div>
+  <div class="body">
+  <p>On the original machine this folder is at
+  <code>C:\Users\&lt;user&gt;\OneDrive\Documents\Scripts\RCSi - Catalog Export\pg_portable_backup</code>.
+  Copy the whole folder to the new machine. The exact path doesn't matter
+  for the restore itself, but something like <code>C:\pg_portable_backup</code>
+  keeps things simple.</p>
+
+  <p>Then open <kbd>cmd</kbd> inside the folder and install the Python
+  dependency (see Step 4):</p>
+  <pre><code>py -3 -m pip install -r requirements.txt</code><button class="copybtn" data-copy="py -3 -m pip install -r requirements.txt">Copy</button></pre>
+
+  <div class="box tip">
+    <h4>What about the <code>staging\</code> and <code>logs\</code> folders?</h4>
+    <p>Those are scratch folders and are safe to copy or leave empty &mdash; the
+    scripts recreate them on first run. Do <b>not</b> copy
+    <code>secrets\env_key.bin</code> via any unsecured channel (see Step 7
+    for how to bring that file in safely).</p>
+  </div>
+
+  <div class="box warn">
+    <h4>OneDrive path on the new machine</h4>
+    <p>If the new machine uses a different Windows user name, the path
+    <code>C:\Users\&lt;user&gt;\OneDrive\...</code> will be different. The
+    restore uses the path that was recorded at pack time (from
+    <code>app/_sources.json</code>) &mdash; if that path does not exist on the
+    new machine, it will be created. You may want to update the
+    <code>config.rcsi.json</code> and the original application's own paths
+    afterwards.</p>
+  </div>
+  </div>
+</section>
+
+<!-- STEP 7: Copy the key -->
+<section class="step" id="copy-key">
+  <h3><span class="num">7</span>Put the encryption key back in place <span class="pill crit">critical</span></h3>
+  <div class="est">~ 1 minute</div>
+  <div class="body">
+  <p>Retrieve <code>env_key.bin</code> from wherever you stored it (USB
+  stick, password manager, etc.) and place it exactly here on the new
+  machine:</p>
+  <pre><code>pg_portable_backup\secrets\env_key.bin</code></pre>
+  <div class="check"><input type="checkbox" id="k1"><label for="k1">I can see <code>env_key.bin</code> in the <code>secrets</code> folder.</label></div>
+  <div class="box warn">
+    <h4>If you can't find the key</h4>
+    <p>The restore will still succeed for the database and app files, but
+    the <code>.env</code> secrets file will not be decrypted. You'll have
+    to recreate it by hand afterwards. Skip the key copy and just add
+    <code>--skip-env</code> when you run the restore.</p>
+  </div>
+  </div>
+</section>
+
+<!-- STEP 8: Config -->
+<section class="step" id="config">
+  <h3><span class="num">8</span>Open the config and check a few values</h3>
+  <div class="est">~ 2 minutes</div>
+  <div class="body">
+  <p>Open <code>config.rcsi.json</code> in Notepad. Adjust if necessary:</p>
+  <ol>
+    <li><b><code>postgres.password</code></b> &mdash; set it to the password you
+      chose when installing PostgreSQL in Step 3.</li>
+    <li><b><code>postgres.bin_dir</code></b> &mdash; set it to the folder that
+      holds <code>pg_restore.exe</code>, typically
+      <code>C:\\Program Files\\PostgreSQL\\18\\bin</code>. Use double
+      backslashes inside JSON.</li>
+    <li><b><code>postgres.database</code></b> &mdash; leave as
+      <code>rcsidatabase</code> unless the receiving system uses a different
+      name.</li>
+    <li><b><code>remote.gdrive_desktop_path</code></b> &mdash; point it at the
+      folder on the new computer where Google Drive for Desktop shows the
+      backups (the drive letter may differ on the new machine).</li>
+    <li><b><code>env_file</code></b> &mdash; this is where the decrypted
+      <code>.env</code> will be written. Default:
+      <code>C:\\Users\\&lt;you&gt;\\OneDrive\\Documents\\Scripts\\RCSi - Catalog Export\\rcsidatabase\\.env</code>.</li>
+  </ol>
+  <div class="box tip">
+    <h4>You don't need to list the source paths again</h4>
+    <p>Each source's absolute path on the <em>original</em> machine was
+    baked into <code>app/_sources.json</code> at pack time. The restore
+    reads that file and puts each source back at that exact path.</p>
+  </div>
+  </div>
+</section>
+
+<div class="phase-label">Phase C &mdash; the actual restore</div>
+
+<!-- STEP 9: List -->
+<section class="step" id="list">
+  <h3><span class="num">9</span>See what backups are available</h3>
+  <div class="est">~ 1 minute</div>
+  <div class="body">
+  <p>In the <code>pg_portable_backup</code> folder, open <kbd>cmd</kbd> and
+  run:</p>
+  <pre><code>py -3 restore.py --list</code><button class="copybtn" data-copy="py -3 restore.py --list">Copy</button></pre>
+  <p>You should see a table like:</p>
+  <pre><code>timestamp          filename
+-----------------  --------------------------------------------
+20260421T030000    rcsi_erp_20260421T030000.tar.gz
+20260414T030000    rcsi_erp_20260414T030000.tar.gz
+20260407T030000    rcsi_erp_20260407T030000.tar.gz
+...</code></pre>
+  <p>The newest is at the top. If you're happy with it, continue to the
+  next step. Otherwise note the timestamp of the one you want.</p>
+  </div>
+</section>
+
+<!-- STEP 10: Run restore -->
+<section class="step" id="run">
+  <h3><span class="num">10</span>Run the restore</h3>
+  <div class="est">~ 5-30 minutes &middot; depends on DB size</div>
+  <div class="body">
+  <p>Easy way: <b>double-click <code>run_restore.bat</code></b>. It will
+  show the list, ask which timestamp to install, and run.</p>
+  <p>Or from <kbd>cmd</kbd>, to use the newest:</p>
+  <pre><code>py -3 restore.py --install latest</code><button class="copybtn" data-copy="py -3 restore.py --install latest">Copy</button></pre>
+  <p>Or to pick a specific date:</p>
+  <pre><code>py -3 restore.py --install 20260414T030000</code><button class="copybtn" data-copy="py -3 restore.py --install 20260414T030000">Copy</button></pre>
+  <p>You will be asked to type the word <b><code>RESTORE</code></b> in
+  capital letters to confirm &mdash; this is an intentional safety gate,
+  because the next step overwrites application files and loads the
+  database.</p>
+  <div class="box warn">
+    <h4>If the target database already exists with data</h4>
+    <p>By default the restore <em>adds</em> into the existing database. If
+    you want to drop it first and start clean, add <code>--drop</code>:</p>
+    <pre><code>py -3 restore.py --install latest --drop</code><button class="copybtn" data-copy="py -3 restore.py --install latest --drop">Copy</button></pre>
+  </div>
+  <div class="box">
+    <h4>What the restore is doing, in plain English</h4>
+    <ol>
+      <li>Downloads the archive from Google Drive into
+        <code>staging\</code>.</li>
+      <li>Extracts it and checks every file against the SHA-256 list inside.
+        If any file is corrupt, it stops.</li>
+      <li>Applies the <code>globals.sql</code> (roles and grants) to the
+        new Postgres, ignoring harmless "role already exists" errors.</li>
+      <li>Runs <code>pg_restore</code> to load the database dump into the
+        database named by <code>postgres.database</code> in the config.</li>
+      <li>For each labelled source in the archive
+        (<code>rcsi-catalog-export</code>, <code>erp-scripts</code>):
+        takes a safety snapshot of the current folder at its destination
+        into <code>staging\preinstall_&lt;ts&gt;\&lt;label&gt;.zip</code>, then
+        copies the archived version on top.</li>
+      <li>Decrypts <code>env.enc</code> &rarr; <code>.env</code> at the
+        original path, using <code>secrets\env_key.bin</code>.</li>
+    </ol>
+  </div>
+  </div>
+</section>
+
+<!-- STEP 11: Verify -->
+<section class="step" id="verify">
+  <h3><span class="num">11</span>Verify it worked</h3>
+  <div class="est">~ 3 minutes</div>
+  <div class="body">
+  <div class="check"><input type="checkbox" id="v1"><label for="v1">Open pgAdmin or <code>psql</code> and confirm the database
+    <code>rcsidatabase</code> is present and has the expected tables + rows
+    (spot-check <code>c_d_r</code> count for example).</label></div>
+  <div class="check"><input type="checkbox" id="v2"><label for="v2">Open File Explorer and confirm
+    <code>C:\Users\&lt;you&gt;\OneDrive\Documents\Scripts\RCSi - Catalog Export\</code>
+    is populated with the source code.</label></div>
+  <div class="check"><input type="checkbox" id="v3"><label for="v3">Confirm
+    <code>C:\Users\&lt;you&gt;\OneDrive\Documents\Scripts\ERP\</code> is also
+    populated.</label></div>
+  <div class="check"><input type="checkbox" id="v4"><label for="v4">Start the application (for the RCSi system:
+    <code>rcsidatabase\run.bat</code> or equivalent). It should come up
+    connected to the database using the <code>.env</code> that was just
+    decrypted.</label></div>
+  <div class="check"><input type="checkbox" id="v5"><label for="v5">Spot-check a couple of known records to make sure they look
+    right.</label></div>
+  <div class="box tip">
+    <h4>Something looks wrong?</h4>
+    <p>Nothing was thrown away. The pre-restore state of each source folder
+    is zipped up at
+    <code>staging\preinstall_&lt;timestamp&gt;\&lt;label&gt;.zip</code> &mdash; unzip
+    it and you're back where you started. Database rollback is easier
+    still: re-run restore with <code>--drop</code> and pick a different
+    archive.</p>
+  </div>
+  <p>Log files for every run live in the <code>logs\</code> folder.</p>
+  </div>
+</section>
+
+<!-- STEP 12: Schedule on new machine -->
+<section class="step" id="schedule">
+  <h3><span class="num">12</span>(Optional) Schedule weekly backups here too</h3>
+  <div class="est">~ 1 minute</div>
+  <div class="body">
+  <p>If this new machine is going to be the primary one from now on, set up
+  weekly backups the same way the old machine had them. Open
+  <b>PowerShell as Administrator</b> in this folder and run:</p>
+  <pre><code>Set-ExecutionPolicy -Scope Process Bypass
+.\register_task.ps1 -Day Sunday -Time 03:00</code><button class="copybtn" data-copy="Set-ExecutionPolicy -Scope Process Bypass
+.\register_task.ps1 -Day Sunday -Time 03:00">Copy</button></pre>
+  <p>Details are in <code>pack.html</code>, Step 10.</p>
+  </div>
+</section>
+
+<div class="finish">
+  <h3>You are done.</h3>
+  <p>The new machine now holds an exact copy of the database and both
+  application folders from the source machine. From here on, life proceeds
+  normally &mdash; and if you enabled Step 12, next Sunday at 03:00 this
+  machine will write its own fresh backup into Google Drive.</p>
+</div>
+
+<footer>
+  <p>pg_portable_backup &mdash; a local utility. Safely close this page and
+  continue.</p>
+</footer>
+
+</div>
+<script>
+  async function getJson(url){
+    const response = await fetch(url);
+    return response.json();
+  }
+  async function postJson(url,payload){
+    const response = await fetch(url,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(payload||{})
+    });
+    return response.json();
+  }
+  function renderSummary(config){
+    const root = document.getElementById("summary");
+    if(!root) return;
+    root.innerHTML = `
+      <span class="pill">System: ${config.system_name || "-"}</span>
+      <span class="pill">Database: ${config.database || "-"}</span>
+      <span class="pill">Host: ${config.host || "-"}:${config.port || "-"}</span>
+      <span class="pill">Remote: ${config.remote_target || "-"}</span>
+      <span class="pill">Fast restore: ${config.has_fast_restore ? "Enabled" : "Not configured"}</span>
+    `;
+  }
+  function renderJob(job){
+    const meta = document.getElementById("jobMeta");
+    const log = document.getElementById("jobLog");
+    if(!meta || !log) return;
+    if(!job || !job.command || !job.command.length){
+      meta.textContent = "No restore has run yet.";
+      log.textContent = "Waiting for a restore command.";
+      return;
+    }
+    const state = job.running ? "Running" : (job.exit_code === 0 ? "Finished OK" : `Finished with exit ${job.exit_code}`);
+    meta.innerHTML = `${state}<br>Started: ${job.started_at || "-"}<br>Ended: ${job.ended_at || "-"}`;
+    log.textContent = (job.lines || []).join("\n");
+    log.scrollTop = log.scrollHeight;
+  }
+  async function refreshArchives(){
+    const select = document.getElementById("archiveSelect");
+    if(!select) return;
+    try{
+      const data = await getJson("/api/archives");
+      select.innerHTML = `<option value="latest">latest</option>`;
+      if(data.ok && Array.isArray(data.archives)){
+        for(const item of data.archives){
+          const opt = document.createElement("option");
+          opt.value = item.name;
+          opt.textContent = `${item.timestamp} - ${item.name}`;
+          select.appendChild(opt);
+        }
+      }
+    } catch (_err) {
+      // leave default option
+    }
+  }
+  async function refreshAll(){
+    try{
+      const [configData,statusData] = await Promise.all([
+        getJson("/api/config"),
+        getJson("/api/status")
+      ]);
+      renderSummary(configData.config || {});
+      renderJob(statusData.job || {});
+    } catch (err){
+      const meta = document.getElementById("jobMeta");
+      const log = document.getElementById("jobLog");
+      if(meta) meta.textContent = "Interactive controls are unavailable in this browser session.";
+      if(log && !log.textContent.trim()) log.textContent = "Open this page via run_unpack.bat to enable live controls.";
+    }
+  }
+  async function runRestore(mode,dryRun=false){
+    const selector = document.getElementById("archiveSelect")?.value || "latest";
+    const result = await postJson("/api/restore/run", {
+      selector,
+      restore_mode: mode,
+      dry_run: dryRun
+    });
+    if(!result.ok){
+      alert(result.message || result.error || "Could not start restore.");
+    }
+    await refreshAll();
+  }
+  document.getElementById("refreshArchivesBtn")?.addEventListener("click", refreshArchives);
+  document.getElementById("dryRunRestoreBtn")?.addEventListener("click", ()=>runRestore("auto", true));
+  document.getElementById("fastRestoreBtn")?.addEventListener("click", ()=>runRestore("fast"));
+  document.getElementById("portableRestoreBtn")?.addEventListener("click", ()=>runRestore("portable"));
+  refreshAll();
+  refreshArchives();
+  setInterval(refreshAll, 2000);
+
+  document.querySelectorAll(".copybtn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const t = btn.getAttribute("data-copy") || btn.parentElement.innerText;
+      navigator.clipboard.writeText(t).then(()=>{
+        const old = btn.textContent;
+        btn.textContent = "Copied!";
+        btn.classList.add("done");
+        setTimeout(()=>{btn.textContent=old;btn.classList.remove("done")},1400);
+      });
+    });
+  });
+  document.querySelectorAll(".check input[type=checkbox]").forEach(cb=>{
+    cb.addEventListener("change",()=>{
+      cb.closest(".check").classList.toggle("done", cb.checked);
+    });
+  });
+</script>
+</body>
+</html>

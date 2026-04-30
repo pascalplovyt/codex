@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Unpack Thuraya Prepay Airtime - step by step</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root{
+    --bg:#f4f8fb; --panel:#ffffff; --ink:#173246; --mute:#607587;
+    --accent:#1c8f78; --accent2:#0c2d48; --soft:#edf4f8; --line:#dbe6ee;
+    --ok:#2f855a; --warn:#c05621;
+  }
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",system-ui,sans-serif}
+  .wrap{max-width:980px;margin:0 auto;padding:36px 22px 70px}
+  .hero{background:linear-gradient(135deg,var(--accent),#2ab59a);color:#fff;padding:26px 28px;border-radius:16px;margin-bottom:24px}
+  .hero h1{margin:0 0 6px;font-size:30px}
+  .hero p{margin:0;opacity:.95}
+  .panel,.step{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .panel{padding:22px 24px;margin-bottom:24px}
+  .step{padding:24px 26px;margin:18px 0}
+  .step h3{margin:0 0 8px;font-size:21px}
+  .step p,.step li{margin:8px 0}
+  .tag{display:inline-block;background:#d8efe9;color:var(--accent2);border-radius:999px;padding:3px 10px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  button{border:0;border-radius:999px;padding:11px 16px;background:var(--accent);color:#fff;cursor:pointer;font:inherit}
+  button.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+  pre{background:#0f1419;color:#e6edf3;border-radius:12px;padding:14px 16px;overflow:auto;min-height:240px}
+  code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font:13px Consolas,monospace}
+  .muted{color:var(--mute)}
+  .pillrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}
+  .pill{background:var(--soft);border-radius:999px;padding:4px 10px;color:var(--mute);font-size:13px}
+  .box{background:#eef7f3;border-left:4px solid var(--ok);padding:12px 14px;border-radius:10px;margin:12px 0}
+  .warn{background:#fff5ea;border-left-color:var(--warn)}
+  table{border-collapse:collapse;width:100%;margin-top:10px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--soft)}
+  select,input[type=text]{width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff;margin:8px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="tag">Unpack</div>
+    <h1>Install the Thuraya system on another computer</h1>
+    <p>Restore the exact same project folder, SQLite database, vendor dependencies, assets, and launchers onto a new Windows machine.</p>
+  </section>
+
+  <section class="panel">
+    <h2 style="margin:0 0 6px">Run the unpack job from here</h2>
+    <p class="muted" style="margin:0 0 10px">Use these controls if you opened this page through <code>Run Thuraya Unpack.cmd</code>.</p>
+    <div id="summary" class="pillrow"></div>
+    <label for="archiveSelect"><b>Archive to restore</b></label>
+    <select id="archiveSelect"><option value="latest">latest</option></select>
+    <label for="targetRoot"><b>Target root folder</b></label>
+    <input id="targetRoot" type="text">
+    <div class="actions">
+      <button id="refreshArchivesBtn" class="secondary">Refresh Archive List</button>
+      <button id="dryRunBtn" class="secondary">Run Dry-Run Unpack</button>
+      <button id="fullRunBtn">Run Full Unpack</button>
+    </div>
+    <div id="jobMeta" class="muted">No unpack job has run yet.</div>
+    <pre id="jobLog">Waiting for an unpack command.</pre>
+  </section>
+
+  <section class="step">
+    <h3>1. What you need on the new computer</h3>
+    <table>
+      <tr><th>Item</th><th>Why</th></tr>
+      <tr><td>Python 3</td><td>The Windows launchers and the unpack UI run with Python.</td></tr>
+      <tr><td>The Thuraya portable archive</td><td>This contains the project, database, dependencies, and assets.</td></tr>
+      <tr><td>This portable kit folder</td><td>It provides the unpack script, HTML guide, and launchers.</td></tr>
+    </table>
+    <div class="box">
+      Because the app uses SQLite, there is no PostgreSQL install, database server setup, or service restore step here. The database is just the file <code>data/thuraya_airtime.sqlite3</code>.
+    </div>
+    <div class="box">
+      The unpack screen reads the portable archives from <code>G:\My Drive\PG_Backups\codex_thuraya_rcs</code> by default.
+    </div>
+  </section>
+
+  <section class="step">
+    <h3>2. Recommended target path</h3>
+    <p>For the closest match to your current setup, restore into:</p>
+    <p><code>C:\Users\&lt;YourUser&gt;\OneDrive\Documents\Codex\scripts</code></p>
+    <p>The unpack process will then recreate the project folder underneath that root as <code>Thuraya Prepay Airtime</code>.</p>
+  </section>
+
+  <section class="step">
+    <h3>3. Safe unpack order</h3>
+    <ol>
+      <li>Use <b>Run Dry-Run Unpack</b> first to confirm the selected archive and the destination path.</li>
+      <li>Run the full unpack.</li>
+      <li>Open <code>Launch Thuraya Prepay Airtime Sales.cmd</code> in the restored folder.</li>
+      <li>If Python is installed but a dependency is somehow missing, run <code>Install Dependencies.cmd</code> once. Normally the bundled <code>vendor</code> folder should already be enough.</li>
+    </ol>
+  </section>
+
+  <section class="step">
+    <h3>4. What the restore does</h3>
+    <ol>
+      <li>Reads the selected archive and its metadata.</li>
+      <li>Extracts it to a temporary staging folder.</li>
+      <li>Verifies each file against the SHA-256 manifest.</li>
+      <li>Copies the verified project tree into the chosen target root.</li>
+      <li>Leaves you with a runnable Windows folder matching the packed source machine.</li>
+    </ol>
+    <div class="box warn">
+      Old sales Excel/PDF files stored in Downloads are still outside the app folder. If you need those on the new machine, copy them separately after the app is restored.
+    </div>
+  </section>
+</div>
+<script>
+async function getJson(url, options){
+  const res = await fetch(url, options);
+  return res.json();
+}
+async function refreshConfig(){
+  const payload = await getJson('/api/config');
+  const cfg = payload.config;
+  document.getElementById('targetRoot').value = cfg.default_target_root;
+  document.getElementById('summary').innerHTML = [
+    `Project: ${cfg.project_root}`,
+    `Database: ${cfg.database_type}`,
+    `DB path: ${cfg.database_path}`,
+    `Launcher: ${cfg.entrypoint}`
+  ].map(item => `<span class="pill">${item}</span>`).join('');
+}
+async function refreshArchives(){
+  const payload = await getJson('/api/archives');
+  const select = document.getElementById('archiveSelect');
+  select.innerHTML = '<option value="latest">latest</option>';
+  for (const item of payload.archives || []){
+    const opt = document.createElement('option');
+    opt.value = item.name;
+    opt.textContent = `${item.name} (${item.updated_at})`;
+    select.appendChild(opt);
+  }
+}
+async function refreshStatus(){
+  const payload = await getJson('/api/status');
+  const job = payload.job;
+  document.getElementById('jobMeta').textContent =
+    job.started_at ? `Started: ${job.started_at} | Running: ${job.running ? 'yes' : 'no'} | Exit: ${job.exit_code ?? 'n/a'}` : 'No unpack job has run yet.';
+  document.getElementById('jobLog').textContent = (job.lines || []).join('\n') || 'Waiting for an unpack command.';
+}
+async function runUnpack(dryRun){
+  await getJson('/api/unpack/run', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      selector: document.getElementById('archiveSelect').value,
+      target_root: document.getElementById('targetRoot').value.trim(),
+      dry_run: dryRun
+    })
+  });
+  refreshStatus();
+}
+document.getElementById('refreshArchivesBtn').addEventListener('click', refreshArchives);
+document.getElementById('dryRunBtn').addEventListener('click', () => runUnpack(true));
+document.getElementById('fullRunBtn').addEventListener('click', () => runUnpack(false));
+refreshConfig();
+refreshArchives();
+refreshStatus();
+setInterval(refreshStatus, 3000);
+</script>
+</body>
+</html>

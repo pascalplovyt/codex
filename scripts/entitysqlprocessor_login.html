@@ -1,0 +1,131 @@
+<!-- Begin Screen component://common/widget/CommonScreens.xml#login -->
+<!-- Begin Screen component://webtools/widget/CommonScreens.xml#main-decorator -->
+<!-- Begin Screen component://common/widget/CommonScreens.xml#GlobalDecorator -->
+<!-- Begin Template component://common/webcommon/includes/header.ftl -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>OFBiz: Web Tools: </title>
+      <link rel="shortcut icon" href="https://ofbiz-world.digitalocean.rcswimax.com:8443/images/ofbiz.ico" />    
+                <script language="javascript" src="https://ofbiz-world.digitalocean.rcswimax.com:8443/images/prototypejs/prototype.js" type="text/javascript"></script>
+                <script language="javascript" src="https://ofbiz-world.digitalocean.rcswimax.com:8443/images/prototypejs/scriptaculous.js" type="text/javascript"></script>
+                <script language="javascript" src="https://ofbiz-world.digitalocean.rcswimax.com:8443/images/selectall.js" type="text/javascript"></script>
+                <script language="javascript" src="https://ofbiz-world.digitalocean.rcswimax.com:8443/images/fieldlookup.js" type="text/javascript"></script>
+                <script language="javascript" src="https://ofbiz-world.digitalocean.rcswimax.com:8443/images/calendar_date_select.js" type="text/javascript"></script>
+            <link rel="stylesheet" href="https://ofbiz-world.digitalocean.rcswimax.com:8443/images/maincss.css" type="text/css"/>
+    
+</head>
+
+<body>
+  <div class="hidden">
+    <a href="#column-container" title="Skip navigation" accesskey="2">
+      Skip navigation
+    </a>
+  </div>
+  <div id="masthead">
+    <ul>
+
+        <li class="logo-area"><a href="/webtools/control/main"><img alt="OFBiz: Web Tools" src="https://ofbiz-world.digitalocean.rcswimax.com:8443/images/ofbiz_logo.jpg"/></a></li>
+      <li class="control-area">
+        <p>
+          Welcome!
+        </p>
+        <p>4/19/26 12:28 PM</p>
+        <p>Language : English <a href="/webtools/control/LookupLocales;jsessionid=D1E19B129E97E7E3D67D6DEECFCE13C8.jvm1" class="buttontext">Change</a></p>
+        <p>Coordinated Universal Time <a href="/webtools/control/LookupTimezones;jsessionid=D1E19B129E97E7E3D67D6DEECFCE13C8.jvm1" class="buttontext">Change</a></p>
+      </li>
+    </ul>
+    <br class="clear" />
+  </div>
+<!-- End Template component://common/webcommon/includes/header.ftl -->
+<!-- Begin Template component://common/webcommon/includes/appbar.ftl -->
+
+
+<!-- End Template component://common/webcommon/includes/appbar.ftl -->
+<!-- Begin Section Widget  -->
+<!-- Begin Template component://webtools/webapp/webtools/includes/appheader.ftl -->
+
+
+<div id="app-navigation">
+  <h2>Framework Web Tools</h2>
+  <ul>
+    <li><a href="/webtools/control/main;jsessionid=D1E19B129E97E7E3D67D6DEECFCE13C8.jvm1">Main</a></li>
+      <li class="opposed"><a href="/webtools/control/checkLogin/login;jsessionid=D1E19B129E97E7E3D67D6DEECFCE13C8.jvm1">Login</a></li>
+  </ul>
+  <br class="clear" />
+</div>
+<!-- End Template component://webtools/webapp/webtools/includes/appheader.ftl -->
+<!-- End Section Widget  -->
+<!-- Begin Template component://common/webcommon/includes/messages.ftl -->
+
+
+
+
+<!-- End Template component://common/webcommon/includes/messages.ftl -->
+<div class="contentarea">
+<div id="column-container">
+<div id="content-main-section">
+<!-- Begin Template component://common/webcommon/login.ftl -->
+
+
+
+<center>
+  <div class="screenlet login-screenlet">
+    <div class="screenlet-title-bar">
+      <h3>Registered User</h3>
+    </div>
+    <div class="screenlet-body">
+      <form method="post" action="/webtools/control/login;jsessionid=D1E19B129E97E7E3D67D6DEECFCE13C8.jvm1" name="loginform">
+        <table class="basic-table" cellspacing="0">
+          <tr>
+            <td class="label">Username</td>
+            <td><input type="text" name="USERNAME" value="" size="20"/></td>
+          </tr>
+          <tr>
+            <td class="label">Password</td>
+            <td><input type="password" name="PASSWORD" value="" size="20"/></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <input type="submit" value="Login"/>
+            </td>
+          </tr>
+        </table>
+        <input type="hidden" name="JavaScriptEnabled" value="N"/>
+      </form>
+    </div>
+  </div>
+</center>
+
+<script language="JavaScript" type="text/javascript">
+  document.loginform.JavaScriptEnabled.value = "Y";
+    document.loginform.USERNAME.focus();
+</script>
+<!-- End Template component://common/webcommon/login.ftl -->
+</div>
+<div class="clear">
+</div>
+</div>
+</div>
+<!-- Begin Section Widget  -->
+<!-- Begin Template component://common/webcommon/includes/footer.ftl -->
+
+
+
+<div id="footer">
+    <p><a href="http://jigsaw.w3.org/css-validator/"><img src="https://ofbiz-world.digitalocean.rcswimax.com:8443/images/vcss.gif" alt="Valid CSS!"/></a>
+    <a href="http://validator.w3.org/check?uri=referer"><img src="https://ofbiz-world.digitalocean.rcswimax.com:8443/images/valid-xhtml10.png" alt="Valid XHTML 1.0!"/></a></p>
+    <p>Copyright (c) 2001-2026 The Apache Software Foundation - <a href="http://www.apache.org" target="_blank">www.apache.org</a><br />
+    Powered by <a href="http://ofbiz.apache.org" target="_blank">Apache OFBiz</a></p>
+</div>
+</body>
+</html>
+<!-- End Template component://common/webcommon/includes/footer.ftl -->
+<!-- End Section Widget  -->
+<!-- End Screen component://common/widget/CommonScreens.xml#GlobalDecorator -->
+<!-- End Screen component://webtools/widget/CommonScreens.xml#main-decorator -->
+<!-- End Screen component://common/widget/CommonScreens.xml#login -->
+
