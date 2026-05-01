@@ -1,5 +1,6 @@
 import calendar
 import sqlite3
+from decimal import Decimal, InvalidOperation
 from datetime import date, datetime
 from pathlib import Path
 import tkinter as tk
@@ -88,6 +89,22 @@ def strip_excel_text_prefix(value) -> str:
     if text.startswith("'"):
         text = text[1:]
     return text.strip()
+
+
+def normalize_identifier_text(value) -> str:
+    text = strip_excel_text_prefix(value).replace("\xa0", " ").replace(",", "").strip()
+    if not text:
+        return ""
+    try:
+        lowered = text.lower()
+        if isinstance(value, (int, float)) or "e" in lowered or lowered.endswith(".0"):
+            normalized = format(Decimal(text), "f")
+            if "." in normalized:
+                normalized = normalized.rstrip("0").rstrip(".")
+            return normalized
+    except (InvalidOperation, ValueError):
+        pass
+    return text
 
 
 def normalize_excel_header(value) -> str:
@@ -764,26 +781,47 @@ class RcsDataService:
 
     def sim_msisdns(self) -> list[str]:
         with self.connect() as conn:
-            return [row["msisdn"] for row in conn.execute("SELECT msisdn FROM iridium_sim ORDER BY msisdn COLLATE NOCASE ASC").fetchall()]
+            seen = set()
+            values = []
+            for row in conn.execute("SELECT msisdn FROM iridium_sim ORDER BY msisdn COLLATE NOCASE ASC").fetchall():
+                normalized = normalize_identifier_text(row["msisdn"])
+                if normalized and normalized not in seen:
+                    values.append(normalized)
+                    seen.add(normalized)
+            return values
 
     def sim_by_msisdn(self, msisdn: str) -> sqlite3.Row | None:
+        lookup = normalize_identifier_text(msisdn)
+        if not lookup:
+            return None
         with self.connect() as conn:
-            return conn.execute("SELECT * FROM iridium_sim WHERE msisdn = ?", (msisdn.strip(),)).fetchone()
+            rows = conn.execute("SELECT * FROM iridium_sim ORDER BY msisdn COLLATE NOCASE ASC").fetchall()
+        for row in rows:
+            if normalize_identifier_text(row["msisdn"]) == lookup:
+                return row
+        return None
 
     def match_sim_msisdn(self, typed_value: str) -> sqlite3.Row | None:
-        text = typed_value.strip()
+        text = normalize_identifier_text(typed_value)
         if not text:
             return None
         with self.connect() as conn:
-            exact = conn.execute("SELECT * FROM iridium_sim WHERE msisdn = ?", (text,)).fetchone()
-            if exact:
-                return exact
-            matches = conn.execute(
-                "SELECT * FROM iridium_sim WHERE msisdn LIKE ? ORDER BY msisdn COLLATE NOCASE ASC",
-                (f"{text}%",),
-            ).fetchall()
-            if len(matches) == 1:
-                return matches[0]
+            rows = conn.execute("SELECT * FROM iridium_sim ORDER BY msisdn COLLATE NOCASE ASC").fetchall()
+        exact_match = None
+        prefix_matches = []
+        for row in rows:
+            candidate = normalize_identifier_text(row["msisdn"])
+            if not candidate:
+                continue
+            if candidate == text:
+                exact_match = row
+                break
+            if candidate.startswith(text):
+                prefix_matches.append(row)
+        if exact_match:
+            return exact_match
+        if prefix_matches:
+            return prefix_matches[0]
         return None
 
     def import_iridium_sims_excel(self, file_path: str) -> dict:
@@ -812,8 +850,8 @@ class RcsDataService:
         updated = 0
         with self.connect() as conn:
             for row_number, values in enumerate(sheet.iter_rows(min_row=2, values_only=True), start=2):
-                msisdn = strip_excel_text_prefix(values[header_map["msisdn"]])
-                iccid = strip_excel_text_prefix(values[header_map["iccid"]])
+                msisdn = normalize_identifier_text(values[header_map["msisdn"]])
+                iccid = normalize_identifier_text(values[header_map["iccid"]])
                 client = str(values[header_map["client"]] or "").strip()
                 if not msisdn and not iccid and not client:
                     continue
@@ -1153,17 +1191,29 @@ class CrudWindow(tk.Toplevel):
     def _wire_dynamic_form_behaviors(self):
         if "voucher_type" in self.form_vars and "cost" in self.form_vars:
             self.form_vars["voucher_type"].trace_add("write", lambda *_: self._autofill_voucher_cost())
+            widget = self.form_widgets.get("voucher_type")
+            if isinstance(widget, ttk.Combobox):
+                widget.bind("<<ComboboxSelected>>", lambda _event: self._autofill_voucher_cost(), add="+")
+                widget.bind("<KeyRelease>", lambda _event: self._autofill_voucher_cost(), add="+")
         if "iridium_number" in self.form_vars and "client" in self.form_vars:
             self.form_vars["iridium_number"].trace_add("write", lambda *_: self._autofill_sim_client())
+            widget = self.form_widgets.get("iridium_number")
+            if isinstance(widget, ttk.Combobox):
+                widget.bind("<<ComboboxSelected>>", lambda _event: self._autofill_sim_client(), add="+")
+                widget.bind("<KeyRelease>", lambda _event: self._autofill_sim_client(), add="+")
 
     def _autofill_voucher_cost(self):
         if self._autofill_lock:
             return
         voucher_name = self.form_vars.get("voucher_type", tk.StringVar()).get().strip()
         if not voucher_name:
+            if "cost" in self.form_vars:
+                self.form_vars["cost"].set("")
             return
         record = self.service.voucher_by_name(voucher_name)
         if not record:
+            if "cost" in self.form_vars:
+                self.form_vars["cost"].set("")
             return
         self._autofill_lock = True
         try:
@@ -1177,13 +1227,17 @@ class CrudWindow(tk.Toplevel):
             return
         typed_value = self.form_vars.get("iridium_number", tk.StringVar()).get().strip()
         if not typed_value:
+            if "client" in self.form_vars:
+                self.form_vars["client"].set("")
             return
         record = self.service.match_sim_msisdn(typed_value)
         if not record:
+            if "client" in self.form_vars:
+                self.form_vars["client"].set("")
             return
         self._autofill_lock = True
         try:
-            self.form_vars["iridium_number"].set(record["msisdn"])
+            self.form_vars["iridium_number"].set(normalize_identifier_text(record["msisdn"]))
             self.form_vars["client"].set(record["client"])
         finally:
             self._autofill_lock = False
@@ -1440,8 +1494,10 @@ class CrudScreen(ttk.Frame):
             self.commission_var.trace_add("write", lambda *_: self._update_summary_strip(getattr(self, "_current_rows", [])))
             self._build_summary_strip()
 
-        controls = ttk.Frame(self)
-        controls.pack(fill="x", pady=(0, 6))
+        controls_shell = ttk.LabelFrame(self, text="Search Filters", padding=8)
+        controls_shell.pack(fill="x", pady=(0, 6))
+        controls = ttk.Frame(controls_shell)
+        controls.pack(fill="x")
         col = 0
         for field in self.config_data["search_fields"]:
             ttk.Label(controls, text=field["label"]).grid(row=0, column=col, sticky="w")
@@ -1472,7 +1528,7 @@ class CrudScreen(ttk.Frame):
         for idx in range(max(col, action_col) + 1):
             controls.columnconfigure(idx, weight=1 if idx < col else 0)
 
-        form_card = ttk.LabelFrame(self, text="Row Editor", padding=8)
+        form_card = ttk.LabelFrame(self, text="New / Edit Row", padding=8)
         form_card.pack(fill="x", pady=(6, 6))
         field_rows = max(1, (len(self.config_data["form_fields"]) + 1) // 2)
         for idx, field in enumerate(self.config_data["form_fields"]):
@@ -1491,6 +1547,8 @@ class CrudScreen(ttk.Frame):
                     width=20,
                 )
                 widget.grid(row=row, column=col_block + 1, sticky="ew", padx=(0, 8), pady=2)
+                if field.get("auto_open"):
+                    widget.bind("<FocusIn>", lambda _event, w=widget: w.after(50, lambda: w.event_generate("<Down>")), add="+")
             else:
                 widget = ttk.Entry(form_card, textvariable=var, width=22, state="readonly" if field.get("readonly") else "normal")
                 widget.grid(row=row, column=col_block + 1, sticky="ew", padx=(0, 8), pady=2)
@@ -1513,6 +1571,13 @@ class CrudScreen(ttk.Frame):
         ttk.Label(actions, textvariable=self.editor_status, foreground=MUTED, wraplength=180, justify="left").pack(anchor="w", pady=(0, 6))
         ttk.Button(actions, text="Save Row", command=self.save_record).pack(fill="x", pady=(0, 6))
         ttk.Button(actions, text="Clear Editor", command=self.reset_editor).pack(fill="x")
+        ttk.Label(
+            actions,
+            text="Use Add, then fill the fields in this editor. The filters above only search existing rows.",
+            foreground=MUTED,
+            wraplength=180,
+            justify="left",
+        ).pack(anchor="w", pady=(8, 0))
         form_card.columnconfigure(1, weight=1)
         form_card.columnconfigure(4, weight=1)
 
@@ -1814,17 +1879,33 @@ class CrudScreen(ttk.Frame):
     def _wire_dynamic_form_behaviors(self):
         if "voucher_type" in self.form_vars and "cost" in self.form_vars:
             self.form_vars["voucher_type"].trace_add("write", lambda *_: self._autofill_voucher_cost())
+            widget = self.form_widgets.get("voucher_type")
+            if isinstance(widget, ttk.Combobox):
+                widget.bind("<<ComboboxSelected>>", lambda _event: self._autofill_voucher_cost(), add="+")
+                widget.bind("<KeyRelease>", lambda _event: self._autofill_voucher_cost(), add="+")
+                widget.bind("<FocusOut>", lambda _event: self._autofill_voucher_cost(), add="+")
+                widget.bind("<Return>", lambda _event: self._autofill_voucher_cost(), add="+")
         if "iridium_number" in self.form_vars and "client" in self.form_vars:
             self.form_vars["iridium_number"].trace_add("write", lambda *_: self._autofill_sim_client())
+            widget = self.form_widgets.get("iridium_number")
+            if isinstance(widget, ttk.Combobox):
+                widget.bind("<<ComboboxSelected>>", lambda _event: self._autofill_sim_client(), add="+")
+                widget.bind("<KeyRelease>", lambda _event: self._autofill_sim_client(), add="+")
+                widget.bind("<FocusOut>", lambda _event: self._autofill_sim_client(), add="+")
+                widget.bind("<Return>", lambda _event: self._autofill_sim_client(), add="+")
 
     def _autofill_voucher_cost(self):
         if self._autofill_lock:
             return
         voucher_name = self.form_vars.get("voucher_type", tk.StringVar()).get().strip()
         if not voucher_name:
+            if "cost" in self.form_vars:
+                self.form_vars["cost"].set("")
             return
         record = self.service.voucher_by_name(voucher_name)
         if not record:
+            if "cost" in self.form_vars:
+                self.form_vars["cost"].set("")
             return
         self._autofill_lock = True
         try:
@@ -1838,13 +1919,17 @@ class CrudScreen(ttk.Frame):
             return
         typed_value = self.form_vars.get("iridium_number", tk.StringVar()).get().strip()
         if not typed_value:
+            if "client" in self.form_vars:
+                self.form_vars["client"].set("")
             return
         record = self.service.match_sim_msisdn(typed_value)
         if not record:
+            if "client" in self.form_vars:
+                self.form_vars["client"].set("")
             return
         self._autofill_lock = True
         try:
-            self.form_vars["iridium_number"].set(record["msisdn"])
+            self.form_vars["iridium_number"].set(normalize_identifier_text(record["msisdn"]))
             self.form_vars["client"].set(record["client"])
         finally:
             self._autofill_lock = False
@@ -1946,6 +2031,19 @@ class CrudScreen(ttk.Frame):
     def add_record(self):
         self.reset_editor()
         self.editor_status.set("Adding a new row. Fill the editor and click Save Row.")
+        self._focus_first_entry_field()
+
+    def _focus_first_entry_field(self):
+        for field in self.config_data["form_fields"]:
+            if field.get("readonly"):
+                continue
+            widget = self.form_widgets.get(field["key"])
+            if widget is not None:
+                try:
+                    widget.focus_set()
+                except tk.TclError:
+                    pass
+                break
 
     def edit_record(self):
         if self.selected_id is None:
@@ -2355,9 +2453,9 @@ class RcsDashboardWindow(ttk.Frame):
             "form_fields": [
                 {"key": "entry_date", "label": "Date", "type": "date", "required": True},
                 {"key": "iridium_number", "label": "Iridium Number", "type": "dropdown", "required": True, "options_method": "sim_msisdns", "combobox_state": "normal"},
-                {"key": "voucher_type", "label": "Voucher Type", "type": "dropdown", "required": True, "options_method": "voucher_names"},
-                {"key": "client", "label": "Client", "required": True},
-                {"key": "cost", "label": "Cost", "required": True},
+                {"key": "voucher_type", "label": "Voucher Type", "type": "dropdown", "required": True, "options_method": "voucher_names", "combobox_state": "readonly", "auto_open": True},
+                {"key": "client", "label": "Client", "required": True, "readonly": True},
+                {"key": "cost", "label": "Cost", "required": True, "readonly": True},
                 {"key": "marlink_invoice", "label": "Marlink Invoice"},
                 {"key": "marlink_invoice_value", "label": "Marlink Invoice Value"},
             ],
