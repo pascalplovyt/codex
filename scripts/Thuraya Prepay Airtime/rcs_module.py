@@ -1693,6 +1693,8 @@ class CrudScreen(ttk.Frame):
     def _on_select(self, _event=None):
         selection = self.tree.selection()
         self.selected_id = int(selection[0]) if selection else None
+        if self.selected_id is not None:
+            self._load_row_into_editor(self.selected_id)
 
     def _select_group_row(self, row_id: int):
         self.selected_id = row_id
@@ -1704,6 +1706,7 @@ class CrudScreen(ttk.Frame):
                     widget.configure(bg=selected_bg if item_id == row_id else default_bg)
                 except tk.TclError:
                     pass
+        self._load_row_into_editor(row_id)
 
     def _render_grouped_rows(self, rows):
         if self.group_frame is None:
@@ -1762,9 +1765,18 @@ class CrudScreen(ttk.Frame):
 
             group_total_keys = self.config_data.get("group_total_columns") or self.config_data.get("total_columns", [])
             group_totals = {key: 0.0 for key in group_total_keys}
+            unique_total_rules = self.config_data.get("unique_group_totals", {})
+            seen_unique_refs: dict[str, set[str]] = {key: set() for key in unique_total_rules}
             for row_dict in month_rows:
                 row_id = int(row_dict["id"])
                 for key in group_total_keys:
+                    unique_ref_field = unique_total_rules.get(key)
+                    if unique_ref_field:
+                        ref_value = str(row_dict.get(unique_ref_field) or "").strip()
+                        if ref_value:
+                            if ref_value in seen_unique_refs[key]:
+                                continue
+                            seen_unique_refs[key].add(ref_value)
                     group_totals[key] += parse_number(row_dict.get(key), 0.0) or 0.0
                 row_frame = tk.Frame(inner, bg="white")
                 row_frame.pack(fill="x")
@@ -2052,10 +2064,14 @@ class CrudScreen(ttk.Frame):
         if self.selected_id is None:
             messagebox.showwarning(self.config_data["title"], "Please select a row first.", parent=self)
             return
-        row_map = self.row_lookup.get(self.selected_id)
-        if not row_map:
+        if not self._load_row_into_editor(self.selected_id):
             messagebox.showerror(self.config_data["title"], "Could not load the selected row.", parent=self)
             return
+
+    def _load_row_into_editor(self, row_id: int) -> bool:
+        row_map = self.row_lookup.get(row_id)
+        if not row_map:
+            return False
         for field in self.config_data["form_fields"]:
             key = field["key"]
             raw = row_map.get(key, "")
@@ -2068,10 +2084,11 @@ class CrudScreen(ttk.Frame):
             elif key in {"exchange_rate", "units", "cost", "marlink_invoice_value"}:
                 raw = str(raw).replace(",", "")
             self.form_vars[key].set(str(raw))
-        self.editing_id = self.selected_id
+        self.editing_id = row_id
         if "client" in self.form_vars:
             self._toggle_monthly_entry_mode()
         self.editor_status.set(f"Editing row ID {self.editing_id}. Update the values and click Save Row.")
+        return True
 
     def save_record(self):
         payload = {}
@@ -2467,6 +2484,7 @@ class RcsDashboardWindow(ttk.Frame):
             "total_columns": ["cost", "marlink_invoice_value"],
             "group_by_month": True,
             "group_date_key": "entry_date",
+            "unique_group_totals": {"marlink_invoice_value": "marlink_invoice"},
             "extra_actions": [
                 {"label": "Import XLSX", "command": "import_marlink_excel"},
             ],
