@@ -1,0 +1,2587 @@
+Local PostgreSQL is listening on 127.0.0.1:55432
+[incremental] public.accommodation_class started
+[incremental] public.accommodation_class delete scan skipped for faster incremental sync
+[incremental] public.accommodation_class complete: changed=0, deleted=skipped
+[incremental] public.accommodation_map started
+[incremental] public.accommodation_map delete scan skipped for faster incremental sync
+[incremental] public.accommodation_map complete: changed=0, deleted=skipped
+[incremental] public.accommodation_map_type started
+[incremental] public.accommodation_map_type delete scan skipped for faster incremental sync
+[incremental] public.accommodation_map_type complete: changed=0, deleted=skipped
+[incremental] public.accommodation_spot started
+[incremental] public.accommodation_spot delete scan skipped for faster incremental sync
+[incremental] public.accommodation_spot complete: changed=0, deleted=skipped
+[incremental] public.acctg_trans started
+[incremental] public.acctg_trans upsert page 1: 1 rows applied
+[incremental] public.acctg_trans delete scan skipped for faster incremental sync
+[incremental] public.acctg_trans complete: changed=1, deleted=skipped
+[incremental] public.acctg_trans_attribute started
+[incremental] public.acctg_trans_attribute delete scan skipped for faster incremental sync
+[incremental] public.acctg_trans_attribute complete: changed=0, deleted=skipped
+[incremental] public.acctg_trans_entry started
+[incremental] public.acctg_trans_entry upsert page 1: 2 rows applied
+[incremental] public.acctg_trans_entry delete scan skipped for faster incremental sync
+[incremental] public.acctg_trans_entry complete: changed=2, deleted=skipped
+[incremental] public.acctg_trans_entry_type started
+[incremental] public.acctg_trans_entry_type upsert page 1: 1 rows applied
+[incremental] public.acctg_trans_entry_type delete scan skipped for faster incremental sync
+[incremental] public.acctg_trans_entry_type complete: changed=1, deleted=skipped
+[incremental] public.acctg_trans_type started
+[incremental] public.acctg_trans_type upsert page 1: 28 rows applied
+[incremental] public.acctg_trans_type delete scan skipped for faster incremental sync
+[incremental] public.acctg_trans_type complete: changed=28, deleted=skipped
+[incremental] public.acctg_trans_type_attr started
+[incremental] public.acctg_trans_type_attr delete scan skipped for faster incremental sync
+[incremental] public.acctg_trans_type_attr complete: changed=0, deleted=skipped
+[incremental] public.addendum started
+[incremental] public.addendum delete scan skipped for faster incremental sync
+[incremental] public.addendum complete: changed=0, deleted=skipped
+[incremental] public.address_match_map started
+[incremental] public.address_match_map delete scan skipped for faster incremental sync
+[incremental] public.address_match_map complete: changed=0, deleted=skipped
+[incremental] public.affiliate started
+[incremental] public.affiliate delete scan skipped for faster incremental sync
+[incremental] public.affiliate complete: changed=0, deleted=skipped
+[incremental] public.agreement started
+[incremental] public.agreement upsert page 1: 1 rows applied
+[incremental] public.agreement delete scan skipped for faster incremental sync
+[incremental] public.agreement complete: changed=1, deleted=skipped
+[incremental] public.agreement_attribute started
+[incremental] public.agreement_attribute delete scan skipped for faster incremental sync
+[incremental] public.agreement_attribute complete: changed=0, deleted=skipped
+[incremental] public.agreement_employment_appl started
+[incremental] public.agreement_employment_appl delete scan skipped for faster incremental sync
+[incremental] public.agreement_employment_appl complete: changed=0, deleted=skipped
+[incremental] public.agreement_geographical_applic started
+[incremental] public.agreement_geographical_applic delete scan skipped for faster incremental sync
+[incremental] public.agreement_geographical_applic complete: changed=0, deleted=skipped
+[incremental] public.agreement_item started
+[incremental] public.agreement_item delete scan skipped for faster incremental sync
+[incremental] public.agreement_item complete: changed=0, deleted=skipped
+[incremental] public.agreement_item_attribute started
+[incremental] public.agreement_item_attribute delete scan skipped for faster incremental sync
+[incremental] public.agreement_item_attribute complete: changed=0, deleted=skipped
+[incremental] public.agreement_item_type started
+[incremental] public.agreement_item_type upsert page 1: 5 rows applied
+[incremental] public.agreement_item_type delete scan skipped for faster incremental sync
+[incremental] public.agreement_item_type complete: changed=5, deleted=skipped
+[incremental] public.agreement_item_type_attr started
+[incremental] public.agreement_item_type_attr delete scan skipped for faster incremental sync
+[incremental] public.agreement_item_type_attr complete: changed=0, deleted=skipped
+[incremental] public.agreement_party_applic started
+[incremental] public.agreement_party_applic delete scan skipped for faster incremental sync
+[incremental] public.agreement_party_applic complete: changed=0, deleted=skipped
+[incremental] public.agreement_product_appl started
+[incremental] public.agreement_product_appl delete scan skipped for faster incremental sync
+[incremental] public.agreement_product_appl complete: changed=0, deleted=skipped
+[incremental] public.agreement_promo_appl started
+[incremental] public.agreement_promo_appl delete scan skipped for faster incremental sync
+[incremental] public.agreement_promo_appl complete: changed=0, deleted=skipped
+[incremental] public.agreement_role started
+[incremental] public.agreement_role delete scan skipped for faster incremental sync
+[incremental] public.agreement_role complete: changed=0, deleted=skipped
+[incremental] public.agreement_term started
+[incremental] public.agreement_term upsert page 1: 2 rows applied
+[incremental] public.agreement_term delete scan skipped for faster incremental sync
+[incremental] public.agreement_term complete: changed=2, deleted=skipped
+[incremental] public.agreement_term_attribute started
+[incremental] public.agreement_term_attribute delete scan skipped for faster incremental sync
+[incremental] public.agreement_term_attribute complete: changed=0, deleted=skipped
+[incremental] public.agreement_type started
+[incremental] public.agreement_type upsert page 1: 7 rows applied
+[incremental] public.agreement_type delete scan skipped for faster incremental sync
+[incremental] public.agreement_type complete: changed=7, deleted=skipped
+[incremental] public.agreement_type_attr started
+[incremental] public.agreement_type_attr delete scan skipped for faster incremental sync
+[incremental] public.agreement_type_attr complete: changed=0, deleted=skipped
+[incremental] public.agreement_work_effort_appl started
+[incremental] public.agreement_work_effort_appl delete scan skipped for faster incremental sync
+[incremental] public.agreement_work_effort_appl complete: changed=0, deleted=skipped
+[incremental] public.airtime_alert_sent started
+[incremental] public.airtime_alert_sent upsert page 1: 1 rows applied
+[incremental] public.airtime_alert_sent delete scan skipped for faster incremental sync
+[incremental] public.airtime_alert_sent complete: changed=1, deleted=skipped
+[incremental] public.airtime_margins started
+[incremental] public.airtime_margins upsert page 1: 2 rows applied
+[incremental] public.airtime_margins delete scan skipped for faster incremental sync
+[incremental] public.airtime_margins complete: changed=2, deleted=skipped
+[incremental] public.airtime_profit started
+[incremental] public.airtime_profit upsert page 1: 5000 rows applied
+[incremental] public.airtime_profit upsert page 2: 10000 rows applied
+[incremental] public.airtime_profit upsert page 3: 15000 rows applied
+[incremental] public.airtime_profit upsert page 4: 20000 rows applied
+[incremental] public.airtime_profit upsert page 5: 25000 rows applied
+[incremental] public.airtime_profit upsert page 6: 30000 rows applied
+[incremental] public.airtime_profit upsert page 7: 35000 rows applied
+[incremental] public.airtime_profit upsert page 8: 40000 rows applied
+[incremental] public.airtime_profit upsert page 9: 45000 rows applied
+[incremental] public.airtime_profit upsert page 10: 50000 rows applied
+[incremental] public.airtime_profit upsert page 11: 55000 rows applied
+[incremental] public.airtime_profit upsert page 12: 60000 rows applied
+[incremental] public.airtime_profit upsert page 13: 65000 rows applied
+[incremental] public.airtime_profit upsert page 14: 70000 rows applied
+[incremental] public.airtime_profit upsert page 15: 75000 rows applied
+[incremental] public.airtime_profit upsert page 16: 80000 rows applied
+[incremental] public.airtime_profit upsert page 17: 85000 rows applied
+[incremental] public.airtime_profit upsert page 18: 90000 rows applied
+[incremental] public.airtime_profit upsert page 19: 95000 rows applied
+[incremental] public.airtime_profit upsert page 20: 100000 rows applied
+[incremental] public.airtime_profit upsert page 21: 105000 rows applied
+[incremental] public.airtime_profit upsert page 22: 110000 rows applied
+[incremental] public.airtime_profit upsert page 23: 115000 rows applied
+[incremental] public.airtime_profit upsert page 24: 120000 rows applied
+[incremental] public.airtime_profit upsert page 25: 125000 rows applied
+[incremental] public.airtime_profit upsert page 26: 130000 rows applied
+[incremental] public.airtime_profit upsert page 27: 135000 rows applied
+[incremental] public.airtime_profit upsert page 28: 140000 rows applied
+[incremental] public.airtime_profit upsert page 29: 145000 rows applied
+[incremental] public.airtime_profit upsert page 30: 150000 rows applied
+[incremental] public.airtime_profit upsert page 31: 155000 rows applied
+[incremental] public.airtime_profit upsert page 32: 160000 rows applied
+[incremental] public.airtime_profit upsert page 33: 165000 rows applied
+[incremental] public.airtime_profit upsert page 34: 170000 rows applied
+[incremental] public.airtime_profit upsert page 35: 175000 rows applied
+[incremental] public.airtime_profit upsert page 36: 180000 rows applied
+[incremental] public.airtime_profit upsert page 37: 185000 rows applied
+[incremental] public.airtime_profit upsert page 38: 190000 rows applied
+[incremental] public.airtime_profit upsert page 39: 195000 rows applied
+[incremental] public.airtime_profit upsert page 40: 200000 rows applied
+[incremental] public.airtime_profit upsert page 41: 205000 rows applied
+[incremental] public.airtime_profit upsert page 42: 210000 rows applied
+[incremental] public.airtime_profit upsert page 43: 215000 rows applied
+[incremental] public.airtime_profit upsert page 44: 220000 rows applied
+[incremental] public.airtime_profit upsert page 45: 225000 rows applied
+[incremental] public.airtime_profit upsert page 46: 230000 rows applied
+[incremental] public.airtime_profit upsert page 47: 235000 rows applied
+[incremental] public.airtime_profit upsert page 48: 240000 rows applied
+[incremental] public.airtime_profit upsert page 49: 245000 rows applied
+[incremental] public.airtime_profit upsert page 50: 250000 rows applied
+[incremental] public.airtime_profit upsert page 51: 255000 rows applied
+[incremental] public.airtime_profit upsert page 52: 260000 rows applied
+[incremental] public.airtime_profit upsert page 53: 265000 rows applied
+[incremental] public.airtime_profit upsert page 54: 270000 rows applied
+[incremental] public.airtime_profit upsert page 55: 275000 rows applied
+[incremental] public.airtime_profit upsert page 56: 280000 rows applied
+[incremental] public.airtime_profit upsert page 57: 285000 rows applied
+[incremental] public.airtime_profit upsert page 58: 290000 rows applied
+[incremental] public.airtime_profit upsert page 59: 295000 rows applied
+[incremental] public.airtime_profit upsert page 60: 297137 rows applied
+[incremental] public.airtime_profit delete scan skipped for faster incremental sync
+[incremental] public.airtime_profit complete: changed=297137, deleted=skipped
+[incremental] public.application_sandbox started
+[incremental] public.application_sandbox delete scan skipped for faster incremental sync
+[incremental] public.application_sandbox complete: changed=0, deleted=skipped
+[incremental] public.audio_data_resource started
+[incremental] public.audio_data_resource delete scan skipped for faster incremental sync
+[incremental] public.audio_data_resource complete: changed=0, deleted=skipped
+[incremental] public.benefit_type started
+[incremental] public.benefit_type upsert page 1: 3 rows applied
+[incremental] public.benefit_type delete scan skipped for faster incremental sync
+[incremental] public.benefit_type complete: changed=3, deleted=skipped
+[incremental] public.bill started
+[incremental] public.bill upsert page 1: 5000 rows applied
+[incremental] public.bill upsert page 2: 10000 rows applied
+[incremental] public.bill upsert page 3: 15000 rows applied
+[incremental] public.bill upsert page 4: 20000 rows applied
+[incremental] public.bill upsert page 5: 25000 rows applied
+[incremental] public.bill upsert page 6: 30000 rows applied
+[incremental] public.bill upsert page 7: 35000 rows applied
+[incremental] public.bill upsert page 8: 40000 rows applied
+[incremental] public.bill upsert page 9: 45000 rows applied
+[incremental] public.bill upsert page 10: 50000 rows applied
+[incremental] public.bill upsert page 11: 55000 rows applied
+[incremental] public.bill upsert page 12: 60000 rows applied
+[incremental] public.bill upsert page 13: 65000 rows applied
+[incremental] public.bill upsert page 14: 70000 rows applied
+[incremental] public.bill upsert page 15: 75000 rows applied
+[incremental] public.bill upsert page 16: 80000 rows applied
+[incremental] public.bill upsert page 17: 85000 rows applied
+[incremental] public.bill upsert page 18: 90000 rows applied
+[incremental] public.bill upsert page 19: 95000 rows applied
+[incremental] public.bill upsert page 20: 98619 rows applied
+[incremental] public.bill delete scan skipped for faster incremental sync
+[incremental] public.bill complete: changed=98619, deleted=skipped
+[incremental] public.bill_item started
+[incremental] public.bill_item upsert page 1: 5000 rows applied
+[incremental] public.bill_item upsert page 2: 10000 rows applied
+[incremental] public.bill_item upsert page 3: 15000 rows applied
+[incremental] public.bill_item upsert page 4: 20000 rows applied
+[incremental] public.bill_item upsert page 5: 25000 rows applied
+[incremental] public.bill_item upsert page 6: 30000 rows applied
+[incremental] public.bill_item upsert page 7: 35000 rows applied
+[incremental] public.bill_item upsert page 8: 40000 rows applied
+[incremental] public.bill_item upsert page 9: 45000 rows applied
+[incremental] public.bill_item upsert page 10: 50000 rows applied
+[incremental] public.bill_item upsert page 11: 55000 rows applied
+[incremental] public.bill_item upsert page 12: 60000 rows applied
+[incremental] public.bill_item upsert page 13: 65000 rows applied
+[incremental] public.bill_item upsert page 14: 70000 rows applied
+[incremental] public.bill_item upsert page 15: 75000 rows applied
+[incremental] public.bill_item upsert page 16: 80000 rows applied
+[incremental] public.bill_item upsert page 17: 85000 rows applied
+[incremental] public.bill_item upsert page 18: 90000 rows applied
+[incremental] public.bill_item upsert page 19: 95000 rows applied
+[incremental] public.bill_item upsert page 20: 100000 rows applied
+[incremental] public.bill_item upsert page 21: 105000 rows applied
+[incremental] public.bill_item upsert page 22: 110000 rows applied
+[incremental] public.bill_item upsert page 23: 115000 rows applied
+[incremental] public.bill_item upsert page 24: 120000 rows applied
+[incremental] public.bill_item upsert page 25: 125000 rows applied
+[incremental] public.bill_item upsert page 26: 130000 rows applied
+[incremental] public.bill_item upsert page 27: 135000 rows applied
+[incremental] public.bill_item upsert page 28: 140000 rows applied
+[incremental] public.bill_item upsert page 29: 145000 rows applied
+[incremental] public.bill_item upsert page 30: 150000 rows applied
+[incremental] public.bill_item upsert page 31: 155000 rows applied
+[incremental] public.bill_item upsert page 32: 160000 rows applied
+[incremental] public.bill_item upsert page 33: 165000 rows applied
+[incremental] public.bill_item upsert page 34: 170000 rows applied
+[incremental] public.bill_item upsert page 35: 175000 rows applied
+[incremental] public.bill_item upsert page 36: 180000 rows applied
+[incremental] public.bill_item upsert page 37: 185000 rows applied
+[incremental] public.bill_item upsert page 38: 190000 rows applied
+[incremental] public.bill_item upsert page 39: 195000 rows applied
+[incremental] public.bill_item upsert page 40: 200000 rows applied
+[incremental] public.bill_item upsert page 41: 204222 rows applied
+[incremental] public.bill_item delete scan skipped for faster incremental sync
+[incremental] public.bill_item complete: changed=204222, deleted=skipped
+[incremental] public.billing_account started
+[incremental] public.billing_account upsert page 1: 1069 rows applied
+[incremental] public.billing_account delete scan skipped for faster incremental sync
+[incremental] public.billing_account complete: changed=1069, deleted=skipped
+[incremental] public.billing_account_role started
+[incremental] public.billing_account_role upsert page 1: 2274 rows applied
+[incremental] public.billing_account_role delete scan skipped for faster incremental sync
+[incremental] public.billing_account_role complete: changed=2274, deleted=skipped
+[incremental] public.billing_account_term started
+[incremental] public.billing_account_term delete scan skipped for faster incremental sync
+[incremental] public.billing_account_term complete: changed=0, deleted=skipped
+[incremental] public.billing_account_term_attr started
+[incremental] public.billing_account_term_attr delete scan skipped for faster incremental sync
+[incremental] public.billing_account_term_attr complete: changed=0, deleted=skipped
+[incremental] public.browser_type started
+[incremental] public.browser_type delete scan skipped for faster incremental sync
+[incremental] public.browser_type complete: changed=0, deleted=skipped
+[incremental] public.bts_type started
+[incremental] public.bts_type upsert page 1: 13 rows applied
+[incremental] public.bts_type delete scan skipped for faster incremental sync
+[incremental] public.bts_type complete: changed=13, deleted=skipped
+[incremental] public.budget started
+[incremental] public.budget delete scan skipped for faster incremental sync
+[incremental] public.budget complete: changed=0, deleted=skipped
+[incremental] public.budget_attribute started
+[incremental] public.budget_attribute delete scan skipped for faster incremental sync
+[incremental] public.budget_attribute complete: changed=0, deleted=skipped
+[incremental] public.budget_item started
+[incremental] public.budget_item delete scan skipped for faster incremental sync
+[incremental] public.budget_item complete: changed=0, deleted=skipped
+[incremental] public.budget_item_attribute started
+[incremental] public.budget_item_attribute delete scan skipped for faster incremental sync
+[incremental] public.budget_item_attribute complete: changed=0, deleted=skipped
+[incremental] public.budget_item_type started
+[incremental] public.budget_item_type upsert page 1: 1 rows applied
+[incremental] public.budget_item_type delete scan skipped for faster incremental sync
+[incremental] public.budget_item_type complete: changed=1, deleted=skipped
+[incremental] public.budget_item_type_attr started
+[incremental] public.budget_item_type_attr delete scan skipped for faster incremental sync
+[incremental] public.budget_item_type_attr complete: changed=0, deleted=skipped
+[incremental] public.budget_review started
+[incremental] public.budget_review delete scan skipped for faster incremental sync
+[incremental] public.budget_review complete: changed=0, deleted=skipped
+[incremental] public.budget_review_result_type started
+[incremental] public.budget_review_result_type delete scan skipped for faster incremental sync
+[incremental] public.budget_review_result_type complete: changed=0, deleted=skipped
+[incremental] public.budget_revision started
+[incremental] public.budget_revision delete scan skipped for faster incremental sync
+[incremental] public.budget_revision complete: changed=0, deleted=skipped
+[incremental] public.budget_revision_impact started
+[incremental] public.budget_revision_impact delete scan skipped for faster incremental sync
+[incremental] public.budget_revision_impact complete: changed=0, deleted=skipped
+[incremental] public.budget_role started
+[incremental] public.budget_role delete scan skipped for faster incremental sync
+[incremental] public.budget_role complete: changed=0, deleted=skipped
+[incremental] public.budget_scenario started
+[incremental] public.budget_scenario delete scan skipped for faster incremental sync
+[incremental] public.budget_scenario complete: changed=0, deleted=skipped
+[incremental] public.budget_scenario_application started
+[incremental] public.budget_scenario_application delete scan skipped for faster incremental sync
+[incremental] public.budget_scenario_application complete: changed=0, deleted=skipped
+[incremental] public.budget_scenario_rule started
+[incremental] public.budget_scenario_rule delete scan skipped for faster incremental sync
+[incremental] public.budget_scenario_rule complete: changed=0, deleted=skipped
+[incremental] public.budget_status started
+[incremental] public.budget_status delete scan skipped for faster incremental sync
+[incremental] public.budget_status complete: changed=0, deleted=skipped
+[incremental] public.budget_type started
+[incremental] public.budget_type upsert page 1: 2 rows applied
+[incremental] public.budget_type delete scan skipped for faster incremental sync
+[incremental] public.budget_type complete: changed=2, deleted=skipped
+[incremental] public.budget_type_attr started
+[incremental] public.budget_type_attr delete scan skipped for faster incremental sync
+[incremental] public.budget_type_attr complete: changed=0, deleted=skipped
+[incremental] public.c_d_r started
+[incremental] public.c_d_r upsert page 1: 5000 rows applied
+[incremental] public.c_d_r upsert page 2: 10000 rows applied
+[incremental] public.c_d_r upsert page 3: 15000 rows applied
+[incremental] public.c_d_r upsert page 4: 20000 rows applied
+[incremental] public.c_d_r upsert page 5: 25000 rows applied
+[incremental] public.c_d_r upsert page 6: 30000 rows applied
+[incremental] public.c_d_r upsert page 7: 35000 rows applied
+[incremental] public.c_d_r upsert page 8: 40000 rows applied
+[incremental] public.c_d_r upsert page 9: 45000 rows applied
+[incremental] public.c_d_r upsert page 10: 50000 rows applied
+[incremental] public.c_d_r upsert page 11: 55000 rows applied
+[incremental] public.c_d_r upsert page 12: 60000 rows applied
+[incremental] public.c_d_r upsert page 13: 65000 rows applied
+[incremental] public.c_d_r upsert page 14: 70000 rows applied
+[incremental] public.c_d_r upsert page 15: 75000 rows applied
+[incremental] public.c_d_r upsert page 16: 80000 rows applied
+[incremental] public.c_d_r upsert page 17: 85000 rows applied
+[incremental] public.c_d_r upsert page 18: 90000 rows applied
+[incremental] public.c_d_r upsert page 19: 95000 rows applied
+[incremental] public.c_d_r upsert page 20: 100000 rows applied
+[incremental] public.c_d_r upsert page 21: 105000 rows applied
+[incremental] public.c_d_r upsert page 22: 110000 rows applied
+[incremental] public.c_d_r upsert page 23: 115000 rows applied
+[incremental] public.c_d_r upsert page 24: 120000 rows applied
+[incremental] public.c_d_r upsert page 25: 125000 rows applied
+[incremental] public.c_d_r upsert page 26: 130000 rows applied
+[incremental] public.c_d_r upsert page 27: 135000 rows applied
+[incremental] public.c_d_r upsert page 28: 140000 rows applied
+[incremental] public.c_d_r upsert page 29: 145000 rows applied
+[incremental] public.c_d_r upsert page 30: 150000 rows applied
+[incremental] public.c_d_r upsert page 31: 155000 rows applied
+[incremental] public.c_d_r upsert page 32: 160000 rows applied
+[incremental] public.c_d_r upsert page 33: 165000 rows applied
+[incremental] public.c_d_r upsert page 34: 170000 rows applied
+[incremental] public.c_d_r upsert page 35: 175000 rows applied
+[incremental] public.c_d_r upsert page 36: 180000 rows applied
+[incremental] public.c_d_r upsert page 37: 185000 rows applied
+[incremental] public.c_d_r upsert page 38: 190000 rows applied
+[incremental] public.c_d_r upsert page 39: 195000 rows applied
+[incremental] public.c_d_r upsert page 40: 200000 rows applied
+[incremental] public.c_d_r upsert page 41: 205000 rows applied
+[incremental] public.c_d_r upsert page 42: 210000 rows applied
+[incremental] public.c_d_r upsert page 43: 215000 rows applied
+[incremental] public.c_d_r upsert page 44: 220000 rows applied
+[incremental] public.c_d_r upsert page 45: 225000 rows applied
+[incremental] public.c_d_r upsert page 46: 230000 rows applied
+[incremental] public.c_d_r upsert page 47: 235000 rows applied
+[incremental] public.c_d_r upsert page 48: 240000 rows applied
+[incremental] public.c_d_r upsert page 49: 245000 rows applied
+[incremental] public.c_d_r upsert page 50: 250000 rows applied
+[incremental] public.c_d_r upsert page 51: 255000 rows applied
+[incremental] public.c_d_r upsert page 52: 260000 rows applied
+[incremental] public.c_d_r upsert page 53: 265000 rows applied
+[incremental] public.c_d_r upsert page 54: 270000 rows applied
+[incremental] public.c_d_r upsert page 55: 275000 rows applied
+[incremental] public.c_d_r upsert page 56: 280000 rows applied
+[incremental] public.c_d_r upsert page 57: 285000 rows applied
+[incremental] public.c_d_r upsert page 58: 290000 rows applied
+[incremental] public.c_d_r upsert page 59: 295000 rows applied
+[incremental] public.c_d_r upsert page 60: 300000 rows applied
+[incremental] public.c_d_r upsert page 61: 305000 rows applied
+[incremental] public.c_d_r upsert page 62: 310000 rows applied
+[incremental] public.c_d_r upsert page 63: 315000 rows applied
+[incremental] public.c_d_r upsert page 64: 320000 rows applied
+[incremental] public.c_d_r upsert page 65: 325000 rows applied
+[incremental] public.c_d_r upsert page 66: 330000 rows applied
+[incremental] public.c_d_r upsert page 67: 335000 rows applied
+[incremental] public.c_d_r upsert page 68: 340000 rows applied
+[incremental] public.c_d_r upsert page 69: 345000 rows applied
+[incremental] public.c_d_r upsert page 70: 350000 rows applied
+[incremental] public.c_d_r upsert page 71: 355000 rows applied
+[incremental] public.c_d_r upsert page 72: 360000 rows applied
+[incremental] public.c_d_r upsert page 73: 365000 rows applied
+[incremental] public.c_d_r upsert page 74: 370000 rows applied
+[incremental] public.c_d_r upsert page 75: 375000 rows applied
+[incremental] public.c_d_r upsert page 76: 380000 rows applied
+[incremental] public.c_d_r upsert page 77: 385000 rows applied
+[incremental] public.c_d_r upsert page 78: 390000 rows applied
+[incremental] public.c_d_r upsert page 79: 395000 rows applied
+[incremental] public.c_d_r upsert page 80: 400000 rows applied
+[incremental] public.c_d_r upsert page 81: 405000 rows applied
+[incremental] public.c_d_r upsert page 82: 410000 rows applied
+[incremental] public.c_d_r upsert page 83: 415000 rows applied
+[incremental] public.c_d_r upsert page 84: 420000 rows applied
+[incremental] public.c_d_r upsert page 85: 425000 rows applied
+[incremental] public.c_d_r upsert page 86: 430000 rows applied
+[incremental] public.c_d_r upsert page 87: 435000 rows applied
+[incremental] public.c_d_r upsert page 88: 440000 rows applied
+[incremental] public.c_d_r upsert page 89: 445000 rows applied
+[incremental] public.c_d_r upsert page 90: 450000 rows applied
+[incremental] public.c_d_r upsert page 91: 455000 rows applied
+[incremental] public.c_d_r upsert page 92: 460000 rows applied
+[incremental] public.c_d_r upsert page 93: 465000 rows applied
+[incremental] public.c_d_r upsert page 94: 470000 rows applied
+[incremental] public.c_d_r upsert page 95: 475000 rows applied
+[incremental] public.c_d_r upsert page 96: 480000 rows applied
+[incremental] public.c_d_r upsert page 97: 485000 rows applied
+[incremental] public.c_d_r upsert page 98: 490000 rows applied
+[incremental] public.c_d_r upsert page 99: 495000 rows applied
+[incremental] public.c_d_r upsert page 100: 500000 rows applied
+[incremental] public.c_d_r upsert page 101: 505000 rows applied
+[incremental] public.c_d_r upsert page 102: 510000 rows applied
+[incremental] public.c_d_r upsert page 103: 515000 rows applied
+[incremental] public.c_d_r upsert page 104: 520000 rows applied
+[incremental] public.c_d_r upsert page 105: 525000 rows applied
+[incremental] public.c_d_r upsert page 106: 530000 rows applied
+[incremental] public.c_d_r upsert page 107: 535000 rows applied
+[incremental] public.c_d_r upsert page 108: 540000 rows applied
+[incremental] public.c_d_r upsert page 109: 545000 rows applied
+[incremental] public.c_d_r upsert page 110: 550000 rows applied
+[incremental] public.c_d_r upsert page 111: 555000 rows applied
+[incremental] public.c_d_r upsert page 112: 560000 rows applied
+[incremental] public.c_d_r upsert page 113: 565000 rows applied
+[incremental] public.c_d_r upsert page 114: 570000 rows applied
+[incremental] public.c_d_r upsert page 115: 575000 rows applied
+[incremental] public.c_d_r upsert page 116: 580000 rows applied
+[incremental] public.c_d_r upsert page 117: 585000 rows applied
+[incremental] public.c_d_r upsert page 118: 590000 rows applied
+[incremental] public.c_d_r upsert page 119: 595000 rows applied
+[incremental] public.c_d_r upsert page 120: 600000 rows applied
+[incremental] public.c_d_r upsert page 121: 605000 rows applied
+[incremental] public.c_d_r upsert page 122: 610000 rows applied
+[incremental] public.c_d_r upsert page 123: 615000 rows applied
+[incremental] public.c_d_r upsert page 124: 620000 rows applied
+[incremental] public.c_d_r upsert page 125: 625000 rows applied
+[incremental] public.c_d_r upsert page 126: 630000 rows applied
+[incremental] public.c_d_r upsert page 127: 635000 rows applied
+[incremental] public.c_d_r upsert page 128: 640000 rows applied
+[incremental] public.c_d_r upsert page 129: 645000 rows applied
+[incremental] public.c_d_r upsert page 130: 650000 rows applied
+[incremental] public.c_d_r upsert page 131: 655000 rows applied
+[incremental] public.c_d_r upsert page 132: 660000 rows applied
+[incremental] public.c_d_r upsert page 133: 665000 rows applied
+[incremental] public.c_d_r upsert page 134: 670000 rows applied
+[incremental] public.c_d_r upsert page 135: 675000 rows applied
+[incremental] public.c_d_r upsert page 136: 680000 rows applied
+[incremental] public.c_d_r upsert page 137: 685000 rows applied
+[incremental] public.c_d_r upsert page 138: 690000 rows applied
+[incremental] public.c_d_r upsert page 139: 695000 rows applied
+[incremental] public.c_d_r upsert page 140: 700000 rows applied
+[incremental] public.c_d_r upsert page 141: 705000 rows applied
+[incremental] public.c_d_r upsert page 142: 710000 rows applied
+[incremental] public.c_d_r upsert page 143: 715000 rows applied
+[incremental] public.c_d_r upsert page 144: 720000 rows applied
+[incremental] public.c_d_r upsert page 145: 725000 rows applied
+[incremental] public.c_d_r upsert page 146: 730000 rows applied
+[incremental] public.c_d_r upsert page 147: 735000 rows applied
+[incremental] public.c_d_r upsert page 148: 740000 rows applied
+[incremental] public.c_d_r upsert page 149: 745000 rows applied
+[incremental] public.c_d_r upsert page 150: 750000 rows applied
+[incremental] public.c_d_r upsert page 151: 755000 rows applied
+[incremental] public.c_d_r upsert page 152: 760000 rows applied
+[incremental] public.c_d_r upsert page 153: 765000 rows applied
+[incremental] public.c_d_r upsert page 154: 770000 rows applied
+[incremental] public.c_d_r upsert page 155: 775000 rows applied
+[incremental] public.c_d_r upsert page 156: 780000 rows applied
+[incremental] public.c_d_r upsert page 157: 785000 rows applied
+[incremental] public.c_d_r upsert page 158: 790000 rows applied
+[incremental] public.c_d_r upsert page 159: 795000 rows applied
+[incremental] public.c_d_r upsert page 160: 800000 rows applied
+[incremental] public.c_d_r upsert page 161: 805000 rows applied
+[incremental] public.c_d_r upsert page 162: 810000 rows applied
+[incremental] public.c_d_r upsert page 163: 815000 rows applied
+[incremental] public.c_d_r upsert page 164: 820000 rows applied
+[incremental] public.c_d_r upsert page 165: 825000 rows applied
+[incremental] public.c_d_r upsert page 166: 830000 rows applied
+[incremental] public.c_d_r upsert page 167: 835000 rows applied
+[incremental] public.c_d_r upsert page 168: 840000 rows applied
+[incremental] public.c_d_r upsert page 169: 845000 rows applied
+[incremental] public.c_d_r upsert page 170: 850000 rows applied
+[incremental] public.c_d_r upsert page 171: 855000 rows applied
+[incremental] public.c_d_r upsert page 172: 860000 rows applied
+[incremental] public.c_d_r upsert page 173: 865000 rows applied
+[incremental] public.c_d_r upsert page 174: 870000 rows applied
+[incremental] public.c_d_r upsert page 175: 875000 rows applied
+[incremental] public.c_d_r upsert page 176: 880000 rows applied
+[incremental] public.c_d_r upsert page 177: 885000 rows applied
+[incremental] public.c_d_r upsert page 178: 890000 rows applied
+[incremental] public.c_d_r upsert page 179: 895000 rows applied
+[incremental] public.c_d_r upsert page 180: 900000 rows applied
+[incremental] public.c_d_r upsert page 181: 905000 rows applied
+[incremental] public.c_d_r upsert page 182: 910000 rows applied
+[incremental] public.c_d_r upsert page 183: 915000 rows applied
+[incremental] public.c_d_r upsert page 184: 920000 rows applied
+[incremental] public.c_d_r upsert page 185: 925000 rows applied
+[incremental] public.c_d_r upsert page 186: 930000 rows applied
+[incremental] public.c_d_r upsert page 187: 935000 rows applied
+[incremental] public.c_d_r upsert page 188: 940000 rows applied
+[incremental] public.c_d_r upsert page 189: 945000 rows applied
+[incremental] public.c_d_r upsert page 190: 950000 rows applied
+[incremental] public.c_d_r upsert page 191: 955000 rows applied
+[incremental] public.c_d_r upsert page 192: 960000 rows applied
+[incremental] public.c_d_r upsert page 193: 965000 rows applied
+[incremental] public.c_d_r upsert page 194: 970000 rows applied
+[incremental] public.c_d_r upsert page 195: 975000 rows applied
+[incremental] public.c_d_r upsert page 196: 980000 rows applied
+[incremental] public.c_d_r upsert page 197: 985000 rows applied
+[incremental] public.c_d_r upsert page 198: 990000 rows applied
+[incremental] public.c_d_r upsert page 199: 995000 rows applied
+[incremental] public.c_d_r upsert page 200: 1000000 rows applied
+[incremental] public.c_d_r upsert page 201: 1005000 rows applied
+[incremental] public.c_d_r upsert page 202: 1010000 rows applied
+[incremental] public.c_d_r upsert page 203: 1015000 rows applied
+[incremental] public.c_d_r upsert page 204: 1020000 rows applied
+[incremental] public.c_d_r upsert page 205: 1025000 rows applied
+[incremental] public.c_d_r upsert page 206: 1030000 rows applied
+[incremental] public.c_d_r upsert page 207: 1035000 rows applied
+[incremental] public.c_d_r upsert page 208: 1040000 rows applied
+[incremental] public.c_d_r upsert page 209: 1045000 rows applied
+[incremental] public.c_d_r upsert page 210: 1050000 rows applied
+[incremental] public.c_d_r upsert page 211: 1055000 rows applied
+[incremental] public.c_d_r upsert page 212: 1060000 rows applied
+[incremental] public.c_d_r upsert page 213: 1065000 rows applied
+[incremental] public.c_d_r upsert page 214: 1070000 rows applied
+[incremental] public.c_d_r upsert page 215: 1075000 rows applied
+[incremental] public.c_d_r upsert page 216: 1080000 rows applied
+[incremental] public.c_d_r upsert page 217: 1085000 rows applied
+[incremental] public.c_d_r upsert page 218: 1090000 rows applied
+[incremental] public.c_d_r upsert page 219: 1095000 rows applied
+[incremental] public.c_d_r upsert page 220: 1100000 rows applied
+[incremental] public.c_d_r upsert page 221: 1105000 rows applied
+[incremental] public.c_d_r upsert page 222: 1110000 rows applied
+[incremental] public.c_d_r upsert page 223: 1115000 rows applied
+[incremental] public.c_d_r upsert page 224: 1120000 rows applied
+[incremental] public.c_d_r upsert page 225: 1125000 rows applied
+[incremental] public.c_d_r upsert page 226: 1130000 rows applied
+[incremental] public.c_d_r upsert page 227: 1135000 rows applied
+[incremental] public.c_d_r upsert page 228: 1140000 rows applied
+[incremental] public.c_d_r upsert page 229: 1145000 rows applied
+[incremental] public.c_d_r upsert page 230: 1150000 rows applied
+[incremental] public.c_d_r upsert page 231: 1155000 rows applied
+[incremental] public.c_d_r upsert page 232: 1160000 rows applied
+[incremental] public.c_d_r upsert page 233: 1165000 rows applied
+[incremental] public.c_d_r upsert page 234: 1170000 rows applied
+[incremental] public.c_d_r upsert page 235: 1175000 rows applied
+[incremental] public.c_d_r upsert page 236: 1180000 rows applied
+[incremental] public.c_d_r upsert page 237: 1185000 rows applied
+[incremental] public.c_d_r upsert page 238: 1190000 rows applied
+[incremental] public.c_d_r upsert page 239: 1195000 rows applied
+[incremental] public.c_d_r upsert page 240: 1200000 rows applied
+[incremental] public.c_d_r upsert page 241: 1205000 rows applied
+[incremental] public.c_d_r upsert page 242: 1210000 rows applied
+[incremental] public.c_d_r upsert page 243: 1215000 rows applied
+[incremental] public.c_d_r upsert page 244: 1220000 rows applied
+[incremental] public.c_d_r upsert page 245: 1225000 rows applied
+[incremental] public.c_d_r upsert page 246: 1230000 rows applied
+[incremental] public.c_d_r upsert page 247: 1235000 rows applied
+[incremental] public.c_d_r upsert page 248: 1240000 rows applied
+[incremental] public.c_d_r upsert page 249: 1245000 rows applied
+[incremental] public.c_d_r upsert page 250: 1250000 rows applied
+[incremental] public.c_d_r upsert page 251: 1255000 rows applied
+[incremental] public.c_d_r upsert page 252: 1260000 rows applied
+[incremental] public.c_d_r upsert page 253: 1265000 rows applied
+[incremental] public.c_d_r upsert page 254: 1270000 rows applied
+[incremental] public.c_d_r upsert page 255: 1275000 rows applied
+[incremental] public.c_d_r upsert page 256: 1280000 rows applied
+[incremental] public.c_d_r upsert page 257: 1285000 rows applied
+[incremental] public.c_d_r upsert page 258: 1290000 rows applied
+[incremental] public.c_d_r upsert page 259: 1295000 rows applied
+[incremental] public.c_d_r upsert page 260: 1300000 rows applied
+[incremental] public.c_d_r upsert page 261: 1305000 rows applied
+[incremental] public.c_d_r upsert page 262: 1310000 rows applied
+[incremental] public.c_d_r upsert page 263: 1315000 rows applied
+[incremental] public.c_d_r upsert page 264: 1320000 rows applied
+[incremental] public.c_d_r upsert page 265: 1325000 rows applied
+[incremental] public.c_d_r upsert page 266: 1330000 rows applied
+[incremental] public.c_d_r upsert page 267: 1335000 rows applied
+[incremental] public.c_d_r upsert page 268: 1340000 rows applied
+[incremental] public.c_d_r upsert page 269: 1345000 rows applied
+[incremental] public.c_d_r upsert page 270: 1350000 rows applied
+[incremental] public.c_d_r upsert page 271: 1355000 rows applied
+[incremental] public.c_d_r upsert page 272: 1360000 rows applied
+[incremental] public.c_d_r upsert page 273: 1365000 rows applied
+[incremental] public.c_d_r upsert page 274: 1370000 rows applied
+[incremental] public.c_d_r upsert page 275: 1375000 rows applied
+[incremental] public.c_d_r upsert page 276: 1380000 rows applied
+[incremental] public.c_d_r upsert page 277: 1385000 rows applied
+[incremental] public.c_d_r upsert page 278: 1390000 rows applied
+[incremental] public.c_d_r upsert page 279: 1395000 rows applied
+[incremental] public.c_d_r upsert page 280: 1400000 rows applied
+[incremental] public.c_d_r upsert page 281: 1405000 rows applied
+[incremental] public.c_d_r upsert page 282: 1410000 rows applied
+[incremental] public.c_d_r upsert page 283: 1415000 rows applied
+[incremental] public.c_d_r upsert page 284: 1420000 rows applied
+[incremental] public.c_d_r upsert page 285: 1425000 rows applied
+[incremental] public.c_d_r upsert page 286: 1430000 rows applied
+[incremental] public.c_d_r upsert page 287: 1435000 rows applied
+[incremental] public.c_d_r upsert page 288: 1440000 rows applied
+[incremental] public.c_d_r upsert page 289: 1445000 rows applied
+[incremental] public.c_d_r upsert page 290: 1450000 rows applied
+[incremental] public.c_d_r upsert page 291: 1455000 rows applied
+[incremental] public.c_d_r upsert page 292: 1460000 rows applied
+[incremental] public.c_d_r upsert page 293: 1465000 rows applied
+[incremental] public.c_d_r upsert page 294: 1470000 rows applied
+[incremental] public.c_d_r upsert page 295: 1475000 rows applied
+[incremental] public.c_d_r upsert page 296: 1480000 rows applied
+[incremental] public.c_d_r upsert page 297: 1485000 rows applied
+[incremental] public.c_d_r upsert page 298: 1490000 rows applied
+[incremental] public.c_d_r upsert page 299: 1495000 rows applied
+[incremental] public.c_d_r upsert page 300: 1500000 rows applied
+[incremental] public.c_d_r upsert page 301: 1505000 rows applied
+[incremental] public.c_d_r upsert page 302: 1510000 rows applied
+[incremental] public.c_d_r upsert page 303: 1515000 rows applied
+[incremental] public.c_d_r upsert page 304: 1520000 rows applied
+[incremental] public.c_d_r upsert page 305: 1525000 rows applied
+[incremental] public.c_d_r upsert page 306: 1530000 rows applied
+[incremental] public.c_d_r upsert page 307: 1535000 rows applied
+[incremental] public.c_d_r upsert page 308: 1540000 rows applied
+[incremental] public.c_d_r upsert page 309: 1545000 rows applied
+[incremental] public.c_d_r upsert page 310: 1550000 rows applied
+[incremental] public.c_d_r upsert page 311: 1555000 rows applied
+[incremental] public.c_d_r upsert page 312: 1560000 rows applied
+[incremental] public.c_d_r upsert page 313: 1565000 rows applied
+[incremental] public.c_d_r upsert page 314: 1570000 rows applied
+[incremental] public.c_d_r upsert page 315: 1575000 rows applied
+[incremental] public.c_d_r upsert page 316: 1580000 rows applied
+[incremental] public.c_d_r upsert page 317: 1585000 rows applied
+[incremental] public.c_d_r upsert page 318: 1590000 rows applied
+[incremental] public.c_d_r upsert page 319: 1595000 rows applied
+[incremental] public.c_d_r upsert page 320: 1600000 rows applied
+[incremental] public.c_d_r upsert page 321: 1605000 rows applied
+[incremental] public.c_d_r upsert page 322: 1610000 rows applied
+[incremental] public.c_d_r upsert page 323: 1615000 rows applied
+[incremental] public.c_d_r upsert page 324: 1620000 rows applied
+[incremental] public.c_d_r upsert page 325: 1625000 rows applied
+[incremental] public.c_d_r upsert page 326: 1630000 rows applied
+[incremental] public.c_d_r upsert page 327: 1635000 rows applied
+[incremental] public.c_d_r upsert page 328: 1640000 rows applied
+[incremental] public.c_d_r upsert page 329: 1645000 rows applied
+[incremental] public.c_d_r upsert page 330: 1650000 rows applied
+[incremental] public.c_d_r upsert page 331: 1655000 rows applied
+[incremental] public.c_d_r upsert page 332: 1660000 rows applied
+[incremental] public.c_d_r upsert page 333: 1665000 rows applied
+[incremental] public.c_d_r upsert page 334: 1670000 rows applied
+[incremental] public.c_d_r upsert page 335: 1675000 rows applied
+[incremental] public.c_d_r upsert page 336: 1680000 rows applied
+[incremental] public.c_d_r upsert page 337: 1685000 rows applied
+[incremental] public.c_d_r upsert page 338: 1690000 rows applied
+[incremental] public.c_d_r upsert page 339: 1695000 rows applied
+[incremental] public.c_d_r upsert page 340: 1700000 rows applied
+[incremental] public.c_d_r upsert page 341: 1705000 rows applied
+[incremental] public.c_d_r upsert page 342: 1710000 rows applied
+[incremental] public.c_d_r upsert page 343: 1715000 rows applied
+[incremental] public.c_d_r upsert page 344: 1720000 rows applied
+[incremental] public.c_d_r upsert page 345: 1725000 rows applied
+[incremental] public.c_d_r upsert page 346: 1730000 rows applied
+[incremental] public.c_d_r upsert page 347: 1733170 rows applied
+[incremental] public.c_d_r delete scan skipped for faster incremental sync
+[incremental] public.c_d_r complete: changed=1733170, deleted=skipped
+[incremental] public.carrier_shipment_box_type started
+[incremental] public.carrier_shipment_box_type delete scan skipped for faster incremental sync
+[incremental] public.carrier_shipment_box_type complete: changed=0, deleted=skipped
+[incremental] public.carrier_shipment_method started
+[incremental] public.carrier_shipment_method upsert page 1: 1 rows applied
+[incremental] public.carrier_shipment_method delete scan skipped for faster incremental sync
+[incremental] public.carrier_shipment_method complete: changed=1, deleted=skipped
+[incremental] public.cart_abandoned_line started
+[incremental] public.cart_abandoned_line delete scan skipped for faster incremental sync
+[incremental] public.cart_abandoned_line complete: changed=0, deleted=skipped
+[incremental] public.catalina_session started
+[incremental] public.catalina_session delete scan skipped for faster incremental sync
+[incremental] public.catalina_session complete: changed=0, deleted=skipped
+[incremental] public.character_set started
+[incremental] public.character_set upsert page 1: 13 rows applied
+[incremental] public.character_set delete scan skipped for faster incremental sync
+[incremental] public.character_set complete: changed=13, deleted=skipped
+[incremental] public.client_c_d_r started
+[incremental] public.client_c_d_r upsert page 1: 5000 rows applied
+[incremental] public.client_c_d_r upsert page 2: 10000 rows applied
+[incremental] public.client_c_d_r upsert page 3: 15000 rows applied
+[incremental] public.client_c_d_r upsert page 4: 20000 rows applied
+[incremental] public.client_c_d_r upsert page 5: 25000 rows applied
+[incremental] public.client_c_d_r upsert page 6: 30000 rows applied
+[incremental] public.client_c_d_r upsert page 7: 35000 rows applied
+[incremental] public.client_c_d_r upsert page 8: 40000 rows applied
+[incremental] public.client_c_d_r upsert page 9: 45000 rows applied
+[incremental] public.client_c_d_r upsert page 10: 50000 rows applied
+[incremental] public.client_c_d_r upsert page 11: 55000 rows applied
+[incremental] public.client_c_d_r upsert page 12: 60000 rows applied
+[incremental] public.client_c_d_r upsert page 13: 65000 rows applied
+[incremental] public.client_c_d_r upsert page 14: 70000 rows applied
+[incremental] public.client_c_d_r upsert page 15: 75000 rows applied
+[incremental] public.client_c_d_r upsert page 16: 80000 rows applied
+[incremental] public.client_c_d_r upsert page 17: 85000 rows applied
+[incremental] public.client_c_d_r upsert page 18: 90000 rows applied
+[incremental] public.client_c_d_r upsert page 19: 95000 rows applied
+[incremental] public.client_c_d_r upsert page 20: 100000 rows applied
+[incremental] public.client_c_d_r upsert page 21: 105000 rows applied
+[incremental] public.client_c_d_r upsert page 22: 110000 rows applied
+[incremental] public.client_c_d_r upsert page 23: 115000 rows applied
+[incremental] public.client_c_d_r upsert page 24: 120000 rows applied
+[incremental] public.client_c_d_r upsert page 25: 125000 rows applied
+[incremental] public.client_c_d_r upsert page 26: 130000 rows applied
+[incremental] public.client_c_d_r upsert page 27: 135000 rows applied
+[incremental] public.client_c_d_r upsert page 28: 140000 rows applied
+[incremental] public.client_c_d_r upsert page 29: 145000 rows applied
+[incremental] public.client_c_d_r upsert page 30: 150000 rows applied
+[incremental] public.client_c_d_r upsert page 31: 155000 rows applied
+[incremental] public.client_c_d_r upsert page 32: 160000 rows applied
+[incremental] public.client_c_d_r upsert page 33: 165000 rows applied
+[incremental] public.client_c_d_r upsert page 34: 170000 rows applied
+[incremental] public.client_c_d_r upsert page 35: 175000 rows applied
+[incremental] public.client_c_d_r upsert page 36: 180000 rows applied
+[incremental] public.client_c_d_r upsert page 37: 185000 rows applied
+[incremental] public.client_c_d_r upsert page 38: 190000 rows applied
+[incremental] public.client_c_d_r upsert page 39: 195000 rows applied
+[incremental] public.client_c_d_r upsert page 40: 200000 rows applied
+[incremental] public.client_c_d_r upsert page 41: 205000 rows applied
+[incremental] public.client_c_d_r upsert page 42: 210000 rows applied
+[incremental] public.client_c_d_r upsert page 43: 215000 rows applied
+[incremental] public.client_c_d_r upsert page 44: 220000 rows applied
+[incremental] public.client_c_d_r upsert page 45: 225000 rows applied
+[incremental] public.client_c_d_r upsert page 46: 230000 rows applied
+[incremental] public.client_c_d_r upsert page 47: 235000 rows applied
+[incremental] public.client_c_d_r upsert page 48: 240000 rows applied
+[incremental] public.client_c_d_r upsert page 49: 245000 rows applied
+[incremental] public.client_c_d_r upsert page 50: 250000 rows applied
+[incremental] public.client_c_d_r upsert page 51: 255000 rows applied
+[incremental] public.client_c_d_r upsert page 52: 260000 rows applied
+[incremental] public.client_c_d_r upsert page 53: 265000 rows applied
+[incremental] public.client_c_d_r upsert page 54: 270000 rows applied
+[incremental] public.client_c_d_r upsert page 55: 275000 rows applied
+[incremental] public.client_c_d_r upsert page 56: 280000 rows applied
+[incremental] public.client_c_d_r upsert page 57: 285000 rows applied
+[incremental] public.client_c_d_r upsert page 58: 290000 rows applied
+[incremental] public.client_c_d_r upsert page 59: 295000 rows applied
+[incremental] public.client_c_d_r upsert page 60: 300000 rows applied
+[incremental] public.client_c_d_r upsert page 61: 305000 rows applied
+[incremental] public.client_c_d_r upsert page 62: 310000 rows applied
+[incremental] public.client_c_d_r upsert page 63: 315000 rows applied
+[incremental] public.client_c_d_r upsert page 64: 320000 rows applied
+[incremental] public.client_c_d_r upsert page 65: 325000 rows applied
+[incremental] public.client_c_d_r upsert page 66: 330000 rows applied
+[incremental] public.client_c_d_r upsert page 67: 335000 rows applied
+[incremental] public.client_c_d_r upsert page 68: 340000 rows applied
+[incremental] public.client_c_d_r upsert page 69: 345000 rows applied
+[incremental] public.client_c_d_r upsert page 70: 350000 rows applied
+[incremental] public.client_c_d_r upsert page 71: 355000 rows applied
+[incremental] public.client_c_d_r upsert page 72: 360000 rows applied
+[incremental] public.client_c_d_r upsert page 73: 365000 rows applied
+[incremental] public.client_c_d_r upsert page 74: 370000 rows applied
+[incremental] public.client_c_d_r upsert page 75: 375000 rows applied
+[incremental] public.client_c_d_r upsert page 76: 380000 rows applied
+[incremental] public.client_c_d_r upsert page 77: 385000 rows applied
+[incremental] public.client_c_d_r upsert page 78: 390000 rows applied
+[incremental] public.client_c_d_r upsert page 79: 395000 rows applied
+[incremental] public.client_c_d_r upsert page 80: 400000 rows applied
+[incremental] public.client_c_d_r upsert page 81: 405000 rows applied
+[incremental] public.client_c_d_r upsert page 82: 410000 rows applied
+[incremental] public.client_c_d_r upsert page 83: 415000 rows applied
+[incremental] public.client_c_d_r upsert page 84: 420000 rows applied
+[incremental] public.client_c_d_r upsert page 85: 425000 rows applied
+[incremental] public.client_c_d_r upsert page 86: 430000 rows applied
+[incremental] public.client_c_d_r upsert page 87: 435000 rows applied
+[incremental] public.client_c_d_r upsert page 88: 440000 rows applied
+[incremental] public.client_c_d_r upsert page 89: 445000 rows applied
+[incremental] public.client_c_d_r upsert page 90: 450000 rows applied
+[incremental] public.client_c_d_r upsert page 91: 455000 rows applied
+[incremental] public.client_c_d_r upsert page 92: 460000 rows applied
+[incremental] public.client_c_d_r upsert page 93: 465000 rows applied
+[incremental] public.client_c_d_r upsert page 94: 470000 rows applied
+[incremental] public.client_c_d_r upsert page 95: 475000 rows applied
+[incremental] public.client_c_d_r upsert page 96: 480000 rows applied
+[incremental] public.client_c_d_r upsert page 97: 485000 rows applied
+[incremental] public.client_c_d_r upsert page 98: 490000 rows applied
+[incremental] public.client_c_d_r upsert page 99: 495000 rows applied
+[incremental] public.client_c_d_r upsert page 100: 500000 rows applied
+[incremental] public.client_c_d_r upsert page 101: 505000 rows applied
+[incremental] public.client_c_d_r upsert page 102: 510000 rows applied
+[incremental] public.client_c_d_r upsert page 103: 515000 rows applied
+[incremental] public.client_c_d_r upsert page 104: 520000 rows applied
+[incremental] public.client_c_d_r upsert page 105: 525000 rows applied
+[incremental] public.client_c_d_r upsert page 106: 530000 rows applied
+[incremental] public.client_c_d_r upsert page 107: 535000 rows applied
+[incremental] public.client_c_d_r upsert page 108: 540000 rows applied
+[incremental] public.client_c_d_r upsert page 109: 545000 rows applied
+[incremental] public.client_c_d_r upsert page 110: 550000 rows applied
+[incremental] public.client_c_d_r upsert page 111: 555000 rows applied
+[incremental] public.client_c_d_r upsert page 112: 560000 rows applied
+[incremental] public.client_c_d_r upsert page 113: 565000 rows applied
+[incremental] public.client_c_d_r upsert page 114: 570000 rows applied
+[incremental] public.client_c_d_r upsert page 115: 575000 rows applied
+[incremental] public.client_c_d_r upsert page 116: 580000 rows applied
+[incremental] public.client_c_d_r upsert page 117: 585000 rows applied
+[incremental] public.client_c_d_r upsert page 118: 590000 rows applied
+[incremental] public.client_c_d_r upsert page 119: 595000 rows applied
+[incremental] public.client_c_d_r upsert page 120: 600000 rows applied
+[incremental] public.client_c_d_r upsert page 121: 605000 rows applied
+[incremental] public.client_c_d_r upsert page 122: 610000 rows applied
+[incremental] public.client_c_d_r upsert page 123: 615000 rows applied
+[incremental] public.client_c_d_r upsert page 124: 620000 rows applied
+[incremental] public.client_c_d_r upsert page 125: 625000 rows applied
+[incremental] public.client_c_d_r upsert page 126: 630000 rows applied
+[incremental] public.client_c_d_r upsert page 127: 635000 rows applied
+[incremental] public.client_c_d_r upsert page 128: 640000 rows applied
+[incremental] public.client_c_d_r upsert page 129: 645000 rows applied
+[incremental] public.client_c_d_r upsert page 130: 650000 rows applied
+[incremental] public.client_c_d_r upsert page 131: 655000 rows applied
+[incremental] public.client_c_d_r upsert page 132: 660000 rows applied
+[incremental] public.client_c_d_r upsert page 133: 665000 rows applied
+[incremental] public.client_c_d_r upsert page 134: 670000 rows applied
+[incremental] public.client_c_d_r upsert page 135: 675000 rows applied
+[incremental] public.client_c_d_r upsert page 136: 680000 rows applied
+[incremental] public.client_c_d_r upsert page 137: 685000 rows applied
+[incremental] public.client_c_d_r upsert page 138: 690000 rows applied
+[incremental] public.client_c_d_r upsert page 139: 695000 rows applied
+[incremental] public.client_c_d_r upsert page 140: 700000 rows applied
+[incremental] public.client_c_d_r upsert page 141: 705000 rows applied
+[incremental] public.client_c_d_r upsert page 142: 710000 rows applied
+[incremental] public.client_c_d_r upsert page 143: 715000 rows applied
+[incremental] public.client_c_d_r upsert page 144: 720000 rows applied
+[incremental] public.client_c_d_r upsert page 145: 725000 rows applied
+[incremental] public.client_c_d_r upsert page 146: 730000 rows applied
+[incremental] public.client_c_d_r upsert page 147: 735000 rows applied
+[incremental] public.client_c_d_r upsert page 148: 740000 rows applied
+[incremental] public.client_c_d_r upsert page 149: 745000 rows applied
+[incremental] public.client_c_d_r upsert page 150: 750000 rows applied
+[incremental] public.client_c_d_r upsert page 151: 755000 rows applied
+[incremental] public.client_c_d_r upsert page 152: 760000 rows applied
+[incremental] public.client_c_d_r upsert page 153: 765000 rows applied
+[incremental] public.client_c_d_r upsert page 154: 770000 rows applied
+[incremental] public.client_c_d_r upsert page 155: 775000 rows applied
+[incremental] public.client_c_d_r upsert page 156: 780000 rows applied
+[incremental] public.client_c_d_r upsert page 157: 785000 rows applied
+[incremental] public.client_c_d_r upsert page 158: 790000 rows applied
+[incremental] public.client_c_d_r upsert page 159: 795000 rows applied
+[incremental] public.client_c_d_r upsert page 160: 800000 rows applied
+[incremental] public.client_c_d_r upsert page 161: 805000 rows applied
+[incremental] public.client_c_d_r upsert page 162: 810000 rows applied
+[incremental] public.client_c_d_r upsert page 163: 815000 rows applied
+[incremental] public.client_c_d_r upsert page 164: 820000 rows applied
+[incremental] public.client_c_d_r upsert page 165: 825000 rows applied
+[incremental] public.client_c_d_r upsert page 166: 830000 rows applied
+[incremental] public.client_c_d_r upsert page 167: 835000 rows applied
+[incremental] public.client_c_d_r upsert page 168: 840000 rows applied
+[incremental] public.client_c_d_r upsert page 169: 845000 rows applied
+[incremental] public.client_c_d_r upsert page 170: 850000 rows applied
+[incremental] public.client_c_d_r upsert page 171: 855000 rows applied
+[incremental] public.client_c_d_r upsert page 172: 860000 rows applied
+[incremental] public.client_c_d_r upsert page 173: 865000 rows applied
+[incremental] public.client_c_d_r upsert page 174: 870000 rows applied
+[incremental] public.client_c_d_r upsert page 175: 875000 rows applied
+[incremental] public.client_c_d_r upsert page 176: 880000 rows applied
+[incremental] public.client_c_d_r upsert page 177: 885000 rows applied
+[incremental] public.client_c_d_r upsert page 178: 890000 rows applied
+[incremental] public.client_c_d_r upsert page 179: 895000 rows applied
+[incremental] public.client_c_d_r upsert page 180: 900000 rows applied
+[incremental] public.client_c_d_r upsert page 181: 905000 rows applied
+[incremental] public.client_c_d_r upsert page 182: 910000 rows applied
+[incremental] public.client_c_d_r upsert page 183: 915000 rows applied
+[incremental] public.client_c_d_r upsert page 184: 920000 rows applied
+[incremental] public.client_c_d_r upsert page 185: 925000 rows applied
+[incremental] public.client_c_d_r upsert page 186: 930000 rows applied
+[incremental] public.client_c_d_r upsert page 187: 935000 rows applied
+[incremental] public.client_c_d_r upsert page 188: 940000 rows applied
+[incremental] public.client_c_d_r upsert page 189: 945000 rows applied
+[incremental] public.client_c_d_r upsert page 190: 950000 rows applied
+[incremental] public.client_c_d_r upsert page 191: 955000 rows applied
+[incremental] public.client_c_d_r upsert page 192: 960000 rows applied
+[incremental] public.client_c_d_r upsert page 193: 965000 rows applied
+[incremental] public.client_c_d_r upsert page 194: 970000 rows applied
+[incremental] public.client_c_d_r upsert page 195: 975000 rows applied
+[incremental] public.client_c_d_r upsert page 196: 980000 rows applied
+[incremental] public.client_c_d_r upsert page 197: 985000 rows applied
+[incremental] public.client_c_d_r upsert page 198: 990000 rows applied
+[incremental] public.client_c_d_r upsert page 199: 995000 rows applied
+[incremental] public.client_c_d_r upsert page 200: 1000000 rows applied
+[incremental] public.client_c_d_r upsert page 201: 1005000 rows applied
+[incremental] public.client_c_d_r upsert page 202: 1010000 rows applied
+[incremental] public.client_c_d_r upsert page 203: 1015000 rows applied
+[incremental] public.client_c_d_r upsert page 204: 1020000 rows applied
+[incremental] public.client_c_d_r upsert page 205: 1025000 rows applied
+[incremental] public.client_c_d_r upsert page 206: 1030000 rows applied
+[incremental] public.client_c_d_r upsert page 207: 1035000 rows applied
+[incremental] public.client_c_d_r upsert page 208: 1040000 rows applied
+[incremental] public.client_c_d_r upsert page 209: 1045000 rows applied
+[incremental] public.client_c_d_r upsert page 210: 1050000 rows applied
+[incremental] public.client_c_d_r upsert page 211: 1055000 rows applied
+[incremental] public.client_c_d_r upsert page 212: 1060000 rows applied
+[incremental] public.client_c_d_r upsert page 213: 1065000 rows applied
+[incremental] public.client_c_d_r upsert page 214: 1070000 rows applied
+[incremental] public.client_c_d_r upsert page 215: 1075000 rows applied
+[incremental] public.client_c_d_r upsert page 216: 1080000 rows applied
+[incremental] public.client_c_d_r upsert page 217: 1085000 rows applied
+[incremental] public.client_c_d_r upsert page 218: 1090000 rows applied
+[incremental] public.client_c_d_r upsert page 219: 1095000 rows applied
+[incremental] public.client_c_d_r upsert page 220: 1100000 rows applied
+[incremental] public.client_c_d_r upsert page 221: 1105000 rows applied
+[incremental] public.client_c_d_r upsert page 222: 1110000 rows applied
+[incremental] public.client_c_d_r upsert page 223: 1115000 rows applied
+[incremental] public.client_c_d_r upsert page 224: 1120000 rows applied
+[incremental] public.client_c_d_r upsert page 225: 1125000 rows applied
+[incremental] public.client_c_d_r upsert page 226: 1130000 rows applied
+[incremental] public.client_c_d_r upsert page 227: 1135000 rows applied
+[incremental] public.client_c_d_r upsert page 228: 1140000 rows applied
+[incremental] public.client_c_d_r upsert page 229: 1145000 rows applied
+[incremental] public.client_c_d_r upsert page 230: 1150000 rows applied
+[incremental] public.client_c_d_r upsert page 231: 1155000 rows applied
+[incremental] public.client_c_d_r upsert page 232: 1160000 rows applied
+[incremental] public.client_c_d_r upsert page 233: 1165000 rows applied
+[incremental] public.client_c_d_r upsert page 234: 1170000 rows applied
+[incremental] public.client_c_d_r upsert page 235: 1175000 rows applied
+[incremental] public.client_c_d_r upsert page 236: 1180000 rows applied
+[incremental] public.client_c_d_r upsert page 237: 1185000 rows applied
+[incremental] public.client_c_d_r upsert page 238: 1190000 rows applied
+[incremental] public.client_c_d_r upsert page 239: 1195000 rows applied
+[incremental] public.client_c_d_r upsert page 240: 1200000 rows applied
+[incremental] public.client_c_d_r upsert page 241: 1205000 rows applied
+[incremental] public.client_c_d_r upsert page 242: 1210000 rows applied
+[incremental] public.client_c_d_r upsert page 243: 1215000 rows applied
+[incremental] public.client_c_d_r upsert page 244: 1220000 rows applied
+[incremental] public.client_c_d_r upsert page 245: 1225000 rows applied
+[incremental] public.client_c_d_r upsert page 246: 1230000 rows applied
+[incremental] public.client_c_d_r upsert page 247: 1235000 rows applied
+[incremental] public.client_c_d_r upsert page 248: 1240000 rows applied
+[incremental] public.client_c_d_r upsert page 249: 1245000 rows applied
+[incremental] public.client_c_d_r upsert page 250: 1250000 rows applied
+[incremental] public.client_c_d_r upsert page 251: 1255000 rows applied
+[incremental] public.client_c_d_r upsert page 252: 1260000 rows applied
+[incremental] public.client_c_d_r upsert page 253: 1265000 rows applied
+[incremental] public.client_c_d_r upsert page 254: 1270000 rows applied
+[incremental] public.client_c_d_r upsert page 255: 1275000 rows applied
+[incremental] public.client_c_d_r upsert page 256: 1280000 rows applied
+[incremental] public.client_c_d_r upsert page 257: 1285000 rows applied
+[incremental] public.client_c_d_r upsert page 258: 1290000 rows applied
+[incremental] public.client_c_d_r upsert page 259: 1295000 rows applied
+[incremental] public.client_c_d_r upsert page 260: 1300000 rows applied
+[incremental] public.client_c_d_r upsert page 261: 1305000 rows applied
+[incremental] public.client_c_d_r upsert page 262: 1310000 rows applied
+[incremental] public.client_c_d_r upsert page 263: 1315000 rows applied
+[incremental] public.client_c_d_r upsert page 264: 1320000 rows applied
+[incremental] public.client_c_d_r upsert page 265: 1325000 rows applied
+[incremental] public.client_c_d_r upsert page 266: 1330000 rows applied
+[incremental] public.client_c_d_r upsert page 267: 1335000 rows applied
+[incremental] public.client_c_d_r upsert page 268: 1340000 rows applied
+[incremental] public.client_c_d_r upsert page 269: 1345000 rows applied
+[incremental] public.client_c_d_r upsert page 270: 1350000 rows applied
+[incremental] public.client_c_d_r upsert page 271: 1355000 rows applied
+[incremental] public.client_c_d_r upsert page 272: 1360000 rows applied
+[incremental] public.client_c_d_r upsert page 273: 1365000 rows applied
+[incremental] public.client_c_d_r upsert page 274: 1370000 rows applied
+[incremental] public.client_c_d_r upsert page 275: 1375000 rows applied
+[incremental] public.client_c_d_r upsert page 276: 1380000 rows applied
+[incremental] public.client_c_d_r upsert page 277: 1385000 rows applied
+[incremental] public.client_c_d_r upsert page 278: 1390000 rows applied
+[incremental] public.client_c_d_r upsert page 279: 1395000 rows applied
+[incremental] public.client_c_d_r upsert page 280: 1400000 rows applied
+[incremental] public.client_c_d_r upsert page 281: 1405000 rows applied
+[incremental] public.client_c_d_r upsert page 282: 1410000 rows applied
+[incremental] public.client_c_d_r upsert page 283: 1415000 rows applied
+[incremental] public.client_c_d_r upsert page 284: 1420000 rows applied
+[incremental] public.client_c_d_r upsert page 285: 1425000 rows applied
+[incremental] public.client_c_d_r upsert page 286: 1430000 rows applied
+[incremental] public.client_c_d_r upsert page 287: 1435000 rows applied
+[incremental] public.client_c_d_r upsert page 288: 1440000 rows applied
+[incremental] public.client_c_d_r upsert page 289: 1445000 rows applied
+[incremental] public.client_c_d_r upsert page 290: 1450000 rows applied
+[incremental] public.client_c_d_r upsert page 291: 1455000 rows applied
+[incremental] public.client_c_d_r upsert page 292: 1460000 rows applied
+[incremental] public.client_c_d_r upsert page 293: 1465000 rows applied
+[incremental] public.client_c_d_r upsert page 294: 1470000 rows applied
+[incremental] public.client_c_d_r upsert page 295: 1475000 rows applied
+[incremental] public.client_c_d_r upsert page 296: 1480000 rows applied
+[incremental] public.client_c_d_r upsert page 297: 1485000 rows applied
+[incremental] public.client_c_d_r upsert page 298: 1490000 rows applied
+[incremental] public.client_c_d_r upsert page 299: 1495000 rows applied
+[incremental] public.client_c_d_r upsert page 300: 1500000 rows applied
+[incremental] public.client_c_d_r upsert page 301: 1505000 rows applied
+[incremental] public.client_c_d_r upsert page 302: 1510000 rows applied
+[incremental] public.client_c_d_r upsert page 303: 1515000 rows applied
+[incremental] public.client_c_d_r upsert page 304: 1520000 rows applied
+[incremental] public.client_c_d_r upsert page 305: 1525000 rows applied
+[incremental] public.client_c_d_r upsert page 306: 1530000 rows applied
+[incremental] public.client_c_d_r upsert page 307: 1535000 rows applied
+[incremental] public.client_c_d_r upsert page 308: 1540000 rows applied
+[incremental] public.client_c_d_r upsert page 309: 1545000 rows applied
+[incremental] public.client_c_d_r upsert page 310: 1550000 rows applied
+[incremental] public.client_c_d_r upsert page 311: 1555000 rows applied
+[incremental] public.client_c_d_r upsert page 312: 1560000 rows applied
+[incremental] public.client_c_d_r upsert page 313: 1565000 rows applied
+[incremental] public.client_c_d_r upsert page 314: 1570000 rows applied
+[incremental] public.client_c_d_r upsert page 315: 1575000 rows applied
+[incremental] public.client_c_d_r upsert page 316: 1580000 rows applied
+[incremental] public.client_c_d_r upsert page 317: 1585000 rows applied
+[incremental] public.client_c_d_r upsert page 318: 1590000 rows applied
+[incremental] public.client_c_d_r upsert page 319: 1595000 rows applied
+[incremental] public.client_c_d_r upsert page 320: 1600000 rows applied
+[incremental] public.client_c_d_r upsert page 321: 1605000 rows applied
+[incremental] public.client_c_d_r upsert page 322: 1610000 rows applied
+[incremental] public.client_c_d_r upsert page 323: 1615000 rows applied
+[incremental] public.client_c_d_r upsert page 324: 1620000 rows applied
+[incremental] public.client_c_d_r upsert page 325: 1625000 rows applied
+[incremental] public.client_c_d_r upsert page 326: 1630000 rows applied
+[incremental] public.client_c_d_r upsert page 327: 1635000 rows applied
+[incremental] public.client_c_d_r upsert page 328: 1640000 rows applied
+[incremental] public.client_c_d_r upsert page 329: 1645000 rows applied
+[incremental] public.client_c_d_r upsert page 330: 1650000 rows applied
+[incremental] public.client_c_d_r upsert page 331: 1655000 rows applied
+[incremental] public.client_c_d_r upsert page 332: 1660000 rows applied
+[incremental] public.client_c_d_r upsert page 333: 1665000 rows applied
+[incremental] public.client_c_d_r upsert page 334: 1670000 rows applied
+[incremental] public.client_c_d_r upsert page 335: 1675000 rows applied
+[incremental] public.client_c_d_r upsert page 336: 1680000 rows applied
+[incremental] public.client_c_d_r upsert page 337: 1685000 rows applied
+[incremental] public.client_c_d_r upsert page 338: 1690000 rows applied
+[incremental] public.client_c_d_r upsert page 339: 1695000 rows applied
+[incremental] public.client_c_d_r upsert page 340: 1700000 rows applied
+[incremental] public.client_c_d_r upsert page 341: 1705000 rows applied
+[incremental] public.client_c_d_r upsert page 342: 1710000 rows applied
+[incremental] public.client_c_d_r upsert page 343: 1715000 rows applied
+[incremental] public.client_c_d_r upsert page 344: 1720000 rows applied
+[incremental] public.client_c_d_r upsert page 345: 1725000 rows applied
+[incremental] public.client_c_d_r upsert page 346: 1730000 rows applied
+[incremental] public.client_c_d_r upsert page 347: 1731614 rows applied
+[incremental] public.client_c_d_r delete scan skipped for faster incremental sync
+[incremental] public.client_c_d_r complete: changed=1731614, deleted=skipped
+[incremental] public.comm_content_assoc_type started
+[incremental] public.comm_content_assoc_type delete scan skipped for faster incremental sync
+[incremental] public.comm_content_assoc_type complete: changed=0, deleted=skipped
+[incremental] public.comm_event_content_assoc started
+[incremental] public.comm_event_content_assoc delete scan skipped for faster incremental sync
+[incremental] public.comm_event_content_assoc complete: changed=0, deleted=skipped
+[incremental] public.communication_event started
+[incremental] public.communication_event delete scan skipped for faster incremental sync
+[incremental] public.communication_event complete: changed=0, deleted=skipped
+[incremental] public.communication_event_order started
+[incremental] public.communication_event_order delete scan skipped for faster incremental sync
+[incremental] public.communication_event_order complete: changed=0, deleted=skipped
+[incremental] public.communication_event_product started
+[incremental] public.communication_event_product delete scan skipped for faster incremental sync
+[incremental] public.communication_event_product complete: changed=0, deleted=skipped
+[incremental] public.communication_event_prp_typ started
+[incremental] public.communication_event_prp_typ upsert page 1: 8 rows applied
+[incremental] public.communication_event_prp_typ delete scan skipped for faster incremental sync
+[incremental] public.communication_event_prp_typ complete: changed=8, deleted=skipped
+[incremental] public.communication_event_purpose started
+[incremental] public.communication_event_purpose delete scan skipped for faster incremental sync
+[incremental] public.communication_event_purpose complete: changed=0, deleted=skipped
+[incremental] public.communication_event_role started
+[incremental] public.communication_event_role delete scan skipped for faster incremental sync
+[incremental] public.communication_event_role complete: changed=0, deleted=skipped
+[incremental] public.communication_event_type started
+[incremental] public.communication_event_type upsert page 1: 8 rows applied
+[incremental] public.communication_event_type delete scan skipped for faster incremental sync
+[incremental] public.communication_event_type complete: changed=8, deleted=skipped
+[incremental] public.communication_event_work_eff started
+[incremental] public.communication_event_work_eff delete scan skipped for faster incremental sync
+[incremental] public.communication_event_work_eff complete: changed=0, deleted=skipped
+[incremental] public.config_option_product_option started
+[incremental] public.config_option_product_option delete scan skipped for faster incremental sync
+[incremental] public.config_option_product_option complete: changed=0, deleted=skipped
+[incremental] public.contact_list started
+[incremental] public.contact_list delete scan skipped for faster incremental sync
+[incremental] public.contact_list complete: changed=0, deleted=skipped
+[incremental] public.contact_list_comm_status started
+[incremental] public.contact_list_comm_status delete scan skipped for faster incremental sync
+[incremental] public.contact_list_comm_status complete: changed=0, deleted=skipped
+[incremental] public.contact_list_party started
+[incremental] public.contact_list_party delete scan skipped for faster incremental sync
+[incremental] public.contact_list_party complete: changed=0, deleted=skipped
+[incremental] public.contact_list_party_status started
+[incremental] public.contact_list_party_status delete scan skipped for faster incremental sync
+[incremental] public.contact_list_party_status complete: changed=0, deleted=skipped
+[incremental] public.contact_list_type started
+[incremental] public.contact_list_type upsert page 1: 3 rows applied
+[incremental] public.contact_list_type delete scan skipped for faster incremental sync
+[incremental] public.contact_list_type complete: changed=3, deleted=skipped
+[incremental] public.contact_mech started
+[incremental] public.contact_mech upsert page 1: 5000 rows applied
+[incremental] public.contact_mech upsert page 2: 9832 rows applied
+[incremental] public.contact_mech delete scan skipped for faster incremental sync
+[incremental] public.contact_mech complete: changed=9832, deleted=skipped
+[incremental] public.contact_mech_attribute started
+[incremental] public.contact_mech_attribute delete scan skipped for faster incremental sync
+[incremental] public.contact_mech_attribute complete: changed=0, deleted=skipped
+[incremental] public.contact_mech_link started
+[incremental] public.contact_mech_link delete scan skipped for faster incremental sync
+[incremental] public.contact_mech_link complete: changed=0, deleted=skipped
+[incremental] public.contact_mech_purpose_type started
+[incremental] public.contact_mech_purpose_type upsert page 1: 28 rows applied
+[incremental] public.contact_mech_purpose_type delete scan skipped for faster incremental sync
+[incremental] public.contact_mech_purpose_type complete: changed=28, deleted=skipped
+[incremental] public.contact_mech_type started
+[incremental] public.contact_mech_type upsert page 1: 7 rows applied
+[incremental] public.contact_mech_type delete scan skipped for faster incremental sync
+[incremental] public.contact_mech_type complete: changed=7, deleted=skipped
+[incremental] public.contact_mech_type_attr started
+[incremental] public.contact_mech_type_attr delete scan skipped for faster incremental sync
+[incremental] public.contact_mech_type_attr complete: changed=0, deleted=skipped
+[incremental] public.contact_mech_type_purpose started
+[incremental] public.contact_mech_type_purpose upsert page 1: 27 rows applied
+[incremental] public.contact_mech_type_purpose delete scan skipped for faster incremental sync
+[incremental] public.contact_mech_type_purpose complete: changed=27, deleted=skipped
+[incremental] public.container started
+[incremental] public.container delete scan skipped for faster incremental sync
+[incremental] public.container complete: changed=0, deleted=skipped
+[incremental] public.container_geo_point started
+[incremental] public.container_geo_point delete scan skipped for faster incremental sync
+[incremental] public.container_geo_point complete: changed=0, deleted=skipped
+[incremental] public.container_type started
+[incremental] public.container_type delete scan skipped for faster incremental sync
+[incremental] public.container_type complete: changed=0, deleted=skipped
+[incremental] public.content started
+[incremental] public.content upsert page 1: 19 rows applied
+[incremental] public.content delete scan skipped for faster incremental sync
+[incremental] public.content complete: changed=19, deleted=skipped
+[incremental] public.content_approval started
+[incremental] public.content_approval delete scan skipped for faster incremental sync
+[incremental] public.content_approval complete: changed=0, deleted=skipped
+[incremental] public.content_assoc started
+[incremental] public.content_assoc delete scan skipped for faster incremental sync
+[incremental] public.content_assoc complete: changed=0, deleted=skipped
+[incremental] public.content_assoc_predicate started
+[incremental] public.content_assoc_predicate upsert page 1: 7 rows applied
+[incremental] public.content_assoc_predicate delete scan skipped for faster incremental sync
+[incremental] public.content_assoc_predicate complete: changed=7, deleted=skipped
+[incremental] public.content_assoc_type started
+[incremental] public.content_assoc_type upsert page 1: 20 rows applied
+[incremental] public.content_assoc_type delete scan skipped for faster incremental sync
+[incremental] public.content_assoc_type complete: changed=20, deleted=skipped
+[incremental] public.content_attribute started
+[incremental] public.content_attribute delete scan skipped for faster incremental sync
+[incremental] public.content_attribute complete: changed=0, deleted=skipped
+[incremental] public.content_meta_data started
+[incremental] public.content_meta_data delete scan skipped for faster incremental sync
+[incremental] public.content_meta_data complete: changed=0, deleted=skipped
+[incremental] public.content_operation started
+[incremental] public.content_operation upsert page 1: 24 rows applied
+[incremental] public.content_operation delete scan skipped for faster incremental sync
+[incremental] public.content_operation complete: changed=24, deleted=skipped
+[incremental] public.content_purpose started
+[incremental] public.content_purpose delete scan skipped for faster incremental sync
+[incremental] public.content_purpose complete: changed=0, deleted=skipped
+[incremental] public.content_purpose_operation started
+[incremental] public.content_purpose_operation upsert page 1: 50 rows applied
+[incremental] public.content_purpose_operation delete scan skipped for faster incremental sync
+[incremental] public.content_purpose_operation complete: changed=50, deleted=skipped
+[incremental] public.content_purpose_type started
+[incremental] public.content_purpose_type upsert page 1: 21 rows applied
+[incremental] public.content_purpose_type delete scan skipped for faster incremental sync
+[incremental] public.content_purpose_type complete: changed=21, deleted=skipped
+[incremental] public.content_revision started
+[incremental] public.content_revision delete scan skipped for faster incremental sync
+[incremental] public.content_revision complete: changed=0, deleted=skipped
+[incremental] public.content_revision_item started
+[incremental] public.content_revision_item delete scan skipped for faster incremental sync
+[incremental] public.content_revision_item complete: changed=0, deleted=skipped
+[incremental] public.content_role started
+[incremental] public.content_role delete scan skipped for faster incremental sync
+[incremental] public.content_role complete: changed=0, deleted=skipped
+[incremental] public.content_type started
+[incremental] public.content_type upsert page 1: 26 rows applied
+[incremental] public.content_type delete scan skipped for faster incremental sync
+[incremental] public.content_type complete: changed=26, deleted=skipped
+[incremental] public.content_type_attr started
+[incremental] public.content_type_attr delete scan skipped for faster incremental sync
+[incremental] public.content_type_attr complete: changed=0, deleted=skipped
+[incremental] public.cost_adjustment started
+[incremental] public.cost_adjustment upsert page 1: 32 rows applied
+[incremental] public.cost_adjustment delete scan skipped for faster incremental sync
+[incremental] public.cost_adjustment complete: changed=32, deleted=skipped
+[incremental] public.cost_adjustment_group started
+[incremental] public.cost_adjustment_group upsert page 1: 4 rows applied
+[incremental] public.cost_adjustment_group delete scan skipped for faster incremental sync
+[incremental] public.cost_adjustment_group complete: changed=4, deleted=skipped
+[incremental] public.cost_adjustment_group_member started
+[incremental] public.cost_adjustment_group_member upsert page 1: 67 rows applied
+[incremental] public.cost_adjustment_group_member delete scan skipped for faster incremental sync
+[incremental] public.cost_adjustment_group_member complete: changed=67, deleted=skipped
+[incremental] public.cost_adjustment_type started
+[incremental] public.cost_adjustment_type upsert page 1: 64 rows applied
+[incremental] public.cost_adjustment_type delete scan skipped for faster incremental sync
+[incremental] public.cost_adjustment_type complete: changed=64, deleted=skipped
+[incremental] public.cost_component started
+[incremental] public.cost_component delete scan skipped for faster incremental sync
+[incremental] public.cost_component complete: changed=0, deleted=skipped
+[incremental] public.cost_component_attribute started
+[incremental] public.cost_component_attribute delete scan skipped for faster incremental sync
+[incremental] public.cost_component_attribute complete: changed=0, deleted=skipped
+[incremental] public.cost_component_calc started
+[incremental] public.cost_component_calc delete scan skipped for faster incremental sync
+[incremental] public.cost_component_calc complete: changed=0, deleted=skipped
+[incremental] public.cost_component_type started
+[incremental] public.cost_component_type upsert page 1: 12 rows applied
+[incremental] public.cost_component_type delete scan skipped for faster incremental sync
+[incremental] public.cost_component_type complete: changed=12, deleted=skipped
+[incremental] public.cost_component_type_attr started
+[incremental] public.cost_component_type_attr delete scan skipped for faster incremental sync
+[incremental] public.cost_component_type_attr complete: changed=0, deleted=skipped
+[incremental] public.country_capital started
+[incremental] public.country_capital upsert page 1: 243 rows applied
+[incremental] public.country_capital delete scan skipped for faster incremental sync
+[incremental] public.country_capital complete: changed=243, deleted=skipped
+[incremental] public.country_code started
+[incremental] public.country_code upsert page 1: 245 rows applied
+[incremental] public.country_code delete scan skipped for faster incremental sync
+[incremental] public.country_code complete: changed=245, deleted=skipped
+[incremental] public.country_tele_code started
+[incremental] public.country_tele_code upsert page 1: 239 rows applied
+[incremental] public.country_tele_code delete scan skipped for faster incremental sync
+[incremental] public.country_tele_code complete: changed=239, deleted=skipped
+[incremental] public.cpe_air4_g started
+[incremental] public.cpe_air4_g upsert page 1: 1092 rows applied
+[incremental] public.cpe_air4_g delete scan skipped for faster incremental sync
+[incremental] public.cpe_air4_g complete: changed=1092, deleted=skipped
+[incremental] public.cpe_air4_g_statistics started
+[incremental] public.cpe_air4_g_statistics upsert page 1: 5000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 2: 10000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 3: 15000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 4: 20000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 5: 25000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 6: 30000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 7: 35000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 8: 40000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 9: 45000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 10: 50000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 11: 55000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 12: 60000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 13: 65000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 14: 70000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 15: 75000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 16: 80000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 17: 85000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 18: 90000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 19: 95000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 20: 100000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 21: 105000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 22: 110000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 23: 115000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 24: 120000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 25: 125000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 26: 130000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 27: 135000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 28: 140000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 29: 145000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 30: 150000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 31: 155000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 32: 160000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 33: 165000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 34: 170000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 35: 175000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 36: 180000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 37: 185000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 38: 190000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 39: 195000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 40: 200000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 41: 205000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 42: 210000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 43: 215000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 44: 220000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 45: 225000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 46: 230000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 47: 235000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 48: 240000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 49: 245000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 50: 250000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 51: 255000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 52: 260000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 53: 265000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 54: 270000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 55: 275000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 56: 280000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 57: 285000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 58: 290000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 59: 295000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 60: 300000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 61: 305000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 62: 310000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 63: 315000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 64: 320000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 65: 325000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 66: 330000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 67: 335000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 68: 340000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 69: 345000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 70: 350000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 71: 355000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 72: 360000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 73: 365000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 74: 370000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 75: 375000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 76: 380000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 77: 385000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 78: 390000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 79: 395000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 80: 400000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 81: 405000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 82: 410000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 83: 415000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 84: 420000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 85: 425000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 86: 430000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 87: 435000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 88: 440000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 89: 445000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 90: 450000 rows applied
+[incremental] public.cpe_air4_g_statistics upsert page 91: 452785 rows applied
+[incremental] public.cpe_air4_g_statistics delete scan skipped for faster incremental sync
+[incremental] public.cpe_air4_g_statistics complete: changed=452785, deleted=skipped
+[incremental] public.cpe_air4_g_vlan started
+[incremental] public.cpe_air4_g_vlan upsert page 1: 1033 rows applied
+[incremental] public.cpe_air4_g_vlan delete scan skipped for faster incremental sync
+[incremental] public.cpe_air4_g_vlan complete: changed=1033, deleted=skipped
+[incremental] public.cpe_deletion started
+[incremental] public.cpe_deletion upsert page 1: 402 rows applied
+[incremental] public.cpe_deletion delete scan skipped for faster incremental sync
+[incremental] public.cpe_deletion complete: changed=402, deleted=skipped
+[incremental] public.cpe_field_link_type_configuration started
+[incremental] public.cpe_field_link_type_configuration upsert page 1: 120 rows applied
+[incremental] public.cpe_field_link_type_configuration delete scan skipped for faster incremental sync
+[incremental] public.cpe_field_link_type_configuration complete: changed=120, deleted=skipped
+[incremental] public.cpe_linked_sector started
+[incremental] public.cpe_linked_sector upsert page 1: 1391 rows applied
+[incremental] public.cpe_linked_sector delete scan skipped for faster incremental sync
+[incremental] public.cpe_linked_sector complete: changed=1391, deleted=skipped
+[incremental] public.cpe_mikrotik started
+[incremental] public.cpe_mikrotik upsert page 1: 33 rows applied
+[incremental] public.cpe_mikrotik delete scan skipped for faster incremental sync
+[incremental] public.cpe_mikrotik complete: changed=33, deleted=skipped
+[incremental] public.cpe_pm5000 started
+[incremental] public.cpe_pm5000 upsert page 1: 9 rows applied
+[incremental] public.cpe_pm5000 delete scan skipped for faster incremental sync
+[incremental] public.cpe_pm5000 complete: changed=9, deleted=skipped
+[incremental] public.cpe_radwin5000 started
+[incremental] public.cpe_radwin5000 upsert page 1: 207 rows applied
+[incremental] public.cpe_radwin5000 delete scan skipped for faster incremental sync
+[incremental] public.cpe_radwin5000 complete: changed=207, deleted=skipped
+[incremental] public.cpe_vsat_modem started
+[incremental] public.cpe_vsat_modem upsert page 1: 185 rows applied
+[incremental] public.cpe_vsat_modem delete scan skipped for faster incremental sync
+[incremental] public.cpe_vsat_modem complete: changed=185, deleted=skipped
+[incremental] public.cpe_wave_i_p8000 started
+[incremental] public.cpe_wave_i_p8000 upsert page 1: 6 rows applied
+[incremental] public.cpe_wave_i_p8000 delete scan skipped for faster incremental sync
+[incremental] public.cpe_wave_i_p8000 complete: changed=6, deleted=skipped
+[incremental] public.credit_card started
+[incremental] public.credit_card delete scan skipped for faster incremental sync
+[incremental] public.credit_card complete: changed=0, deleted=skipped
+[incremental] public.credit_card_type_gl_account started
+[incremental] public.credit_card_type_gl_account delete scan skipped for faster incremental sync
+[incremental] public.credit_card_type_gl_account complete: changed=0, deleted=skipped
+[incremental] public.currency started
+[incremental] public.currency upsert page 1: 6 rows applied
+[incremental] public.currency delete scan skipped for faster incremental sync
+[incremental] public.currency complete: changed=6, deleted=skipped
+[incremental] public.currency_accepted started
+[incremental] public.currency_accepted upsert page 1: 12 rows applied
+[incremental] public.currency_accepted delete scan skipped for faster incremental sync
+[incremental] public.currency_accepted complete: changed=12, deleted=skipped
+[incremental] public.currency_exchange_rate started
+[incremental] public.currency_exchange_rate upsert page 1: 746 rows applied
+[incremental] public.currency_exchange_rate delete scan skipped for faster incremental sync
+[incremental] public.currency_exchange_rate complete: changed=746, deleted=skipped
+[incremental] public.cust_request started
+[incremental] public.cust_request delete scan skipped for faster incremental sync
+[incremental] public.cust_request complete: changed=0, deleted=skipped
+[incremental] public.cust_request_attribute started
+[incremental] public.cust_request_attribute delete scan skipped for faster incremental sync
+[incremental] public.cust_request_attribute complete: changed=0, deleted=skipped
+[incremental] public.cust_request_category started
+[incremental] public.cust_request_category delete scan skipped for faster incremental sync
+[incremental] public.cust_request_category complete: changed=0, deleted=skipped
+[incremental] public.cust_request_comm_event started
+[incremental] public.cust_request_comm_event delete scan skipped for faster incremental sync
+[incremental] public.cust_request_comm_event complete: changed=0, deleted=skipped
+[incremental] public.cust_request_content started
+[incremental] public.cust_request_content delete scan skipped for faster incremental sync
+[incremental] public.cust_request_content complete: changed=0, deleted=skipped
+[incremental] public.cust_request_item started
+[incremental] public.cust_request_item delete scan skipped for faster incremental sync
+[incremental] public.cust_request_item complete: changed=0, deleted=skipped
+[incremental] public.cust_request_item_note started
+[incremental] public.cust_request_item_note delete scan skipped for faster incremental sync
+[incremental] public.cust_request_item_note complete: changed=0, deleted=skipped
+[incremental] public.cust_request_item_work_effort started
+[incremental] public.cust_request_item_work_effort delete scan skipped for faster incremental sync
+[incremental] public.cust_request_item_work_effort complete: changed=0, deleted=skipped
+[incremental] public.cust_request_note started
+[incremental] public.cust_request_note delete scan skipped for faster incremental sync
+[incremental] public.cust_request_note complete: changed=0, deleted=skipped
+[incremental] public.cust_request_party started
+[incremental] public.cust_request_party delete scan skipped for faster incremental sync
+[incremental] public.cust_request_party complete: changed=0, deleted=skipped
+[incremental] public.cust_request_resolution started
+[incremental] public.cust_request_resolution upsert page 1: 6 rows applied
+[incremental] public.cust_request_resolution delete scan skipped for faster incremental sync
+[incremental] public.cust_request_resolution complete: changed=6, deleted=skipped
+[incremental] public.cust_request_role started
+[incremental] public.cust_request_role delete scan skipped for faster incremental sync
+[incremental] public.cust_request_role complete: changed=0, deleted=skipped
+[incremental] public.cust_request_status started
+[incremental] public.cust_request_status delete scan skipped for faster incremental sync
+[incremental] public.cust_request_status complete: changed=0, deleted=skipped
+[incremental] public.cust_request_type started
+[incremental] public.cust_request_type upsert page 1: 8 rows applied
+[incremental] public.cust_request_type delete scan skipped for faster incremental sync
+[incremental] public.cust_request_type complete: changed=8, deleted=skipped
+[incremental] public.cust_request_type_attr started
+[incremental] public.cust_request_type_attr delete scan skipped for faster incremental sync
+[incremental] public.cust_request_type_attr complete: changed=0, deleted=skipped
+[incremental] public.cust_request_work_effort started
+[incremental] public.cust_request_work_effort delete scan skipped for faster incremental sync
+[incremental] public.cust_request_work_effort complete: changed=0, deleted=skipped
+[incremental] public.custom_method started
+[incremental] public.custom_method upsert page 1: 2 rows applied
+[incremental] public.custom_method delete scan skipped for faster incremental sync
+[incremental] public.custom_method complete: changed=2, deleted=skipped
+[incremental] public.custom_method_type started
+[incremental] public.custom_method_type upsert page 1: 5 rows applied
+[incremental] public.custom_method_type delete scan skipped for faster incremental sync
+[incremental] public.custom_method_type complete: changed=5, deleted=skipped
+[incremental] public.custom_time_period started
+[incremental] public.custom_time_period upsert page 1: 58 rows applied
+[incremental] public.custom_time_period delete scan skipped for faster incremental sync
+[incremental] public.custom_time_period complete: changed=58, deleted=skipped
+[incremental] public.data_category started
+[incremental] public.data_category upsert page 1: 17 rows applied
+[incremental] public.data_category delete scan skipped for faster incremental sync
+[incremental] public.data_category complete: changed=17, deleted=skipped
+[incremental] public.data_resource started
+[incremental] public.data_resource upsert page 1: 25 rows applied
+[incremental] public.data_resource delete scan skipped for faster incremental sync
+[incremental] public.data_resource complete: changed=25, deleted=skipped
+[incremental] public.data_resource_attribute started
+[incremental] public.data_resource_attribute delete scan skipped for faster incremental sync
+[incremental] public.data_resource_attribute complete: changed=0, deleted=skipped
+[incremental] public.data_resource_meta_data started
+[incremental] public.data_resource_meta_data delete scan skipped for faster incremental sync
+[incremental] public.data_resource_meta_data complete: changed=0, deleted=skipped
+[incremental] public.data_resource_purpose started
+[incremental] public.data_resource_purpose delete scan skipped for faster incremental sync
+[incremental] public.data_resource_purpose complete: changed=0, deleted=skipped
+[incremental] public.data_resource_role started
+[incremental] public.data_resource_role delete scan skipped for faster incremental sync
+[incremental] public.data_resource_role complete: changed=0, deleted=skipped
+[incremental] public.data_resource_type started
+[incremental] public.data_resource_type upsert page 1: 16 rows applied
+[incremental] public.data_resource_type delete scan skipped for faster incremental sync
+[incremental] public.data_resource_type complete: changed=16, deleted=skipped
+[incremental] public.data_resource_type_attr started
+[incremental] public.data_resource_type_attr delete scan skipped for faster incremental sync
+[incremental] public.data_resource_type_attr complete: changed=0, deleted=skipped
+[incremental] public.data_source started
+[incremental] public.data_source upsert page 1: 6 rows applied
+[incremental] public.data_source delete scan skipped for faster incremental sync
+[incremental] public.data_source complete: changed=6, deleted=skipped
+[incremental] public.data_source_type started
+[incremental] public.data_source_type upsert page 1: 10 rows applied
+[incremental] public.data_source_type delete scan skipped for faster incremental sync
+[incremental] public.data_source_type complete: changed=10, deleted=skipped
+[incremental] public.data_template_type started
+[incremental] public.data_template_type upsert page 1: 6 rows applied
+[incremental] public.data_template_type delete scan skipped for faster incremental sync
+[incremental] public.data_template_type complete: changed=6, deleted=skipped
+[incremental] public.deduction started
+[incremental] public.deduction delete scan skipped for faster incremental sync
+[incremental] public.deduction complete: changed=0, deleted=skipped
+[incremental] public.deduction_type started
+[incremental] public.deduction_type upsert page 1: 4 rows applied
+[incremental] public.deduction_type delete scan skipped for faster incremental sync
+[incremental] public.deduction_type complete: changed=4, deleted=skipped
+[incremental] public.deliverable started
+[incremental] public.deliverable delete scan skipped for faster incremental sync
+[incremental] public.deliverable complete: changed=0, deleted=skipped
+[incremental] public.deliverable_type started
+[incremental] public.deliverable_type delete scan skipped for faster incremental sync
+[incremental] public.deliverable_type complete: changed=0, deleted=skipped
+[incremental] public.delivery started
+[incremental] public.delivery delete scan skipped for faster incremental sync
+[incremental] public.delivery complete: changed=0, deleted=skipped
+[incremental] public.depreciation_method started
+[incremental] public.depreciation_method delete scan skipped for faster incremental sync
+[incremental] public.depreciation_method complete: changed=0, deleted=skipped
+[incremental] public.desired_feature started
+[incremental] public.desired_feature delete scan skipped for faster incremental sync
+[incremental] public.desired_feature complete: changed=0, deleted=skipped
+[incremental] public.document started
+[incremental] public.document delete scan skipped for faster incremental sync
+[incremental] public.document complete: changed=0, deleted=skipped
+[incremental] public.document_attribute started
+[incremental] public.document_attribute delete scan skipped for faster incremental sync
+[incremental] public.document_attribute complete: changed=0, deleted=skipped
+[incremental] public.document_type started
+[incremental] public.document_type upsert page 1: 9 rows applied
+[incremental] public.document_type delete scan skipped for faster incremental sync
+[incremental] public.document_type complete: changed=9, deleted=skipped
+[incremental] public.document_type_attr started
+[incremental] public.document_type_attr delete scan skipped for faster incremental sync
+[incremental] public.document_type_attr complete: changed=0, deleted=skipped
+[incremental] public.eft_account started
+[incremental] public.eft_account delete scan skipped for faster incremental sync
+[incremental] public.eft_account complete: changed=0, deleted=skipped
+[incremental] public.electronic_text started
+[incremental] public.email_address_verification started
+[incremental] public.email_address_verification delete scan skipped for faster incremental sync
+[incremental] public.email_address_verification complete: changed=0, deleted=skipped
+[incremental] public.email_group started
+[incremental] public.email_group upsert page 1: 23 rows applied
+[incremental] public.email_group delete scan skipped for faster incremental sync
+[incremental] public.email_group complete: changed=23, deleted=skipped
+[incremental] public.email_group_member started
+[incremental] public.email_group_member upsert page 1: 21 rows applied
+[incremental] public.email_group_member delete scan skipped for faster incremental sync
+[incremental] public.email_group_member complete: changed=21, deleted=skipped
+[incremental] public.email_template_setting started
+[incremental] public.email_template_setting delete scan skipped for faster incremental sync
+[incremental] public.email_template_setting complete: changed=0, deleted=skipped
+[incremental] public.empl_leave started
+[incremental] public.empl_leave delete scan skipped for faster incremental sync
+[incremental] public.empl_leave complete: changed=0, deleted=skipped
+[incremental] public.empl_leave_type started
+[incremental] public.empl_leave_type upsert page 1: 2 rows applied
+[incremental] public.empl_leave_type delete scan skipped for faster incremental sync
+[incremental] public.empl_leave_type complete: changed=2, deleted=skipped
+[incremental] public.empl_position started
+[incremental] public.empl_position delete scan skipped for faster incremental sync
+[incremental] public.empl_position complete: changed=0, deleted=skipped
+[incremental] public.empl_position_class_type started
+[incremental] public.empl_position_class_type delete scan skipped for faster incremental sync
+[incremental] public.empl_position_class_type complete: changed=0, deleted=skipped
+[incremental] public.empl_position_fulfillment started
+[incremental] public.empl_position_fulfillment delete scan skipped for faster incremental sync
+[incremental] public.empl_position_fulfillment complete: changed=0, deleted=skipped
+[incremental] public.empl_position_reporting_struct started
+[incremental] public.empl_position_reporting_struct delete scan skipped for faster incremental sync
+[incremental] public.empl_position_reporting_struct complete: changed=0, deleted=skipped
+[incremental] public.empl_position_responsibility started
+[incremental] public.empl_position_responsibility delete scan skipped for faster incremental sync
+[incremental] public.empl_position_responsibility complete: changed=0, deleted=skipped
+[incremental] public.empl_position_type started
+[incremental] public.empl_position_type delete scan skipped for faster incremental sync
+[incremental] public.empl_position_type complete: changed=0, deleted=skipped
+[incremental] public.empl_position_type_class started
+[incremental] public.empl_position_type_class delete scan skipped for faster incremental sync
+[incremental] public.empl_position_type_class complete: changed=0, deleted=skipped
+[incremental] public.empl_position_type_rate started
+[incremental] public.empl_position_type_rate delete scan skipped for faster incremental sync
+[incremental] public.empl_position_type_rate complete: changed=0, deleted=skipped
+[incremental] public.empl_position_type_rate_new started
+[incremental] public.empl_position_type_rate_new delete scan skipped for faster incremental sync
+[incremental] public.empl_position_type_rate_new complete: changed=0, deleted=skipped
+[incremental] public.employment started
+[incremental] public.employment delete scan skipped for faster incremental sync
+[incremental] public.employment complete: changed=0, deleted=skipped
+[incremental] public.employment_app started
+[incremental] public.employment_app delete scan skipped for faster incremental sync
+[incremental] public.employment_app complete: changed=0, deleted=skipped
+[incremental] public.employment_app_source_type started
+[incremental] public.employment_app_source_type delete scan skipped for faster incremental sync
+[incremental] public.employment_app_source_type complete: changed=0, deleted=skipped
+[incremental] public.entity_audit_log started
+[incremental] public.entity_audit_log delete scan skipped for faster incremental sync
+[incremental] public.entity_audit_log complete: changed=0, deleted=skipped
+[incremental] public.entity_group started
+[incremental] public.entity_group delete scan skipped for faster incremental sync
+[incremental] public.entity_group complete: changed=0, deleted=skipped
+[incremental] public.entity_group_entry started
+[incremental] public.entity_group_entry delete scan skipped for faster incremental sync
+[incremental] public.entity_group_entry complete: changed=0, deleted=skipped
+[incremental] public.entity_key_store started
+[incremental] public.entity_key_store delete scan skipped for faster incremental sync
+[incremental] public.entity_key_store complete: changed=0, deleted=skipped
+[incremental] public.entity_sync started
+[incremental] public.entity_sync delete scan skipped for faster incremental sync
+[incremental] public.entity_sync complete: changed=0, deleted=skipped
+[incremental] public.entity_sync_history started
+[incremental] public.entity_sync_history delete scan skipped for faster incremental sync
+[incremental] public.entity_sync_history complete: changed=0, deleted=skipped
+[incremental] public.entity_sync_include started
+[incremental] public.entity_sync_include delete scan skipped for faster incremental sync
+[incremental] public.entity_sync_include complete: changed=0, deleted=skipped
+[incremental] public.entity_sync_include_group started
+[incremental] public.entity_sync_include_group delete scan skipped for faster incremental sync
+[incremental] public.entity_sync_include_group complete: changed=0, deleted=skipped
+[incremental] public.entity_sync_remove started
+[incremental] public.entity_sync_remove delete scan skipped for faster incremental sync
+[incremental] public.entity_sync_remove complete: changed=0, deleted=skipped
+[incremental] public.enumeration started
+[incremental] public.enumeration delete scan skipped for faster incremental sync
+[incremental] public.enumeration complete: changed=0, deleted=skipped
+[incremental] public.enumeration_type started
+[incremental] public.enumeration_type delete scan skipped for faster incremental sync
+[incremental] public.enumeration_type complete: changed=0, deleted=skipped
+[incremental] public.example started
+[incremental] public.example upsert page 1: 1 rows applied
+[incremental] public.example delete scan skipped for faster incremental sync
+[incremental] public.example complete: changed=1, deleted=skipped
+[incremental] public.example_feature started
+[incremental] public.example_feature delete scan skipped for faster incremental sync
+[incremental] public.example_feature complete: changed=0, deleted=skipped
+[incremental] public.example_feature_appl started
+[incremental] public.example_feature_appl delete scan skipped for faster incremental sync
+[incremental] public.example_feature_appl complete: changed=0, deleted=skipped
+[incremental] public.example_feature_appl_type started
+[incremental] public.example_feature_appl_type upsert page 1: 3 rows applied
+[incremental] public.example_feature_appl_type delete scan skipped for faster incremental sync
+[incremental] public.example_feature_appl_type complete: changed=3, deleted=skipped
+[incremental] public.example_item started
+[incremental] public.example_item delete scan skipped for faster incremental sync
+[incremental] public.example_item complete: changed=0, deleted=skipped
+[incremental] public.example_status started
+[incremental] public.example_status delete scan skipped for faster incremental sync
+[incremental] public.example_status complete: changed=0, deleted=skipped
+[incremental] public.example_type started
+[incremental] public.example_type upsert page 1: 4 rows applied
+[incremental] public.example_type delete scan skipped for faster incremental sync
+[incremental] public.example_type complete: changed=4, deleted=skipped
+[incremental] public.facility started
+[incremental] public.facility upsert page 1: 2 rows applied
+[incremental] public.facility delete scan skipped for faster incremental sync
+[incremental] public.facility complete: changed=2, deleted=skipped
+[incremental] public.facility_attribute started
+[incremental] public.facility_attribute delete scan skipped for faster incremental sync
+[incremental] public.facility_attribute complete: changed=0, deleted=skipped
+[incremental] public.facility_carrier_shipment started
+[incremental] public.facility_carrier_shipment delete scan skipped for faster incremental sync
+[incremental] public.facility_carrier_shipment complete: changed=0, deleted=skipped
+[incremental] public.facility_contact_mech started
+[incremental] public.facility_contact_mech upsert page 1: 3 rows applied
+[incremental] public.facility_contact_mech delete scan skipped for faster incremental sync
+[incremental] public.facility_contact_mech complete: changed=3, deleted=skipped
+[incremental] public.facility_contact_mech_purpose started
+[incremental] public.facility_contact_mech_purpose upsert page 1: 1 rows applied
+[incremental] public.facility_contact_mech_purpose delete scan skipped for faster incremental sync
+[incremental] public.facility_contact_mech_purpose complete: changed=1, deleted=skipped
+[incremental] public.facility_group started
+[incremental] public.facility_group upsert page 1: 1 rows applied
+[incremental] public.facility_group delete scan skipped for faster incremental sync
+[incremental] public.facility_group complete: changed=1, deleted=skipped
+[incremental] public.facility_group_member started
+[incremental] public.facility_group_member delete scan skipped for faster incremental sync
+[incremental] public.facility_group_member complete: changed=0, deleted=skipped
+[incremental] public.facility_group_role started
+[incremental] public.facility_group_role delete scan skipped for faster incremental sync
+[incremental] public.facility_group_role complete: changed=0, deleted=skipped
+[incremental] public.facility_group_rollup started
+[incremental] public.facility_group_rollup delete scan skipped for faster incremental sync
+[incremental] public.facility_group_rollup complete: changed=0, deleted=skipped
+[incremental] public.facility_group_type started
+[incremental] public.facility_group_type upsert page 1: 2 rows applied
+[incremental] public.facility_group_type delete scan skipped for faster incremental sync
+[incremental] public.facility_group_type complete: changed=2, deleted=skipped
+[incremental] public.facility_location started
+[incremental] public.facility_location delete scan skipped for faster incremental sync
+[incremental] public.facility_location complete: changed=0, deleted=skipped
+[incremental] public.facility_location_geo_point started
+[incremental] public.facility_location_geo_point delete scan skipped for faster incremental sync
+[incremental] public.facility_location_geo_point complete: changed=0, deleted=skipped
+[incremental] public.facility_party started
+[incremental] public.facility_party delete scan skipped for faster incremental sync
+[incremental] public.facility_party complete: changed=0, deleted=skipped
+[incremental] public.facility_role started
+[incremental] public.facility_role delete scan skipped for faster incremental sync
+[incremental] public.facility_role complete: changed=0, deleted=skipped
+[incremental] public.facility_type started
+[incremental] public.facility_type upsert page 1: 8 rows applied
+[incremental] public.facility_type delete scan skipped for faster incremental sync
+[incremental] public.facility_type complete: changed=8, deleted=skipped
+[incremental] public.facility_type_attr started
+[incremental] public.facility_type_attr delete scan skipped for faster incremental sync
+[incremental] public.facility_type_attr complete: changed=0, deleted=skipped
+[incremental] public.file_extension started
+[incremental] public.file_extension upsert page 1: 33 rows applied
+[incremental] public.file_extension delete scan skipped for faster incremental sync
+[incremental] public.file_extension complete: changed=33, deleted=skipped
+[incremental] public.fin_account started
+[incremental] public.fin_account delete scan skipped for faster incremental sync
+[incremental] public.fin_account complete: changed=0, deleted=skipped
+[incremental] public.fin_account_attribute started
+[incremental] public.fin_account_attribute delete scan skipped for faster incremental sync
+[incremental] public.fin_account_attribute complete: changed=0, deleted=skipped
+[incremental] public.fin_account_auth started
+[incremental] public.fin_account_auth delete scan skipped for faster incremental sync
+[incremental] public.fin_account_auth complete: changed=0, deleted=skipped
+[incremental] public.fin_account_role started
+[incremental] public.fin_account_role delete scan skipped for faster incremental sync
+[incremental] public.fin_account_role complete: changed=0, deleted=skipped
+[incremental] public.fin_account_status started
+[incremental] public.fin_account_status delete scan skipped for faster incremental sync
+[incremental] public.fin_account_status complete: changed=0, deleted=skipped
+[incremental] public.fin_account_trans started
+[incremental] public.fin_account_trans delete scan skipped for faster incremental sync
+[incremental] public.fin_account_trans complete: changed=0, deleted=skipped
+[incremental] public.fin_account_trans_attribute started
+[incremental] public.fin_account_trans_attribute delete scan skipped for faster incremental sync
+[incremental] public.fin_account_trans_attribute complete: changed=0, deleted=skipped
+[incremental] public.fin_account_trans_type started
+[incremental] public.fin_account_trans_type upsert page 1: 3 rows applied
+[incremental] public.fin_account_trans_type delete scan skipped for faster incremental sync
+[incremental] public.fin_account_trans_type complete: changed=3, deleted=skipped
+[incremental] public.fin_account_trans_type_attr started
+[incremental] public.fin_account_trans_type_attr delete scan skipped for faster incremental sync
+[incremental] public.fin_account_trans_type_attr complete: changed=0, deleted=skipped
+[incremental] public.fin_account_type started
+[incremental] public.fin_account_type upsert page 1: 6 rows applied
+[incremental] public.fin_account_type delete scan skipped for faster incremental sync
+[incremental] public.fin_account_type complete: changed=6, deleted=skipped
+[incremental] public.fin_account_type_attr started
+[incremental] public.fin_account_type_attr delete scan skipped for faster incremental sync
+[incremental] public.fin_account_type_attr complete: changed=0, deleted=skipped
+[incremental] public.fin_account_type_gl_account started
+[incremental] public.fin_account_type_gl_account delete scan skipped for faster incremental sync
+[incremental] public.fin_account_type_gl_account complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset started
+[incremental] public.fixed_asset delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_attribute started
+[incremental] public.fixed_asset_attribute delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_attribute complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_dep_method started
+[incremental] public.fixed_asset_dep_method delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_dep_method complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_geo_point started
+[incremental] public.fixed_asset_geo_point delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_geo_point complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_ident started
+[incremental] public.fixed_asset_ident delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_ident complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_ident_type started
+[incremental] public.fixed_asset_ident_type upsert page 1: 7 rows applied
+[incremental] public.fixed_asset_ident_type delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_ident_type complete: changed=7, deleted=skipped
+[incremental] public.fixed_asset_maint started
+[incremental] public.fixed_asset_maint delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_maint complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_maint_meter started
+[incremental] public.fixed_asset_maint_meter delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_maint_meter complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_maint_order started
+[incremental] public.fixed_asset_maint_order delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_maint_order complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_meter started
+[incremental] public.fixed_asset_meter delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_meter complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_product started
+[incremental] public.fixed_asset_product delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_product complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_product_type started
+[incremental] public.fixed_asset_product_type upsert page 1: 2 rows applied
+[incremental] public.fixed_asset_product_type delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_product_type complete: changed=2, deleted=skipped
+[incremental] public.fixed_asset_registration started
+[incremental] public.fixed_asset_registration delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_registration complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_std_cost started
+[incremental] public.fixed_asset_std_cost delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_std_cost complete: changed=0, deleted=skipped
+[incremental] public.fixed_asset_std_cost_type started
+[incremental] public.fixed_asset_std_cost_type upsert page 1: 2 rows applied
+[incremental] public.fixed_asset_std_cost_type delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_std_cost_type complete: changed=2, deleted=skipped
+[incremental] public.fixed_asset_type started
+[incremental] public.fixed_asset_type upsert page 1: 9 rows applied
+[incremental] public.fixed_asset_type delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_type complete: changed=9, deleted=skipped
+[incremental] public.fixed_asset_type_attr started
+[incremental] public.fixed_asset_type_attr delete scan skipped for faster incremental sync
+[incremental] public.fixed_asset_type_attr complete: changed=0, deleted=skipped
+[incremental] public.geo started
+[incremental] public.geo upsert page 1: 1006 rows applied
+[incremental] public.geo delete scan skipped for faster incremental sync
+[incremental] public.geo complete: changed=1006, deleted=skipped
+[incremental] public.geo_assoc started
+[incremental] public.geo_assoc upsert page 1: 835 rows applied
+[incremental] public.geo_assoc delete scan skipped for faster incremental sync
+[incremental] public.geo_assoc complete: changed=835, deleted=skipped
+[incremental] public.geo_assoc_type started
+[incremental] public.geo_assoc_type upsert page 1: 3 rows applied
+[incremental] public.geo_assoc_type delete scan skipped for faster incremental sync
+[incremental] public.geo_assoc_type complete: changed=3, deleted=skipped
+[incremental] public.geo_point started
+[incremental] public.geo_point delete scan skipped for faster incremental sync
+[incremental] public.geo_point complete: changed=0, deleted=skipped
+[incremental] public.geo_type started
+[incremental] public.geo_type upsert page 1: 12 rows applied
+[incremental] public.geo_type delete scan skipped for faster incremental sync
+[incremental] public.geo_type complete: changed=12, deleted=skipped
+[incremental] public.gift_card started
+[incremental] public.gift_card delete scan skipped for faster incremental sync
+[incremental] public.gift_card complete: changed=0, deleted=skipped
+[incremental] public.gift_card_fulfillment started
+[incremental] public.gift_card_fulfillment delete scan skipped for faster incremental sync
+[incremental] public.gift_card_fulfillment complete: changed=0, deleted=skipped
+[incremental] public.gl_account started
+[incremental] public.gl_account upsert page 1: 3 rows applied
+[incremental] public.gl_account delete scan skipped for faster incremental sync
+[incremental] public.gl_account complete: changed=3, deleted=skipped
+[incremental] public.gl_account_class started
+[incremental] public.gl_account_class upsert page 1: 33 rows applied
+[incremental] public.gl_account_class delete scan skipped for faster incremental sync
+[incremental] public.gl_account_class complete: changed=33, deleted=skipped
+[incremental] public.gl_account_group started
+[incremental] public.gl_account_group upsert page 1: 155 rows applied
+[incremental] public.gl_account_group delete scan skipped for faster incremental sync
+[incremental] public.gl_account_group complete: changed=155, deleted=skipped
+[incremental] public.gl_account_group_member started
+[incremental] public.gl_account_group_member delete scan skipped for faster incremental sync
+[incremental] public.gl_account_group_member complete: changed=0, deleted=skipped
+[incremental] public.gl_account_group_type started
+[incremental] public.gl_account_group_type delete scan skipped for faster incremental sync
+[incremental] public.gl_account_group_type complete: changed=0, deleted=skipped
+[incremental] public.gl_account_history started
+[incremental] public.gl_account_history delete scan skipped for faster incremental sync
+[incremental] public.gl_account_history complete: changed=0, deleted=skipped
+[incremental] public.gl_account_organization started
+[incremental] public.gl_account_organization delete scan skipped for faster incremental sync
+[incremental] public.gl_account_organization complete: changed=0, deleted=skipped
+[incremental] public.gl_account_role started
+[incremental] public.gl_account_role delete scan skipped for faster incremental sync
+[incremental] public.gl_account_role complete: changed=0, deleted=skipped
+[incremental] public.gl_account_type started
+[incremental] public.gl_account_type delete scan skipped for faster incremental sync
+[incremental] public.gl_account_type complete: changed=0, deleted=skipped
+[incremental] public.gl_account_type_default started
+[incremental] public.gl_account_type_default delete scan skipped for faster incremental sync
+[incremental] public.gl_account_type_default complete: changed=0, deleted=skipped
+[incremental] public.gl_budget_xref started
+[incremental] public.gl_budget_xref delete scan skipped for faster incremental sync
+[incremental] public.gl_budget_xref complete: changed=0, deleted=skipped
+[incremental] public.gl_fiscal_type started
+[incremental] public.gl_fiscal_type delete scan skipped for faster incremental sync
+[incremental] public.gl_fiscal_type complete: changed=0, deleted=skipped
+[incremental] public.gl_journal started
+[incremental] public.gl_journal delete scan skipped for faster incremental sync
+[incremental] public.gl_journal complete: changed=0, deleted=skipped
+[incremental] public.gl_reconciliation started
+[incremental] public.gl_reconciliation delete scan skipped for faster incremental sync
+[incremental] public.gl_reconciliation complete: changed=0, deleted=skipped
+[incremental] public.gl_reconciliation_entry started
+[incremental] public.gl_reconciliation_entry delete scan skipped for faster incremental sync
+[incremental] public.gl_reconciliation_entry complete: changed=0, deleted=skipped
+[incremental] public.gl_resource_type started
+[incremental] public.gl_resource_type upsert page 1: 6 rows applied
+[incremental] public.gl_resource_type delete scan skipped for faster incremental sync
+[incremental] public.gl_resource_type complete: changed=6, deleted=skipped
+[incremental] public.gl_xbrl_class started
+[incremental] public.gl_xbrl_class upsert page 1: 2 rows applied
+[incremental] public.gl_xbrl_class delete scan skipped for faster incremental sync
+[incremental] public.gl_xbrl_class complete: changed=2, deleted=skipped
+[incremental] public.good_identification started
+[incremental] public.good_identification delete scan skipped for faster incremental sync
+[incremental] public.good_identification complete: changed=0, deleted=skipped
+[incremental] public.good_identification_type started
+[incremental] public.good_identification_type upsert page 1: 8 rows applied
+[incremental] public.good_identification_type delete scan skipped for faster incremental sync
+[incremental] public.good_identification_type complete: changed=8, deleted=skipped
+[incremental] public.hardware started
+[incremental] public.hardware upsert page 1: 5000 rows applied
+[incremental] public.hardware upsert page 2: 10000 rows applied
+[incremental] public.hardware upsert page 3: 14906 rows applied
+[incremental] public.hardware delete scan skipped for faster incremental sync
+[incremental] public.hardware complete: changed=14906, deleted=skipped
+[incremental] public.hardware_airtime_alert started
+[incremental] public.hardware_airtime_alert upsert page 1: 18 rows applied
+[incremental] public.hardware_airtime_alert delete scan skipped for faster incremental sync
+[incremental] public.hardware_airtime_alert complete: changed=18, deleted=skipped
+[incremental] public.hardware_airtime_alert_contact_mech started
+[incremental] public.hardware_airtime_alert_contact_mech upsert page 1: 97 rows applied
+[incremental] public.hardware_airtime_alert_contact_mech delete scan skipped for faster incremental sync
+[incremental] public.hardware_airtime_alert_contact_mech complete: changed=97, deleted=skipped
+[incremental] public.hardware_airtime_alert_history started
+[incremental] public.hardware_airtime_alert_history upsert page 1: 92 rows applied
+[incremental] public.hardware_airtime_alert_history delete scan skipped for faster incremental sync
+[incremental] public.hardware_airtime_alert_history complete: changed=92, deleted=skipped
+[incremental] public.hardware_configuration started
+[incremental] public.hardware_configuration upsert page 1: 5000 rows applied
+[incremental] public.hardware_configuration upsert page 2: 10000 rows applied
+[incremental] public.hardware_configuration upsert page 3: 15000 rows applied
+[incremental] public.hardware_configuration upsert page 4: 20000 rows applied
+[incremental] public.hardware_configuration upsert page 5: 25000 rows applied
+[incremental] public.hardware_configuration upsert page 6: 30000 rows applied
+[incremental] public.hardware_configuration upsert page 7: 35000 rows applied
+[incremental] public.hardware_configuration upsert page 8: 40000 rows applied
+[incremental] public.hardware_configuration upsert page 9: 45000 rows applied
+[incremental] public.hardware_configuration upsert page 10: 50000 rows applied
+[incremental] public.hardware_configuration upsert page 11: 55000 rows applied
+[incremental] public.hardware_configuration upsert page 12: 60000 rows applied
+[incremental] public.hardware_configuration upsert page 13: 65000 rows applied
+[incremental] public.hardware_configuration upsert page 14: 70000 rows applied
+[incremental] public.hardware_configuration upsert page 15: 75000 rows applied
+[incremental] public.hardware_configuration upsert page 16: 80000 rows applied
+[incremental] public.hardware_configuration upsert page 17: 85000 rows applied
+[incremental] public.hardware_configuration upsert page 18: 90000 rows applied
+[incremental] public.hardware_configuration upsert page 19: 95000 rows applied
+[incremental] public.hardware_configuration upsert page 20: 100000 rows applied
+[incremental] public.hardware_configuration upsert page 21: 105000 rows applied
+[incremental] public.hardware_configuration upsert page 22: 110000 rows applied
+[incremental] public.hardware_configuration upsert page 23: 115000 rows applied
+[incremental] public.hardware_configuration upsert page 24: 120000 rows applied
+[incremental] public.hardware_configuration upsert page 25: 125000 rows applied
+[incremental] public.hardware_configuration upsert page 26: 130000 rows applied
+[incremental] public.hardware_configuration upsert page 27: 135000 rows applied
+[incremental] public.hardware_configuration upsert page 28: 140000 rows applied
+[incremental] public.hardware_configuration upsert page 29: 144279 rows applied
+[incremental] public.hardware_configuration delete scan skipped for faster incremental sync
+[incremental] public.hardware_configuration complete: changed=144279, deleted=skipped
+[incremental] public.hardware_configuration_definition started
+[incremental] public.hardware_configuration_definition upsert page 1: 47 rows applied
+[incremental] public.hardware_configuration_definition delete scan skipped for faster incremental sync
+[incremental] public.hardware_configuration_definition complete: changed=47, deleted=skipped
+[incremental] public.hardware_configuration_possibilities started
+[incremental] public.hardware_configuration_possibilities upsert page 1: 3 rows applied
+[incremental] public.hardware_configuration_possibilities delete scan skipped for faster incremental sync
+[incremental] public.hardware_configuration_possibilities complete: changed=3, deleted=skipped
+[incremental] public.hardware_contact_mech started
+[incremental] public.hardware_contact_mech upsert page 1: 5 rows applied
+[incremental] public.hardware_contact_mech delete scan skipped for faster incremental sync
+[incremental] public.hardware_contact_mech complete: changed=5, deleted=skipped
+[incremental] public.hardware_default_subscription_price started
+[incremental] public.hardware_default_subscription_price upsert page 1: 189 rows applied
+[incremental] public.hardware_default_subscription_price delete scan skipped for faster incremental sync
+[incremental] public.hardware_default_subscription_price complete: changed=189, deleted=skipped
+[incremental] public.hardware_description_history started
+[incremental] public.hardware_description_history upsert page 1: 5000 rows applied
+[incremental] public.hardware_description_history upsert page 2: 10000 rows applied
+[incremental] public.hardware_description_history upsert page 3: 15000 rows applied
+[incremental] public.hardware_description_history upsert page 4: 20000 rows applied
+[incremental] public.hardware_description_history upsert page 5: 22761 rows applied
+[incremental] public.hardware_description_history delete scan skipped for faster incremental sync
+[incremental] public.hardware_description_history complete: changed=22761, deleted=skipped
+[incremental] public.hardware_group started
+[incremental] public.hardware_group upsert page 1: 56 rows applied
+[incremental] public.hardware_group delete scan skipped for faster incremental sync
+[incremental] public.hardware_group complete: changed=56, deleted=skipped
+[incremental] public.hardware_group_member started
+[incremental] public.hardware_group_member upsert page 1: 1435 rows applied
+[incremental] public.hardware_group_member delete scan skipped for faster incremental sync
+[incremental] public.hardware_group_member complete: changed=1435, deleted=skipped
+[incremental] public.hardware_intervention started
+[incremental] public.hardware_intervention delete scan skipped for faster incremental sync
+[incremental] public.hardware_intervention complete: changed=0, deleted=skipped
+[incremental] public.hardware_ip started
+[incremental] public.hardware_ip upsert page 1: 1383 rows applied
+[incremental] public.hardware_ip delete scan skipped for faster incremental sync
+[incremental] public.hardware_ip complete: changed=1383, deleted=skipped
+[incremental] public.hardware_ip_pool started
+[incremental] public.hardware_ip_pool upsert page 1: 15 rows applied
+[incremental] public.hardware_ip_pool delete scan skipped for faster incremental sync
+[incremental] public.hardware_ip_pool complete: changed=15, deleted=skipped
+[incremental] public.hardware_relation started
+[incremental] public.hardware_relation upsert page 1: 2 rows applied
+[incremental] public.hardware_relation delete scan skipped for faster incremental sync
+[incremental] public.hardware_relation complete: changed=2, deleted=skipped
+[incremental] public.hardware_sub_type_included started
+[incremental] public.hardware_sub_type_included upsert page 1: 14 rows applied
+[incremental] public.hardware_sub_type_included delete scan skipped for faster incremental sync
+[incremental] public.hardware_sub_type_included complete: changed=14, deleted=skipped
+[incremental] public.hardware_subscription started
+[incremental] public.hardware_subscription upsert page 1: 5000 rows applied
+[incremental] public.hardware_subscription upsert page 2: 6039 rows applied
+[incremental] public.hardware_subscription delete scan skipped for faster incremental sync
+[incremental] public.hardware_subscription complete: changed=6039, deleted=skipped
+[incremental] public.hardware_subscription_history started
+[incremental] public.hardware_subscription_history upsert page 1: 5000 rows applied
+[incremental] public.hardware_subscription_history upsert page 2: 10000 rows applied
+[incremental] public.hardware_subscription_history upsert page 3: 15000 rows applied
+[incremental] public.hardware_subscription_history upsert page 4: 15057 rows applied
+[incremental] public.hardware_subscription_history delete scan skipped for faster incremental sync
+[incremental] public.hardware_subscription_history complete: changed=15057, deleted=skipped
+[incremental] public.hardware_subscription_price started
+[incremental] public.hardware_subscription_price upsert page 1: 5000 rows applied
+[incremental] public.hardware_subscription_price upsert page 2: 10000 rows applied
+[incremental] public.hardware_subscription_price upsert page 3: 10060 rows applied
+[incremental] public.hardware_subscription_price delete scan skipped for faster incremental sync
+[incremental] public.hardware_subscription_price complete: changed=10060, deleted=skipped
+[incremental] public.hardware_subscription_type started
+[incremental] public.hardware_subscription_type upsert page 1: 80 rows applied
+[incremental] public.hardware_subscription_type delete scan skipped for faster incremental sync
+[incremental] public.hardware_subscription_type complete: changed=80, deleted=skipped
+[incremental] public.hardware_trouble_ticket started
+[incremental] public.hardware_trouble_ticket delete scan skipped for faster incremental sync
+[incremental] public.hardware_trouble_ticket complete: changed=0, deleted=skipped
+[incremental] public.hardware_type started
+[incremental] public.hardware_type upsert page 1: 46 rows applied
+[incremental] public.hardware_type delete scan skipped for faster incremental sync
+[incremental] public.hardware_type complete: changed=46, deleted=skipped
+[incremental] public.hardware_type_configuration_definition started
+[incremental] public.hardware_type_configuration_definition upsert page 1: 375 rows applied
+[incremental] public.hardware_type_configuration_definition delete scan skipped for faster incremental sync
+[incremental] public.hardware_type_configuration_definition complete: changed=375, deleted=skipped
+[incremental] public.image_data_resource started
+[incremental] public.image_data_resource delete scan skipped for faster incremental sync
+[incremental] public.image_data_resource complete: changed=0, deleted=skipped
+[incremental] public.inventory_item started
+[incremental] public.inventory_item upsert page 1: 5000 rows applied
+[incremental] public.inventory_item upsert page 2: 7960 rows applied
+[incremental] public.inventory_item delete scan skipped for faster incremental sync
+[incremental] public.inventory_item complete: changed=7960, deleted=skipped
+[incremental] public.inventory_item_attribute started
+[incremental] public.inventory_item_attribute delete scan skipped for faster incremental sync
+[incremental] public.inventory_item_attribute complete: changed=0, deleted=skipped
+[incremental] public.inventory_item_detail started
+[incremental] public.inventory_item_detail upsert page 1: 5000 rows applied
+[incremental] public.inventory_item_detail upsert page 2: 10000 rows applied
+[incremental] public.inventory_item_detail upsert page 3: 15000 rows applied
+[incremental] public.inventory_item_detail upsert page 4: 17213 rows applied
+[incremental] public.inventory_item_detail delete scan skipped for faster incremental sync
+[incremental] public.inventory_item_detail complete: changed=17213, deleted=skipped
+[incremental] public.inventory_item_label started
+[incremental] public.inventory_item_label delete scan skipped for faster incremental sync
+[incremental] public.inventory_item_label complete: changed=0, deleted=skipped
+[incremental] public.inventory_item_label_appl started
+[incremental] public.inventory_item_label_appl delete scan skipped for faster incremental sync
+[incremental] public.inventory_item_label_appl complete: changed=0, deleted=skipped
+[incremental] public.inventory_item_label_type started
+[incremental] public.inventory_item_label_type delete scan skipped for faster incremental sync
+[incremental] public.inventory_item_label_type complete: changed=0, deleted=skipped
+[incremental] public.inventory_item_status started
+[incremental] public.inventory_item_status upsert page 1: 1 rows applied
+[incremental] public.inventory_item_status delete scan skipped for faster incremental sync
+[incremental] public.inventory_item_status complete: changed=1, deleted=skipped
+[incremental] public.inventory_item_temp_res started
+[incremental] public.inventory_item_temp_res delete scan skipped for faster incremental sync
+[incremental] public.inventory_item_temp_res complete: changed=0, deleted=skipped
+[incremental] public.inventory_item_type started
+[incremental] public.inventory_item_type upsert page 1: 2 rows applied
+[incremental] public.inventory_item_type delete scan skipped for faster incremental sync
+[incremental] public.inventory_item_type complete: changed=2, deleted=skipped
+[incremental] public.inventory_item_type_attr started
+[incremental] public.inventory_item_type_attr delete scan skipped for faster incremental sync
+[incremental] public.inventory_item_type_attr complete: changed=0, deleted=skipped
+[incremental] public.inventory_item_variance started
+[incremental] public.inventory_item_variance upsert page 1: 301 rows applied
+[incremental] public.inventory_item_variance delete scan skipped for faster incremental sync
+[incremental] public.inventory_item_variance complete: changed=301, deleted=skipped
+[incremental] public.inventory_transfer started
+[incremental] public.inventory_transfer delete scan skipped for faster incremental sync
+[incremental] public.inventory_transfer complete: changed=0, deleted=skipped
+[incremental] public.invoice started
+[incremental] public.invoice upsert page 1: 5000 rows applied
+[incremental] public.invoice upsert page 2: 10000 rows applied
+[incremental] public.invoice upsert page 3: 15000 rows applied
+[incremental] public.invoice upsert page 4: 20000 rows applied
+[incremental] public.invoice upsert page 5: 20340 rows applied
+[incremental] public.invoice delete scan skipped for faster incremental sync
+[incremental] public.invoice complete: changed=20340, deleted=skipped
+[incremental] public.invoice_attribute started
+[incremental] public.invoice_attribute delete scan skipped for faster incremental sync
+[incremental] public.invoice_attribute complete: changed=0, deleted=skipped
+[incremental] public.invoice_contact_mech started
+[incremental] public.invoice_contact_mech upsert page 1: 5000 rows applied
+[incremental] public.invoice_contact_mech upsert page 2: 10000 rows applied
+[incremental] public.invoice_contact_mech upsert page 3: 13105 rows applied
+[incremental] public.invoice_contact_mech delete scan skipped for faster incremental sync
+[incremental] public.invoice_contact_mech complete: changed=13105, deleted=skipped
+[incremental] public.invoice_item started
+[incremental] public.invoice_item upsert page 1: 5000 rows applied
+[incremental] public.invoice_item upsert page 2: 10000 rows applied
+[incremental] public.invoice_item upsert page 3: 15000 rows applied
+[incremental] public.invoice_item upsert page 4: 20000 rows applied
+[incremental] public.invoice_item upsert page 5: 25000 rows applied
+[incremental] public.invoice_item upsert page 6: 30000 rows applied
+[incremental] public.invoice_item upsert page 7: 35000 rows applied
+[incremental] public.invoice_item upsert page 8: 40000 rows applied
+[incremental] public.invoice_item upsert page 9: 45000 rows applied
+[incremental] public.invoice_item upsert page 10: 50000 rows applied
+[incremental] public.invoice_item upsert page 11: 55000 rows applied
+[incremental] public.invoice_item upsert page 12: 60000 rows applied
+[incremental] public.invoice_item upsert page 13: 65000 rows applied
+[incremental] public.invoice_item upsert page 14: 70000 rows applied
+[incremental] public.invoice_item upsert page 15: 75000 rows applied
+[incremental] public.invoice_item upsert page 16: 80000 rows applied
+[incremental] public.invoice_item upsert page 17: 85000 rows applied
+[incremental] public.invoice_item upsert page 18: 90000 rows applied
+[incremental] public.invoice_item upsert page 19: 95000 rows applied
+[incremental] public.invoice_item upsert page 20: 100000 rows applied
+[incremental] public.invoice_item upsert page 21: 105000 rows applied
+[incremental] public.invoice_item upsert page 22: 110000 rows applied
+[incremental] public.invoice_item upsert page 23: 115000 rows applied
+[incremental] public.invoice_item upsert page 24: 120000 rows applied
+[incremental] public.invoice_item upsert page 25: 125000 rows applied
+[incremental] public.invoice_item upsert page 26: 130000 rows applied
+[incremental] public.invoice_item upsert page 27: 135000 rows applied
+[incremental] public.invoice_item upsert page 28: 140000 rows applied
+[incremental] public.invoice_item upsert page 29: 145000 rows applied
+[incremental] public.invoice_item upsert page 30: 150000 rows applied
+[incremental] public.invoice_item upsert page 31: 155000 rows applied
+[incremental] public.invoice_item upsert page 32: 160000 rows applied
+[incremental] public.invoice_item upsert page 33: 165000 rows applied
+[incremental] public.invoice_item upsert page 34: 170000 rows applied
+[incremental] public.invoice_item upsert page 35: 175000 rows applied
+[incremental] public.invoice_item upsert page 36: 180000 rows applied
+[incremental] public.invoice_item upsert page 37: 185000 rows applied
+[incremental] public.invoice_item upsert page 38: 190000 rows applied
+[incremental] public.invoice_item upsert page 39: 195000 rows applied
+[incremental] public.invoice_item upsert page 40: 200000 rows applied
+[incremental] public.invoice_item upsert page 41: 205000 rows applied
+[incremental] public.invoice_item upsert page 42: 210000 rows applied
+[incremental] public.invoice_item upsert page 43: 215000 rows applied
+[incremental] public.invoice_item upsert page 44: 220000 rows applied
+[incremental] public.invoice_item upsert page 45: 225000 rows applied
+[incremental] public.invoice_item upsert page 46: 230000 rows applied
+[incremental] public.invoice_item upsert page 47: 235000 rows applied
+[incremental] public.invoice_item upsert page 48: 240000 rows applied
+[incremental] public.invoice_item upsert page 49: 245000 rows applied
+[incremental] public.invoice_item upsert page 50: 250000 rows applied
+[incremental] public.invoice_item upsert page 51: 255000 rows applied
+[incremental] public.invoice_item upsert page 52: 260000 rows applied
+[incremental] public.invoice_item upsert page 53: 265000 rows applied
+[incremental] public.invoice_item upsert page 54: 270000 rows applied
+[incremental] public.invoice_item upsert page 55: 275000 rows applied
+[incremental] public.invoice_item upsert page 56: 280000 rows applied
+[incremental] public.invoice_item upsert page 57: 285000 rows applied
+[incremental] public.invoice_item upsert page 58: 290000 rows applied
+[incremental] public.invoice_item upsert page 59: 295000 rows applied
+[incremental] public.invoice_item upsert page 60: 300000 rows applied
+[incremental] public.invoice_item upsert page 61: 305000 rows applied
+[incremental] public.invoice_item upsert page 62: 310000 rows applied
+[incremental] public.invoice_item upsert page 63: 315000 rows applied
+[incremental] public.invoice_item upsert page 64: 320000 rows applied
+[incremental] public.invoice_item upsert page 65: 324421 rows applied
+[incremental] public.invoice_item delete scan skipped for faster incremental sync
+[incremental] public.invoice_item complete: changed=324421, deleted=skipped
+[incremental] public.invoice_item_attribute started
+[incremental] public.invoice_item_attribute delete scan skipped for faster incremental sync
+[incremental] public.invoice_item_attribute complete: changed=0, deleted=skipped
+[incremental] public.invoice_item_type started
+[incremental] public.invoice_item_type upsert page 1: 137 rows applied
+[incremental] public.invoice_item_type delete scan skipped for faster incremental sync
+[incremental] public.invoice_item_type complete: changed=137, deleted=skipped
+[incremental] public.invoice_item_type_attr started
+[incremental] public.invoice_item_type_attr delete scan skipped for faster incremental sync
+[incremental] public.invoice_item_type_attr complete: changed=0, deleted=skipped
+[incremental] public.invoice_item_type_gl_account started
+[incremental] public.invoice_item_type_gl_account upsert page 1: 6 rows applied
+[incremental] public.invoice_item_type_gl_account delete scan skipped for faster incremental sync
+[incremental] public.invoice_item_type_gl_account complete: changed=6, deleted=skipped
+[incremental] public.invoice_item_type_map started
+[incremental] public.invoice_item_type_map upsert page 1: 63 rows applied
+[incremental] public.invoice_item_type_map delete scan skipped for faster incremental sync
+[incremental] public.invoice_item_type_map complete: changed=63, deleted=skipped
+[incremental] public.invoice_role started
+[incremental] public.invoice_role upsert page 1: 5000 rows applied
+[incremental] public.invoice_role upsert page 2: 10000 rows applied
+[incremental] public.invoice_role upsert page 3: 15000 rows applied
+[incremental] public.invoice_role upsert page 4: 20000 rows applied
+[incremental] public.invoice_role upsert page 5: 25000 rows applied
+[incremental] public.invoice_role upsert page 6: 30000 rows applied
+[incremental] public.invoice_role upsert page 7: 35000 rows applied
+[incremental] public.invoice_role upsert page 8: 40000 rows applied
+[incremental] public.invoice_role upsert page 9: 40675 rows applied
+[incremental] public.invoice_role delete scan skipped for faster incremental sync
+[incremental] public.invoice_role complete: changed=40675, deleted=skipped
+[incremental] public.invoice_sent started
+[incremental] public.invoice_sent upsert page 1: 5000 rows applied
+[incremental] public.invoice_sent upsert page 2: 10000 rows applied
+[incremental] public.invoice_sent upsert page 3: 15000 rows applied
+[incremental] public.invoice_sent upsert page 4: 20000 rows applied
+[incremental] public.invoice_sent upsert page 5: 20995 rows applied
+[incremental] public.invoice_sent delete scan skipped for faster incremental sync
+[incremental] public.invoice_sent complete: changed=20995, deleted=skipped
+[incremental] public.invoice_status started
+[incremental] public.invoice_status upsert page 1: 5000 rows applied
+[incremental] public.invoice_status upsert page 2: 10000 rows applied
+[incremental] public.invoice_status upsert page 3: 15000 rows applied
+[incremental] public.invoice_status upsert page 4: 20000 rows applied
+[incremental] public.invoice_status upsert page 5: 25000 rows applied
+[incremental] public.invoice_status upsert page 6: 30000 rows applied
+[incremental] public.invoice_status upsert page 7: 35000 rows applied
+[incremental] public.invoice_status upsert page 8: 40000 rows applied
+[incremental] public.invoice_status upsert page 9: 42965 rows applied
+[incremental] public.invoice_status delete scan skipped for faster incremental sync
+[incremental] public.invoice_status complete: changed=42965, deleted=skipped
+[incremental] public.invoice_term started
+[incremental] public.invoice_term delete scan skipped for faster incremental sync
+[incremental] public.invoice_term complete: changed=0, deleted=skipped
+[incremental] public.invoice_term_attribute started
+[incremental] public.invoice_term_attribute delete scan skipped for faster incremental sync
+[incremental] public.invoice_term_attribute complete: changed=0, deleted=skipped
+[incremental] public.invoice_type started
+[incremental] public.invoice_type upsert page 1: 12 rows applied
+[incremental] public.invoice_type delete scan skipped for faster incremental sync
+[incremental] public.invoice_type complete: changed=12, deleted=skipped
+[incremental] public.invoice_type_attr started
+[incremental] public.invoice_type_attr delete scan skipped for faster incremental sync
+[incremental] public.invoice_type_attr complete: changed=0, deleted=skipped
+[incremental] public.item_issuance started
+[incremental] public.item_issuance upsert page 1: 1 rows applied
+[incremental] public.item_issuance delete scan skipped for faster incremental sync
+[incremental] public.item_issuance complete: changed=1, deleted=skipped
+[incremental] public.item_issuance_role started
+[incremental] public.item_issuance_role upsert page 1: 1 rows applied
+[incremental] public.item_issuance_role delete scan skipped for faster incremental sync
+[incremental] public.item_issuance_role complete: changed=1, deleted=skipped
+[incremental] public.item_layout started
+[incremental] public.item_layout upsert page 1: 172 rows applied
+[incremental] public.item_layout delete scan skipped for faster incremental sync
+[incremental] public.item_layout complete: changed=172, deleted=skipped
+[incremental] public.item_note started
+[incremental] public.item_note upsert page 1: 5000 rows applied
+[incremental] public.item_note upsert page 2: 5314 rows applied
+[incremental] public.item_note delete scan skipped for faster incremental sync
+[incremental] public.item_note complete: changed=5314, deleted=skipped
+[incremental] public.item_sequence started
+[incremental] public.item_sequence upsert page 1: 5000 rows applied
+[incremental] public.item_sequence upsert page 2: 10000 rows applied
+[incremental] public.item_sequence upsert page 3: 15000 rows applied
+[incremental] public.item_sequence upsert page 4: 20000 rows applied
+[incremental] public.item_sequence upsert page 5: 20471 rows applied
+[incremental] public.item_sequence delete scan skipped for faster incremental sync
+[incremental] public.item_sequence complete: changed=20471, deleted=skipped
+[incremental] public.job_sandbox started
+[incremental] public.job_sandbox upsert page 1: 5000 rows applied
+[incremental] public.job_sandbox upsert page 2: 10000 rows applied
+[incremental] public.job_sandbox upsert page 3: 15000 rows applied
+[incremental] public.job_sandbox upsert page 4: 20000 rows applied
+[incremental] public.job_sandbox upsert page 5: 25000 rows applied
+[incremental] public.job_sandbox upsert page 6: 30000 rows applied
+[incremental] public.job_sandbox upsert page 7: 35000 rows applied
+[incremental] public.job_sandbox upsert page 8: 40000 rows applied
+[incremental] public.job_sandbox upsert page 9: 45000 rows applied
+[incremental] public.job_sandbox upsert page 10: 50000 rows applied
+[incremental] public.job_sandbox upsert page 11: 55000 rows applied
+[incremental] public.job_sandbox upsert page 12: 60000 rows applied
+[incremental] public.job_sandbox upsert page 13: 65000 rows applied
+[incremental] public.job_sandbox upsert page 14: 70000 rows applied
+[incremental] public.job_sandbox upsert page 15: 75000 rows applied
+[incremental] public.job_sandbox upsert page 16: 80000 rows applied
+[incremental] public.job_sandbox upsert page 17: 85000 rows applied
+[incremental] public.job_sandbox upsert page 18: 90000 rows applied
+[incremental] public.job_sandbox upsert page 19: 95000 rows applied
+[incremental] public.job_sandbox upsert page 20: 100000 rows applied
+[incremental] public.job_sandbox upsert page 21: 105000 rows applied
+[incremental] public.job_sandbox upsert page 22: 110000 rows applied
+[incremental] public.job_sandbox upsert page 23: 115000 rows applied
+[incremental] public.job_sandbox upsert page 24: 120000 rows applied
+[incremental] public.job_sandbox upsert page 25: 125000 rows applied
+[incremental] public.job_sandbox upsert page 26: 130000 rows applied
+[incremental] public.job_sandbox upsert page 27: 135000 rows applied
+[incremental] public.job_sandbox upsert page 28: 140000 rows applied
+[incremental] public.job_sandbox upsert page 29: 145000 rows applied
+[incremental] public.job_sandbox upsert page 30: 150000 rows applied
+[incremental] public.job_sandbox upsert page 31: 155000 rows applied
+[incremental] public.job_sandbox upsert page 32: 160000 rows applied
+[incremental] public.job_sandbox upsert page 33: 165000 rows applied
+[incremental] public.job_sandbox upsert page 34: 170000 rows applied
+[incremental] public.job_sandbox upsert page 35: 175000 rows applied
+[incremental] public.job_sandbox upsert page 36: 180000 rows applied
+[incremental] public.job_sandbox upsert page 37: 185000 rows applied
+[incremental] public.job_sandbox upsert page 38: 190000 rows applied
+[incremental] public.job_sandbox upsert page 39: 195000 rows applied
+[incremental] public.job_sandbox upsert page 40: 200000 rows applied
+[incremental] public.job_sandbox upsert page 41: 205000 rows applied
+[incremental] public.job_sandbox upsert page 42: 210000 rows applied
+[incremental] public.job_sandbox upsert page 43: 215000 rows applied
+[incremental] public.job_sandbox upsert page 44: 220000 rows applied
+[incremental] public.job_sandbox upsert page 45: 225000 rows applied
+[incremental] public.job_sandbox upsert page 46: 230000 rows applied
+[incremental] public.job_sandbox upsert page 47: 235000 rows applied
+[incremental] public.job_sandbox upsert page 48: 240000 rows applied
+[incremental] public.job_sandbox upsert page 49: 245000 rows applied
+[incremental] public.job_sandbox upsert page 50: 250000 rows applied
+[incremental] public.job_sandbox upsert page 51: 255000 rows applied
+[incremental] public.job_sandbox upsert page 52: 260000 rows applied
+[incremental] public.job_sandbox upsert page 53: 265000 rows applied
+[incremental] public.job_sandbox upsert page 54: 270000 rows applied
+[incremental] public.job_sandbox upsert page 55: 275000 rows applied
+[incremental] public.job_sandbox upsert page 56: 280000 rows applied
+[incremental] public.job_sandbox upsert page 57: 285000 rows applied
+[incremental] public.job_sandbox upsert page 58: 290000 rows applied
+[incremental] public.job_sandbox upsert page 59: 295000 rows applied
+[incremental] public.job_sandbox upsert page 60: 300000 rows applied
+[incremental] public.job_sandbox upsert page 61: 305000 rows applied
+[incremental] public.job_sandbox upsert page 62: 310000 rows applied
+[incremental] public.job_sandbox upsert page 63: 315000 rows applied
+[incremental] public.job_sandbox upsert page 64: 320000 rows applied
+[incremental] public.job_sandbox upsert page 65: 325000 rows applied
+[incremental] public.job_sandbox upsert page 66: 330000 rows applied
+[incremental] public.job_sandbox upsert page 67: 335000 rows applied
+[incremental] public.job_sandbox upsert page 68: 340000 rows applied
+[incremental] public.job_sandbox upsert page 69: 345000 rows applied
+[incremental] public.job_sandbox upsert page 70: 350000 rows applied
+[incremental] public.job_sandbox upsert page 71: 355000 rows applied
+[incremental] public.job_sandbox upsert page 72: 360000 rows applied
+[incremental] public.job_sandbox upsert page 73: 365000 rows applied
+[incremental] public.job_sandbox upsert page 74: 370000 rows applied
+[incremental] public.job_sandbox upsert page 75: 375000 rows applied
+[incremental] public.job_sandbox upsert page 76: 380000 rows applied
+[incremental] public.job_sandbox upsert page 77: 385000 rows applied
+[incremental] public.job_sandbox upsert page 78: 390000 rows applied
+[incremental] public.job_sandbox upsert page 79: 395000 rows applied
+[incremental] public.job_sandbox upsert page 80: 400000 rows applied
+[incremental] public.job_sandbox upsert page 81: 405000 rows applied
+[incremental] public.job_sandbox upsert page 82: 410000 rows applied
+[incremental] public.job_sandbox upsert page 83: 415000 rows applied
+[incremental] public.job_sandbox upsert page 84: 420000 rows applied
+[incremental] public.job_sandbox upsert page 85: 425000 rows applied
+[incremental] public.job_sandbox upsert page 86: 430000 rows applied
+[incremental] public.job_sandbox upsert page 87: 435000 rows applied
+[incremental] public.job_sandbox upsert page 88: 440000 rows applied
+[incremental] public.job_sandbox upsert page 89: 445000 rows applied
+[incremental] public.job_sandbox upsert page 90: 450000 rows applied
+[incremental] public.job_sandbox upsert page 91: 455000 rows applied
+[incremental] public.job_sandbox upsert page 92: 460000 rows applied
+[incremental] public.job_sandbox upsert page 93: 465000 rows applied
+[incremental] public.job_sandbox upsert page 94: 470000 rows applied
+[incremental] public.job_sandbox upsert page 95: 475000 rows applied
+[incremental] public.job_sandbox upsert page 96: 480000 rows applied
+[incremental] public.job_sandbox upsert page 97: 485000 rows applied
+[incremental] public.job_sandbox upsert page 98: 490000 rows applied
+[incremental] public.job_sandbox upsert page 99: 495000 rows applied
+[incremental] public.job_sandbox upsert page 100: 500000 rows applied
+[incremental] public.job_sandbox upsert page 101: 505000 rows applied
+[incremental] public.job_sandbox upsert page 102: 510000 rows applied
+[incremental] public.job_sandbox upsert page 103: 515000 rows applied
+[incremental] public.job_sandbox upsert page 104: 520000 rows applied
+[incremental] public.job_sandbox upsert page 105: 525000 rows applied
+[incremental] public.job_sandbox upsert page 106: 530000 rows applied
+[incremental] public.job_sandbox upsert page 107: 535000 rows applied
+[incremental] public.job_sandbox upsert page 108: 540000 rows applied
+[incremental] public.job_sandbox upsert page 109: 545000 rows applied
+[incremental] public.job_sandbox upsert page 110: 550000 rows applied
+[incremental] public.job_sandbox upsert page 111: 555000 rows applied
+[incremental] public.job_sandbox upsert page 112: 560000 rows applied
+[incremental] public.job_sandbox upsert page 113: 565000 rows applied
+[incremental] public.job_sandbox upsert page 114: 570000 rows applied
+[incremental] public.job_sandbox upsert page 115: 575000 rows applied
+[incremental] public.job_sandbox upsert page 116: 580000 rows applied
+[incremental] public.job_sandbox upsert page 117: 585000 rows applied
+[incremental] public.job_sandbox upsert page 118: 590000 rows applied
+[incremental] public.job_sandbox upsert page 119: 595000 rows applied
+[incremental] public.job_sandbox upsert page 120: 600000 rows applied
+[incremental] public.job_sandbox upsert page 121: 605000 rows applied
+[incremental] public.job_sandbox upsert page 122: 610000 rows applied
+[incremental] public.job_sandbox upsert page 123: 615000 rows applied
+[incremental] public.job_sandbox upsert page 124: 620000 rows applied
+[incremental] public.job_sandbox upsert page 125: 625000 rows applied
+[incremental] public.job_sandbox upsert page 126: 630000 rows applied
+[incremental] public.job_sandbox upsert page 127: 635000 rows applied
+[incremental] public.job_sandbox upsert page 128: 640000 rows applied
+[incremental] public.job_sandbox upsert page 129: 645000 rows applied
+[incremental] public.job_sandbox upsert page 130: 650000 rows applied
+[incremental] public.job_sandbox upsert page 131: 655000 rows applied
+[incremental] public.job_sandbox upsert page 132: 660000 rows applied
+[incremental] public.job_sandbox upsert page 133: 665000 rows applied
+[incremental] public.job_sandbox upsert page 134: 670000 rows applied
+[incremental] public.job_sandbox upsert page 135: 675000 rows applied
+[incremental] public.job_sandbox upsert page 136: 680000 rows applied
+[incremental] public.job_sandbox upsert page 137: 685000 rows applied
+[incremental] public.job_sandbox upsert page 138: 690000 rows applied
+[incremental] public.job_sandbox upsert page 139: 695000 rows applied
+[incremental] public.job_sandbox upsert page 140: 700000 rows applied
+[incremental] public.job_sandbox upsert page 141: 705000 rows applied
+[incremental] public.job_sandbox upsert page 142: 710000 rows applied
+[incremental] public.job_sandbox upsert page 143: 715000 rows applied
+[incremental] public.job_sandbox upsert page 144: 720000 rows applied
+[incremental] public.job_sandbox upsert page 145: 725000 rows applied
+[incremental] public.job_sandbox upsert page 146: 730000 rows applied
+[incremental] public.job_sandbox upsert page 147: 735000 rows applied
+[incremental] public.job_sandbox upsert page 148: 740000 rows applied
+[incremental] public.job_sandbox upsert page 149: 745000 rows applied
+[incremental] public.job_sandbox upsert page 150: 750000 rows applied
+[incremental] public.job_sandbox upsert page 151: 755000 rows applied
+[incremental] public.job_sandbox upsert page 152: 760000 rows applied
+[incremental] public.job_sandbox upsert page 153: 765000 rows applied
+[incremental] public.job_sandbox upsert page 154: 770000 rows applied
+[incremental] public.job_sandbox upsert page 155: 775000 rows applied
+[incremental] public.job_sandbox upsert page 156: 780000 rows applied
+[incremental] public.job_sandbox upsert page 157: 785000 rows applied
+[incremental] public.job_sandbox upsert page 158: 790000 rows applied
+[incremental] public.job_sandbox upsert page 159: 795000 rows applied
+[incremental] public.job_sandbox upsert page 160: 800000 rows applied
+[incremental] public.job_sandbox upsert page 161: 805000 rows applied
+[incremental] public.job_sandbox upsert page 162: 810000 rows applied
+[incremental] public.job_sandbox upsert page 163: 815000 rows applied
+[incremental] public.job_sandbox upsert page 164: 820000 rows applied
+[incremental] public.job_sandbox upsert page 165: 825000 rows applied
+[incremental] public.job_sandbox upsert page 166: 830000 rows applied
+[incremental] public.job_sandbox upsert page 167: 835000 rows applied
+[incremental] public.job_sandbox upsert page 168: 840000 rows applied
+[incremental] public.job_sandbox upsert page 169: 845000 rows applied
+[incremental] public.job_sandbox upsert page 170: 850000 rows applied
+[incremental] public.job_sandbox upsert page 171: 855000 rows applied
+[incremental] public.job_sandbox upsert page 172: 860000 rows applied
+[incremental] public.job_sandbox upsert page 173: 865000 rows applied
+[incremental] public.job_sandbox upsert page 174: 870000 rows applied
+[incremental] public.job_sandbox upsert page 175: 875000 rows applied
+[incremental] public.job_sandbox upsert page 176: 880000 rows applied
+[incremental] public.job_sandbox upsert page 177: 885000 rows applied
+[incremental] public.job_sandbox upsert page 178: 890000 rows applied
+[incremental] public.job_sandbox upsert page 179: 895000 rows applied
+[incremental] public.job_sandbox upsert page 180: 900000 rows applied
+[incremental] public.job_sandbox upsert page 181: 905000 rows applied
+[incremental] public.job_sandbox upsert page 182: 910000 rows applied
+[incremental] public.job_sandbox upsert page 183: 915000 rows applied
+[incremental] public.job_sandbox upsert page 184: 920000 rows applied
+[incremental] public.job_sandbox upsert page 185: 925000 rows applied
+[incremental] public.job_sandbox upsert page 186: 930000 rows applied
+[incremental] public.job_sandbox upsert page 187: 935000 rows applied
+[incremental] public.job_sandbox upsert page 188: 940000 rows applied
+[incremental] public.job_sandbox upsert page 189: 945000 rows applied
+[incremental] public.job_sandbox upsert page 190: 950000 rows applied
+[incremental] public.job_sandbox upsert page 191: 955000 rows applied
+[incremental] public.job_sandbox upsert page 192: 960000 rows applied
+[incremental] public.job_sandbox upsert page 193: 965000 rows applied
+[incremental] public.job_sandbox upsert page 194: 970000 rows applied
+[incremental] public.job_sandbox upsert page 195: 975000 rows applied
+[incremental] public.job_sandbox upsert page 196: 980000 rows applied
+[incremental] public.job_sandbox upsert page 197: 985000 rows applied
+[incremental] public.job_sandbox upsert page 198: 990000 rows applied
+[incremental] public.job_sandbox upsert page 199: 995000 rows applied
+[incremental] public.job_sandbox upsert page 200: 1000000 rows applied
+[incremental] public.job_sandbox upsert page 201: 1005000 rows applied
+[incremental] public.job_sandbox upsert page 202: 1010000 rows applied
+[incremental] public.job_sandbox upsert page 203: 1015000 rows applied
+[incremental] public.job_sandbox upsert page 204: 1020000 rows applied
+[incremental] public.job_sandbox upsert page 205: 1025000 rows applied
+[incremental] public.job_sandbox upsert page 206: 1030000 rows applied
+[incremental] public.job_sandbox upsert page 207: 1035000 rows applied
+[incremental] public.job_sandbox upsert page 208: 1040000 rows applied
+[incremental] public.job_sandbox upsert page 209: 1045000 rows applied
+[incremental] public.job_sandbox upsert page 210: 1050000 rows applied
+[incremental] public.job_sandbox upsert page 211: 1055000 rows applied
+[incremental] public.job_sandbox upsert page 212: 1060000 rows applied
+[incremental] public.job_sandbox upsert page 213: 1065000 rows applied
+[incremental] public.job_sandbox upsert page 214: 1070000 rows applied
+[incremental] public.job_sandbox upsert page 215: 1075000 rows applied
+[incremental] public.job_sandbox upsert page 216: 1080000 rows applied
+[incremental] public.job_sandbox upsert page 217: 1085000 rows applied
+[incremental] public.job_sandbox upsert page 218: 1090000 rows applied
+[incremental] public.job_sandbox upsert page 219: 1095000 rows applied
+[incremental] public.job_sandbox upsert page 220: 1100000 rows applied
+[incremental] public.job_sandbox upsert page 221: 1105000 rows applied
+[incremental] public.job_sandbox upsert page 222: 1110000 rows applied
+[incremental] public.job_sandbox upsert page 223: 1115000 rows applied
+[incremental] public.job_sandbox upsert page 224: 1120000 rows applied
+[incremental] public.job_sandbox upsert page 225: 1125000 rows applied
+[incremental] public.job_sandbox upsert page 226: 1130000 rows applied
+[incremental] public.job_sandbox upsert page 227: 1135000 rows applied
+[incremental] public.job_sandbox upsert page 228: 1140000 rows applied
+[incremental] public.job_sandbox upsert page 229: 1145000 rows applied
+[incremental] public.job_sandbox upsert page 230: 1150000 rows applied
+[incremental] public.job_sandbox upsert page 231: 1155000 rows applied
+[incremental] public.job_sandbox upsert page 232: 1160000 rows applied
+[incremental] public.job_sandbox upsert page 233: 1165000 rows applied
+[incremental] public.job_sandbox upsert page 234: 1170000 rows applied
+[incremental] public.job_sandbox upsert page 235: 1175000 rows applied
+[incremental] public.job_sandbox upsert page 236: 1180000 rows applied
+[incremental] public.job_sandbox upsert page 237: 1185000 rows applied
+[incremental] public.job_sandbox upsert page 238: 1190000 rows applied
+[incremental] public.job_sandbox upsert page 239: 1195000 rows applied
+[incremental] public.job_sandbox upsert page 240: 1200000 rows applied
+[incremental] public.job_sandbox upsert page 241: 1205000 rows applied
+[incremental] public.job_sandbox upsert page 242: 1210000 rows applied
+[incremental] public.job_sandbox upsert page 243: 1215000 rows applied
+[incremental] public.job_sandbox upsert page 244: 1220000 rows applied
+[incremental] public.job_sandbox upsert page 245: 1225000 rows applied
+[incremental] public.job_sandbox upsert page 246: 1230000 rows applied
+[incremental] public.job_sandbox upsert page 247: 1235000 rows applied
+[incremental] public.job_sandbox upsert page 248: 1240000 rows applied
+[incremental] public.job_sandbox upsert page 249: 1245000 rows applied
+[incremental] public.job_sandbox upsert page 250: 1250000 rows applied
+[incremental] public.job_sandbox upsert page 251: 1255000 rows applied
+[incremental] public.job_sandbox upsert page 252: 1260000 rows applied
+[incremental] public.job_sandbox upsert page 253: 1265000 rows applied
+[incremental] public.job_sandbox upsert page 254: 1270000 rows applied
+[incremental] public.job_sandbox upsert page 255: 1275000 rows applied
+[incremental] public.job_sandbox upsert page 256: 1280000 rows applied
+[incremental] public.job_sandbox upsert page 257: 1285000 rows applied
+[incremental] public.job_sandbox upsert page 258: 1290000 rows applied
+[incremental] public.job_sandbox upsert page 259: 1295000 rows applied
+[incremental] public.job_sandbox upsert page 260: 1300000 rows applied
+[incremental] public.job_sandbox upsert page 261: 1305000 rows applied
+[incremental] public.job_sandbox upsert page 262: 1310000 rows applied
+[incremental] public.job_sandbox upsert page 263: 1315000 rows applied
+[incremental] public.job_sandbox upsert page 264: 1320000 rows applied
+[incremental] public.job_sandbox upsert page 265: 1325000 rows applied
+[incremental] public.job_sandbox upsert page 266: 1330000 rows applied
+[incremental] public.job_sandbox upsert page 267: 1335000 rows applied
+[incremental] public.job_sandbox upsert page 268: 1340000 rows applied
+[incremental] public.job_sandbox upsert page 269: 1345000 rows applied
+[incremental] public.job_sandbox upsert page 270: 1350000 rows applied
+[incremental] public.job_sandbox upsert page 271: 1355000 rows applied
+[incremental] public.job_sandbox upsert page 272: 1360000 rows applied
+[incremental] public.job_sandbox upsert page 273: 1365000 rows applied
+[incremental] public.job_sandbox upsert page 274: 1370000 rows applied
+[incremental] public.job_sandbox upsert page 275: 1375000 rows applied
+[incremental] public.job_sandbox upsert page 276: 1380000 rows applied
+[incremental] public.job_sandbox upsert page 277: 1385000 rows applied
+[incremental] public.job_sandbox upsert page 278: 1390000 rows applied
+[incremental] public.job_sandbox upsert page 279: 1395000 rows applied
+[incremental] public.job_sandbox upsert page 280: 1400000 rows applied
+[incremental] public.job_sandbox upsert page 281: 1405000 rows applied
+[incremental] public.job_sandbox upsert page 282: 1410000 rows applied
+[incremental] public.job_sandbox upsert page 283: 1415000 rows applied
+[incremental] public.job_sandbox upsert page 284: 1420000 rows applied
+[incremental] public.job_sandbox upsert page 285: 1425000 rows applied
+[incremental] public.job_sandbox upsert page 286: 1430000 rows applied
+[incremental] public.job_sandbox upsert page 287: 1435000 rows applied
+[incremental] public.job_sandbox upsert page 288: 1440000 rows applied
+[incremental] public.job_sandbox upsert page 289: 1445000 rows applied
+[incremental] public.job_sandbox upsert page 290: 1450000 rows applied
+[incremental] public.job_sandbox upsert page 291: 1455000 rows applied
+[incremental] public.job_sandbox upsert page 292: 1460000 rows applied
+[incremental] public.job_sandbox upsert page 293: 1465000 rows applied
+[incremental] public.job_sandbox upsert page 294: 1470000 rows applied
+[incremental] public.job_sandbox upsert page 295: 1475000 rows applied
+[incremental] public.job_sandbox upsert page 296: 1480000 rows applied
+[incremental] public.job_sandbox upsert page 297: 1485000 rows applied
+[incremental] public.job_sandbox upsert page 298: 1490000 rows applied
+[incremental] public.job_sandbox upsert page 299: 1495000 rows applied
+[incremental] public.job_sandbox upsert page 300: 1500000 rows applied
+[incremental] public.job_sandbox upsert page 301: 1505000 rows applied
+[incremental] public.job_sandbox upsert page 302: 1510000 rows applied
+[incremental] public.job_sandbox upsert page 303: 1515000 rows applied
+[incremental] public.job_sandbox upsert page 304: 1520000 rows applied
+[incremental] public.job_sandbox upsert page 305: 1525000 rows applied
+[incremental] public.job_sandbox upsert page 306: 1530000 rows applied
+[incremental] public.job_sandbox upsert page 307: 1535000 rows applied
+[incremental] public.job_sandbox upsert page 308: 1540000 rows applied
+[incremental] public.job_sandbox upsert page 309: 1545000 rows applied
+[incremental] public.job_sandbox upsert page 310: 1550000 rows applied
+[incremental] public.job_sandbox upsert page 311: 1555000 rows applied
+[incremental] public.job_sandbox upsert page 312: 1560000 rows applied
+[incremental] public.job_sandbox upsert page 313: 1565000 rows applied
+[incremental] public.job_sandbox upsert page 314: 1570000 rows applied
+[incremental] public.job_sandbox upsert page 315: 1575000 rows applied
+[incremental] public.job_sandbox upsert page 316: 1580000 rows applied
+[incremental] public.job_sandbox upsert page 317: 1585000 rows applied
+[incremental] public.job_sandbox upsert page 318: 1590000 rows applied
+[incremental] public.job_sandbox upsert page 319: 1595000 rows applied
+[incremental] public.job_sandbox upsert page 320: 1600000 rows applied
+[incremental] public.job_sandbox upsert page 321: 1605000 rows applied
+[incremental] public.job_sandbox upsert page 322: 1610000 rows applied
+[incremental] public.job_sandbox upsert page 323: 1615000 rows applied
+[incremental] public.job_sandbox upsert page 324: 1620000 rows applied
+[incremental] public.job_sandbox upsert page 325: 1625000 rows applied
+[incremental] public.job_sandbox upsert page 326: 1630000 rows applied
+[incremental] public.job_sandbox upsert page 327: 1635000 rows applied
+[incremental] public.job_sandbox upsert page 328: 1640000 rows applied
+[incremental] public.job_sandbox upsert page 329: 1645000 rows applied
+[incremental] public.job_sandbox upsert page 330: 1650000 rows applied
+[incremental] public.job_sandbox upsert page 331: 1655000 rows applied
+[incremental] public.job_sandbox upsert page 332: 1660000 rows applied
+[incremental] public.job_sandbox upsert page 333: 1665000 rows applied
+[incremental] public.job_sandbox upsert page 334: 1670000 rows applied
+[incremental] public.job_sandbox upsert page 335: 1675000 rows applied
+[incremental] public.job_sandbox upsert page 336: 1680000 rows applied
+[incremental] public.job_sandbox upsert page 337: 1685000 rows applied
+[incremental] public.job_sandbox upsert page 338: 1690000 rows applied
+[incremental] public.job_sandbox upsert page 339: 1695000 rows applied
+[incremental] public.job_sandbox upsert page 340: 1700000 rows applied
+[incremental] public.job_sandbox upsert page 341: 1705000 rows applied
+[incremental] public.job_sandbox upsert page 342: 1710000 rows applied
+[incremental] public.job_sandbox upsert page 343: 1715000 rows applied
+[incremental] public.job_sandbox upsert page 344: 1720000 rows applied
+[incremental] public.job_sandbox upsert page 345: 1725000 rows applied
+[incremental] public.job_sandbox upsert page 346: 1730000 rows applied
+[incremental] public.job_sandbox upsert page 347: 1735000 rows applied
+[incremental] public.job_sandbox upsert page 348: 1740000 rows applied
+[incremental] public.job_sandbox upsert page 349: 1745000 rows applied
+[incremental] public.job_sandbox upsert page 350: 1750000 rows applied
+[incremental] public.job_sandbox upsert page 351: 1755000 rows applied
+[incremental] public.job_sandbox upsert page 352: 1760000 rows applied
+[incremental] public.job_sandbox upsert page 353: 1765000 rows applied
+[incremental] public.job_sandbox upsert page 354: 1770000 rows applied
+[incremental] public.job_sandbox upsert page 355: 1775000 rows applied
+[incremental] public.job_sandbox upsert page 356: 1780000 rows applied
+[incremental] public.job_sandbox upsert page 357: 1785000 rows applied
+[incremental] public.job_sandbox upsert page 358: 1790000 rows applied
+[incremental] public.job_sandbox upsert page 359: 1795000 rows applied
+[incremental] public.job_sandbox upsert page 360: 1800000 rows applied
+[incremental] public.job_sandbox upsert page 361: 1805000 rows applied
+[incremental] public.job_sandbox upsert page 362: 1810000 rows applied
+[incremental] public.job_sandbox upsert page 363: 1815000 rows applied

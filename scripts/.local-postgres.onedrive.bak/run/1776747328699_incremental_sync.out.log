@@ -1,0 +1,36 @@
+Local PostgreSQL is listening on 127.0.0.1:55432
+[incremental] public.accommodation_class started
+[incremental] public.accommodation_class delete scan skipped for faster incremental sync
+[incremental] public.accommodation_class complete: changed=0, deleted=skipped
+[incremental] public.accommodation_map started
+[incremental] public.accommodation_map delete scan skipped for faster incremental sync
+[incremental] public.accommodation_map complete: changed=0, deleted=skipped
+[incremental] public.accommodation_map_type started
+[incremental] public.accommodation_map_type delete scan skipped for faster incremental sync
+[incremental] public.accommodation_map_type complete: changed=0, deleted=skipped
+[incremental] public.accommodation_spot started
+[incremental] public.accommodation_spot delete scan skipped for faster incremental sync
+[incremental] public.accommodation_spot complete: changed=0, deleted=skipped
+[incremental] public.acctg_trans started
+[incremental] public.acctg_trans upsert page 1: 5000 rows applied
+[incremental] public.acctg_trans upsert page 2: 10000 rows applied
+[incremental] public.acctg_trans upsert page 3: 12204 rows applied
+[incremental] public.acctg_trans delete scan skipped for faster incremental sync
+[incremental] public.acctg_trans complete: changed=12204, deleted=skipped
+[incremental] public.acctg_trans_attribute started
+[incremental] public.acctg_trans_attribute delete scan skipped for faster incremental sync
+[incremental] public.acctg_trans_attribute complete: changed=0, deleted=skipped
+[incremental] public.acctg_trans_entry started
+[incremental] public.acctg_trans_entry upsert page 1: 5000 rows applied
+[incremental] public.acctg_trans_entry upsert page 2: 10000 rows applied
+[incremental] public.acctg_trans_entry upsert page 3: 15000 rows applied
+[incremental] public.acctg_trans_entry upsert page 4: 20000 rows applied
+[incremental] public.acctg_trans_entry upsert page 5: 25000 rows applied
+[incremental] public.acctg_trans_entry upsert page 6: 29561 rows applied
+[incremental] public.acctg_trans_entry delete scan skipped for faster incremental sync
+[incremental] public.acctg_trans_entry complete: changed=29561, deleted=skipped
+[incremental] public.acctg_trans_entry_type started
+[incremental] public.acctg_trans_entry_type upsert page 1: 1 rows applied
+[incremental] public.acctg_trans_entry_type delete scan skipped for faster incremental sync
+[incremental] public.acctg_trans_entry_type complete: changed=1, deleted=skipped
+[incremental] public.acctg_trans_type started

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\PASCA\Documents\Codex\2026-04-19-before-we-start-can-you-access\sync_ofbiz_data.py", line 729, in <module>
+    main()
+  File "C:\Users\PASCA\Documents\Codex\2026-04-19-before-we-start-can-you-access\sync_ofbiz_data.py", line 666, in main
+    engine.ensure_sync_tables()
+  File "C:\Users\PASCA\Documents\Codex\2026-04-19-before-we-start-can-you-access\sync_ofbiz_data.py", line 201, in ensure_sync_tables
+    self.local_db.run_sql_file(sql)
+  File "C:\Users\PASCA\Documents\Codex\2026-04-19-before-we-start-can-you-access\sync_ofbiz_data.py", line 132, in run_sql_file
+    raise RuntimeError(result.stderr.strip() or result.stdout.strip() or "psql failed")
+RuntimeError: psql: error: connection to server at "127.0.0.1", port 55432 failed: FATAL:  the database system is starting up

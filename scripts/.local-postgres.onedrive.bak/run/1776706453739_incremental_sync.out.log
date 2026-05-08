@@ -1,0 +1,21 @@
+Local PostgreSQL is listening on 127.0.0.1:55432
+[incremental] public.accommodation_class
+[incremental] public.accommodation_map
+[incremental] public.accommodation_map_type
+[incremental] public.accommodation_spot
+[incremental] public.acctg_trans
+[incremental] public.acctg_trans_attribute
+[incremental] public.acctg_trans_entry
+[incremental] public.acctg_trans_entry_type
+[incremental] public.acctg_trans_type
+[incremental] public.acctg_trans_type_attr
+[incremental] public.activation_sent
+[incremental] public.addendum
+[incremental] public.address_match_map
+[incremental] public.affiliate
+[incremental] public.agreement
+[incremental] public.agreement_attribute
+[incremental] public.agreement_employment_appl
+[incremental] public.agreement_geographical_applic
+[incremental] public.agreement_item
+[incremental] public.agreement_item_attribute

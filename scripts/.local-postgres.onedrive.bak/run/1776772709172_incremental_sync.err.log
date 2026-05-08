@@ -1,0 +1,18 @@
+FAILED public.electronic_text: Unterminated string starting at: line 1 column 43 (char 42)
+FAILED public.runtime_data: Remote end closed connection without response
+FAILED public.s_b_profile_member: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.s_b_profile_member_group: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.s_c_type_configuration: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.s_c_type_configuration_definition: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.s_c_type_configuration_possibilities: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.s_c_type_configuration_unit_possibilities: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.salary_step: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.sale_type: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.sales_forecast: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.sales_forecast_detail: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.sales_forecast_history: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.sales_opportunity: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.sales_opportunity_competitor: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.sales_opportunity_history: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.sales_opportunity_quote: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FAILED public.sales_opportunity_role: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>

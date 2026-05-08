@@ -1,0 +1,395 @@
+Local PostgreSQL is listening on 127.0.0.1:55432
+[incremental] public.acctg_trans upsert page 1: 1 rows applied
+[incremental] public.acctg_trans complete: changed=1, deleted=skipped
+[incremental] public.acctg_trans_entry upsert page 1: 2 rows applied
+[incremental] public.acctg_trans_entry complete: changed=2, deleted=skipped
+[incremental] public.acctg_trans_entry_type upsert page 1: 1 rows applied
+[incremental] public.acctg_trans_entry_type complete: changed=1, deleted=skipped
+[incremental] public.acctg_trans_type upsert page 1: 28 rows applied
+[incremental] public.acctg_trans_type complete: changed=28, deleted=skipped
+[incremental] public.agreement upsert page 1: 1 rows applied
+[incremental] public.agreement complete: changed=1, deleted=skipped
+[incremental] public.agreement_item_type upsert page 1: 5 rows applied
+[incremental] public.agreement_item_type complete: changed=5, deleted=skipped
+[incremental] public.agreement_term upsert page 1: 2 rows applied
+[incremental] public.agreement_term complete: changed=2, deleted=skipped
+[incremental] public.agreement_type upsert page 1: 7 rows applied
+[incremental] public.agreement_type complete: changed=7, deleted=skipped
+[incremental] public.airtime_alert_sent upsert page 1: 1 rows applied
+[incremental] public.airtime_alert_sent complete: changed=1, deleted=skipped
+[incremental] public.airtime_margins upsert page 1: 2 rows applied
+[incremental] public.airtime_margins complete: changed=2, deleted=skipped
+[incremental] public.airtime_profit upsert page 1: 773 rows applied
+[incremental] public.airtime_profit complete: changed=773, deleted=skipped
+[incremental] public.benefit_type upsert page 1: 3 rows applied
+[incremental] public.benefit_type complete: changed=3, deleted=skipped
+[incremental] public.bill upsert page 1: 301 rows applied
+[incremental] public.bill complete: changed=301, deleted=skipped
+[incremental] public.bill_item upsert page 1: 531 rows applied
+[incremental] public.bill_item complete: changed=531, deleted=skipped
+[incremental] public.billing_account upsert page 1: 1 rows applied
+[incremental] public.billing_account complete: changed=1, deleted=skipped
+[incremental] public.billing_account_role upsert page 1: 2 rows applied
+[incremental] public.billing_account_role complete: changed=2, deleted=skipped
+[incremental] public.bts_type upsert page 1: 2 rows applied
+[incremental] public.bts_type complete: changed=2, deleted=skipped
+[incremental] public.budget_item_type upsert page 1: 1 rows applied
+[incremental] public.budget_item_type complete: changed=1, deleted=skipped
+[incremental] public.budget_type upsert page 1: 2 rows applied
+[incremental] public.budget_type complete: changed=2, deleted=skipped
+[incremental] public.c_d_r upsert page 1: 403 rows applied
+[incremental] public.c_d_r complete: changed=403, deleted=skipped
+[incremental] public.carrier_shipment_method upsert page 1: 1 rows applied
+[incremental] public.carrier_shipment_method complete: changed=1, deleted=skipped
+[incremental] public.character_set upsert page 1: 13 rows applied
+[incremental] public.character_set complete: changed=13, deleted=skipped
+[incremental] public.client_c_d_r upsert page 1: 403 rows applied
+[incremental] public.client_c_d_r complete: changed=403, deleted=skipped
+[incremental] public.communication_event_prp_typ upsert page 1: 8 rows applied
+[incremental] public.communication_event_prp_typ complete: changed=8, deleted=skipped
+[incremental] public.communication_event_type upsert page 1: 8 rows applied
+[incremental] public.communication_event_type complete: changed=8, deleted=skipped
+[incremental] public.contact_list_type upsert page 1: 3 rows applied
+[incremental] public.contact_list_type complete: changed=3, deleted=skipped
+[incremental] public.contact_mech upsert page 1: 2 rows applied
+[incremental] public.contact_mech complete: changed=2, deleted=skipped
+[incremental] public.contact_mech_purpose_type upsert page 1: 28 rows applied
+[incremental] public.contact_mech_purpose_type complete: changed=28, deleted=skipped
+[incremental] public.contact_mech_type upsert page 1: 7 rows applied
+[incremental] public.contact_mech_type complete: changed=7, deleted=skipped
+[incremental] public.contact_mech_type_purpose upsert page 1: 27 rows applied
+[incremental] public.contact_mech_type_purpose complete: changed=27, deleted=skipped
+[incremental] public.content upsert page 1: 14 rows applied
+[incremental] public.content complete: changed=14, deleted=skipped
+[incremental] public.content_assoc_predicate upsert page 1: 7 rows applied
+[incremental] public.content_assoc_predicate complete: changed=7, deleted=skipped
+[incremental] public.content_assoc_type upsert page 1: 20 rows applied
+[incremental] public.content_assoc_type complete: changed=20, deleted=skipped
+[incremental] public.content_operation upsert page 1: 24 rows applied
+[incremental] public.content_operation complete: changed=24, deleted=skipped
+[incremental] public.content_purpose_operation upsert page 1: 50 rows applied
+[incremental] public.content_purpose_operation complete: changed=50, deleted=skipped
+[incremental] public.content_purpose_type upsert page 1: 21 rows applied
+[incremental] public.content_purpose_type complete: changed=21, deleted=skipped
+[incremental] public.content_type upsert page 1: 26 rows applied
+[incremental] public.content_type complete: changed=26, deleted=skipped
+[incremental] public.cost_adjustment upsert page 1: 1 rows applied
+[incremental] public.cost_adjustment complete: changed=1, deleted=skipped
+[incremental] public.cost_adjustment_group upsert page 1: 4 rows applied
+[incremental] public.cost_adjustment_group complete: changed=4, deleted=skipped
+[incremental] public.cost_adjustment_group_member upsert page 1: 2 rows applied
+[incremental] public.cost_adjustment_group_member complete: changed=2, deleted=skipped
+[incremental] public.cost_adjustment_type upsert page 1: 1 rows applied
+[incremental] public.cost_adjustment_type complete: changed=1, deleted=skipped
+[incremental] public.cost_component_type upsert page 1: 12 rows applied
+[incremental] public.cost_component_type complete: changed=12, deleted=skipped
+[incremental] public.country_capital upsert page 1: 1 rows applied
+[incremental] public.country_capital complete: changed=1, deleted=skipped
+[incremental] public.country_code upsert page 1: 2 rows applied
+[incremental] public.country_code complete: changed=2, deleted=skipped
+[incremental] public.country_tele_code upsert page 1: 1 rows applied
+[incremental] public.country_tele_code complete: changed=1, deleted=skipped
+[incremental] public.cpe_air4_g upsert page 1: 1 rows applied
+[incremental] public.cpe_air4_g complete: changed=1, deleted=skipped
+[incremental] public.cpe_air4_g_statistics upsert page 1: 288 rows applied
+[incremental] public.cpe_air4_g_statistics complete: changed=288, deleted=skipped
+[incremental] public.cpe_air4_g_vlan upsert page 1: 2 rows applied
+[incremental] public.cpe_air4_g_vlan complete: changed=2, deleted=skipped
+[incremental] public.cust_request_resolution upsert page 1: 6 rows applied
+[incremental] public.cust_request_resolution complete: changed=6, deleted=skipped
+[incremental] public.cust_request_type upsert page 1: 8 rows applied
+[incremental] public.cust_request_type complete: changed=8, deleted=skipped
+[incremental] public.custom_method upsert page 1: 2 rows applied
+[incremental] public.custom_method complete: changed=2, deleted=skipped
+[incremental] public.custom_method_type upsert page 1: 5 rows applied
+[incremental] public.custom_method_type complete: changed=5, deleted=skipped
+[incremental] public.custom_time_period upsert page 1: 6 rows applied
+[incremental] public.custom_time_period complete: changed=6, deleted=skipped
+[incremental] public.data_category upsert page 1: 17 rows applied
+[incremental] public.data_category complete: changed=17, deleted=skipped
+[incremental] public.data_resource upsert page 1: 20 rows applied
+[incremental] public.data_resource complete: changed=20, deleted=skipped
+[incremental] public.data_resource_type upsert page 1: 16 rows applied
+[incremental] public.data_resource_type complete: changed=16, deleted=skipped
+[incremental] public.data_source upsert page 1: 6 rows applied
+[incremental] public.data_source complete: changed=6, deleted=skipped
+[incremental] public.data_source_type upsert page 1: 10 rows applied
+[incremental] public.data_source_type complete: changed=10, deleted=skipped
+[incremental] public.data_template_type upsert page 1: 6 rows applied
+[incremental] public.data_template_type complete: changed=6, deleted=skipped
+[incremental] public.deduction_type upsert page 1: 4 rows applied
+[incremental] public.deduction_type complete: changed=4, deleted=skipped
+[incremental] public.document_type upsert page 1: 9 rows applied
+[incremental] public.document_type complete: changed=9, deleted=skipped
+[incremental] public.email_group upsert page 1: 1 rows applied
+[incremental] public.email_group complete: changed=1, deleted=skipped
+[incremental] public.email_group_member upsert page 1: 1 rows applied
+[incremental] public.email_group_member complete: changed=1, deleted=skipped
+[incremental] public.empl_leave_type upsert page 1: 2 rows applied
+[incremental] public.empl_leave_type complete: changed=2, deleted=skipped
+[incremental] public.empl_position_type upsert page 1: 4 rows applied
+[incremental] public.empl_position_type complete: changed=4, deleted=skipped
+[incremental] public.employment_app_source_type upsert page 1: 4 rows applied
+[incremental] public.employment_app_source_type complete: changed=4, deleted=skipped
+[incremental] public.entity_group upsert page 1: 50 rows applied
+[incremental] public.entity_group complete: changed=50, deleted=skipped
+[incremental] public.entity_group_entry upsert page 1: 173 rows applied
+[incremental] public.entity_group_entry complete: changed=173, deleted=skipped
+[incremental] public.entity_key_store upsert page 1: 21 rows applied
+[incremental] public.entity_key_store complete: changed=21, deleted=skipped
+[incremental] public.entity_sync_remove upsert page 1: 23 rows applied
+[incremental] public.entity_sync_remove complete: changed=23, deleted=skipped
+[incremental] public.enumeration upsert page 1: 11 rows applied
+[incremental] public.enumeration complete: changed=11, deleted=skipped
+[incremental] public.enumeration_type upsert page 1: 2 rows applied
+[incremental] public.enumeration_type complete: changed=2, deleted=skipped
+[incremental] public.facility_contact_mech upsert page 1: 1 rows applied
+[incremental] public.facility_contact_mech complete: changed=1, deleted=skipped
+[incremental] public.facility_contact_mech_purpose upsert page 1: 1 rows applied
+[incremental] public.facility_contact_mech_purpose complete: changed=1, deleted=skipped
+[incremental] public.facility_group upsert page 1: 1 rows applied
+[incremental] public.facility_group complete: changed=1, deleted=skipped
+[incremental] public.facility_group_type upsert page 1: 2 rows applied
+[incremental] public.facility_group_type complete: changed=2, deleted=skipped
+[incremental] public.facility_type upsert page 1: 8 rows applied
+[incremental] public.facility_type complete: changed=8, deleted=skipped
+[incremental] public.file_extension upsert page 1: 1 rows applied
+[incremental] public.file_extension complete: changed=1, deleted=skipped
+[incremental] public.fin_account_trans_type upsert page 1: 3 rows applied
+[incremental] public.fin_account_trans_type complete: changed=3, deleted=skipped
+[incremental] public.fin_account_type upsert page 1: 6 rows applied
+[incremental] public.fin_account_type complete: changed=6, deleted=skipped
+[incremental] public.fixed_asset_ident_type upsert page 1: 7 rows applied
+[incremental] public.fixed_asset_ident_type complete: changed=7, deleted=skipped
+[incremental] public.fixed_asset_product_type upsert page 1: 2 rows applied
+[incremental] public.fixed_asset_product_type complete: changed=2, deleted=skipped
+[incremental] public.fixed_asset_std_cost_type upsert page 1: 2 rows applied
+[incremental] public.fixed_asset_std_cost_type complete: changed=2, deleted=skipped
+[incremental] public.fixed_asset_type upsert page 1: 2 rows applied
+[incremental] public.fixed_asset_type complete: changed=2, deleted=skipped
+[incremental] public.geo upsert page 1: 2 rows applied
+[incremental] public.geo complete: changed=2, deleted=skipped
+[incremental] public.geo_assoc upsert page 1: 835 rows applied
+[incremental] public.geo_assoc complete: changed=835, deleted=skipped
+[incremental] public.geo_assoc_type upsert page 1: 3 rows applied
+[incremental] public.geo_assoc_type complete: changed=3, deleted=skipped
+[incremental] public.geo_type upsert page 1: 12 rows applied
+[incremental] public.geo_type complete: changed=12, deleted=skipped
+[incremental] public.gl_account upsert page 1: 1 rows applied
+[incremental] public.gl_account complete: changed=1, deleted=skipped
+[incremental] public.gl_account_class upsert page 1: 33 rows applied
+[incremental] public.gl_account_class complete: changed=33, deleted=skipped
+[incremental] public.gl_account_group upsert page 1: 155 rows applied
+[incremental] public.gl_account_group complete: changed=155, deleted=skipped
+[incremental] public.gl_account_group_type upsert page 1: 1 rows applied
+[incremental] public.gl_account_group_type complete: changed=1, deleted=skipped
+[incremental] public.gl_account_history upsert page 1: 35 rows applied
+[incremental] public.gl_account_history complete: changed=35, deleted=skipped
+[incremental] public.gl_account_organization upsert page 1: 8 rows applied
+[incremental] public.gl_account_organization complete: changed=8, deleted=skipped
+[incremental] public.gl_account_type upsert page 1: 58 rows applied
+[incremental] public.gl_account_type complete: changed=58, deleted=skipped
+[incremental] public.gl_account_type_default upsert page 1: 10 rows applied
+[incremental] public.gl_account_type_default complete: changed=10, deleted=skipped
+[incremental] public.gl_fiscal_type upsert page 1: 5 rows applied
+[incremental] public.gl_fiscal_type complete: changed=5, deleted=skipped
+[incremental] public.hardware_airtime_alert_history upsert page 1: 4 rows applied
+[incremental] public.hardware_airtime_alert_history complete: changed=4, deleted=skipped
+[incremental] public.hardware_configuration upsert page 1: 3 rows applied
+[incremental] public.hardware_configuration complete: changed=3, deleted=skipped
+[incremental] public.hardware_configuration_definition upsert page 1: 1 rows applied
+[incremental] public.hardware_configuration_definition complete: changed=1, deleted=skipped
+[incremental] public.hardware_configuration_possibilities upsert page 1: 2 rows applied
+[incremental] public.hardware_configuration_possibilities complete: changed=2, deleted=skipped
+[incremental] public.hardware_contact_mech upsert page 1: 1 rows applied
+[incremental] public.hardware_contact_mech complete: changed=1, deleted=skipped
+[incremental] public.hardware_default_subscription_price upsert page 1: 2 rows applied
+[incremental] public.hardware_default_subscription_price complete: changed=2, deleted=skipped
+[incremental] public.hardware_description_history upsert page 1: 3 rows applied
+[incremental] public.hardware_description_history complete: changed=3, deleted=skipped
+[incremental] public.hardware_group upsert page 1: 1 rows applied
+[incremental] public.hardware_group complete: changed=1, deleted=skipped
+[incremental] public.hardware_group_member upsert page 1: 1 rows applied
+[incremental] public.hardware_group_member complete: changed=1, deleted=skipped
+[incremental] public.hardware_ip upsert page 1: 2 rows applied
+[incremental] public.hardware_ip complete: changed=2, deleted=skipped
+[incremental] public.hardware_ip_pool upsert page 1: 1 rows applied
+[incremental] public.hardware_ip_pool complete: changed=1, deleted=skipped
+[incremental] public.hardware_relation upsert page 1: 1 rows applied
+[incremental] public.hardware_relation complete: changed=1, deleted=skipped
+[incremental] public.hardware_sub_type_included upsert page 1: 2 rows applied
+[incremental] public.hardware_sub_type_included complete: changed=2, deleted=skipped
+[incremental] public.hardware_subscription upsert page 1: 1 rows applied
+[incremental] public.hardware_subscription complete: changed=1, deleted=skipped
+[incremental] public.hardware_subscription_history upsert page 1: 4 rows applied
+[incremental] public.hardware_subscription_history complete: changed=4, deleted=skipped
+[incremental] public.hardware_subscription_price upsert page 1: 1 rows applied
+[incremental] public.hardware_subscription_price complete: changed=1, deleted=skipped
+[incremental] public.hardware_subscription_type upsert page 1: 1 rows applied
+[incremental] public.hardware_subscription_type complete: changed=1, deleted=skipped
+[incremental] public.hardware_type upsert page 1: 1 rows applied
+[incremental] public.hardware_type complete: changed=1, deleted=skipped
+[incremental] public.hardware_type_configuration_definition upsert page 1: 9 rows applied
+[incremental] public.hardware_type_configuration_definition complete: changed=9, deleted=skipped
+[incremental] public.inventory_item upsert page 1: 1 rows applied
+[incremental] public.inventory_item complete: changed=1, deleted=skipped
+[incremental] public.inventory_item_detail upsert page 1: 2 rows applied
+[incremental] public.inventory_item_detail complete: changed=2, deleted=skipped
+[incremental] public.inventory_item_status upsert page 1: 1 rows applied
+[incremental] public.inventory_item_status complete: changed=1, deleted=skipped
+[incremental] public.inventory_item_type upsert page 1: 2 rows applied
+[incremental] public.inventory_item_type complete: changed=2, deleted=skipped
+[incremental] public.inventory_item_variance upsert page 1: 16 rows applied
+[incremental] public.inventory_item_variance complete: changed=16, deleted=skipped
+[incremental] public.invoice upsert page 1: 1 rows applied
+[incremental] public.invoice complete: changed=1, deleted=skipped
+[incremental] public.invoice_contact_mech upsert page 1: 1 rows applied
+[incremental] public.invoice_contact_mech complete: changed=1, deleted=skipped
+[incremental] public.invoice_item upsert page 1: 6 rows applied
+[incremental] public.invoice_item complete: changed=6, deleted=skipped
+[incremental] public.invoice_item_type upsert page 1: 33 rows applied
+[incremental] public.invoice_item_type complete: changed=33, deleted=skipped
+[incremental] public.invoice_item_type_gl_account upsert page 1: 2 rows applied
+[incremental] public.invoice_item_type_gl_account complete: changed=2, deleted=skipped
+[incremental] public.invoice_item_type_map upsert page 1: 63 rows applied
+[incremental] public.invoice_item_type_map complete: changed=63, deleted=skipped
+[incremental] public.invoice_role upsert page 1: 2 rows applied
+[incremental] public.invoice_role complete: changed=2, deleted=skipped
+[incremental] public.invoice_sent upsert page 1: 1 rows applied
+[incremental] public.invoice_sent complete: changed=1, deleted=skipped
+[incremental] public.invoice_status upsert page 1: 2 rows applied
+[incremental] public.invoice_status complete: changed=2, deleted=skipped
+[incremental] public.invoice_type upsert page 1: 2 rows applied
+[incremental] public.invoice_type complete: changed=2, deleted=skipped
+[incremental] public.item_issuance upsert page 1: 1 rows applied
+[incremental] public.item_issuance complete: changed=1, deleted=skipped
+[incremental] public.item_issuance_role upsert page 1: 1 rows applied
+[incremental] public.item_issuance_role complete: changed=1, deleted=skipped
+[incremental] public.item_layout upsert page 1: 2 rows applied
+[incremental] public.item_layout complete: changed=2, deleted=skipped
+[incremental] public.item_note upsert page 1: 2 rows applied
+[incremental] public.item_note complete: changed=2, deleted=skipped
+[incremental] public.linked_gateways upsert page 1: 1 rows applied
+[incremental] public.linked_gateways complete: changed=1, deleted=skipped
+[incremental] public.meta_data_predicate upsert page 1: 5 rows applied
+[incremental] public.meta_data_predicate complete: changed=5, deleted=skipped
+[incremental] public.mikrotik_config_field_category upsert page 1: 5 rows applied
+[incremental] public.mikrotik_config_field_category complete: changed=5, deleted=skipped
+[incremental] public.mikrotik_configuration upsert page 1: 1 rows applied
+[incremental] public.mikrotik_configuration complete: changed=1, deleted=skipped
+[incremental] public.mikrotik_configuration_field upsert page 1: 9 rows applied
+[incremental] public.mikrotik_configuration_field complete: changed=9, deleted=skipped
+[incremental] public.mikrotik_configuration_item upsert page 1: 24 rows applied
+[incremental] public.mikrotik_configuration_item complete: changed=24, deleted=skipped
+[incremental] public.mikrotik_field_possibilities upsert page 1: 28 rows applied
+[incremental] public.mikrotik_field_possibilities complete: changed=28, deleted=skipped
+[incremental] public.mime_type upsert page 1: 1 rows applied
+[incremental] public.mime_type complete: changed=1, deleted=skipped
+[incremental] public.mime_type_html_template upsert page 1: 9 rows applied
+[incremental] public.mime_type_html_template complete: changed=9, deleted=skipped
+[incremental] public.mrp_event_type upsert page 1: 12 rows applied
+[incremental] public.mrp_event_type complete: changed=12, deleted=skipped
+[incremental] public.nagios_contact_group upsert page 1: 5 rows applied
+[incremental] public.nagios_contact_group complete: changed=5, deleted=skipped
+[incremental] public.nagios_downtime upsert page 1: 31 rows applied
+[incremental] public.nagios_downtime complete: changed=31, deleted=skipped
+[incremental] public.nagios_downtime_approval upsert page 1: 31 rows applied
+[incremental] public.nagios_downtime_approval complete: changed=31, deleted=skipped
+[incremental] public.nagios_event upsert page 1: 18 rows applied
+[incremental] public.nagios_event complete: changed=18, deleted=skipped
+[incremental] public.nagios_hardware_type upsert page 1: 1 rows applied
+[incremental] public.nagios_hardware_type complete: changed=1, deleted=skipped
+[incremental] public.nagios_history upsert page 1: 214 rows applied
+[incremental] public.nagios_history complete: changed=214, deleted=skipped
+[incremental] public.nagios_host_group upsert page 1: 1 rows applied
+[incremental] public.nagios_host_group complete: changed=1, deleted=skipped
+[incremental] public.nagios_host_group_member upsert page 1: 1 rows applied
+[incremental] public.nagios_host_group_member complete: changed=1, deleted=skipped
+[incremental] public.nagios_service_permission upsert page 1: 4 rows applied
+[incremental] public.nagios_service_permission complete: changed=4, deleted=skipped
+[incremental] public.nagios_service_template upsert page 1: 3 rows applied
+[incremental] public.nagios_service_template complete: changed=3, deleted=skipped
+[incremental] public.nagios_uptime_report upsert page 1: 1 rows applied
+[incremental] public.nagios_uptime_report complete: changed=1, deleted=skipped
+[incremental] public.nagios_uptime_report_condition upsert page 1: 1 rows applied
+[incremental] public.nagios_uptime_report_condition complete: changed=1, deleted=skipped
+[incremental] public.nagios_uptime_report_sent upsert page 1: 8 rows applied
+[incremental] public.nagios_uptime_report_sent complete: changed=8, deleted=skipped
+[incremental] public.nx_pipe upsert page 1: 1 rows applied
+[incremental] public.nx_pipe complete: changed=1, deleted=skipped
+[incremental] public.nx_service upsert page 1: 46 rows applied
+[incremental] public.nx_service complete: changed=46, deleted=skipped
+[incremental] public.nx_service_group upsert page 1: 1 rows applied
+[incremental] public.nx_service_group complete: changed=1, deleted=skipped
+[incremental] public.nx_time_entry upsert page 1: 12 rows applied
+[incremental] public.nx_time_entry complete: changed=12, deleted=skipped
+[incremental] public.olap_cdr_summary upsert page 1: 3 rows applied
+[incremental] public.olap_cdr_summary complete: changed=3, deleted=skipped
+[incremental] public.olap_currency_in_use upsert page 1: 1 rows applied
+[incremental] public.olap_currency_in_use complete: changed=1, deleted=skipped
+[incremental] public.order_adjustment_type upsert page 1: 11 rows applied
+[incremental] public.order_adjustment_type complete: changed=11, deleted=skipped
+[incremental] public.order_blacklist_type upsert page 1: 4 rows applied
+[incremental] public.order_blacklist_type complete: changed=4, deleted=skipped
+[incremental] public.order_contact_mech upsert page 1: 2 rows applied
+[incremental] public.order_contact_mech complete: changed=2, deleted=skipped
+[incremental] public.order_content_type upsert page 1: 1 rows applied
+[incremental] public.order_content_type complete: changed=1, deleted=skipped
+[incremental] public.order_header upsert page 1: 1 rows applied
+[incremental] public.order_header complete: changed=1, deleted=skipped
+[incremental] public.order_item_ship_group upsert page 1: 1 rows applied
+[incremental] public.order_item_ship_group complete: changed=1, deleted=skipped
+[incremental] public.order_item_ship_group_assoc upsert page 1: 1 rows applied
+[incremental] public.order_item_ship_group_assoc complete: changed=1, deleted=skipped
+[incremental] public.order_item_ship_grp_inv_res upsert page 1: 1 rows applied
+[incremental] public.order_item_ship_grp_inv_res complete: changed=1, deleted=skipped
+[incremental] public.order_item_type upsert page 1: 8 rows applied
+[incremental] public.order_item_type complete: changed=8, deleted=skipped
+[incremental] public.order_payment_preference upsert page 1: 1 rows applied
+[incremental] public.order_payment_preference complete: changed=1, deleted=skipped
+[incremental] public.order_role upsert page 1: 5 rows applied
+[incremental] public.order_role complete: changed=5, deleted=skipped
+[incremental] public.order_sent upsert page 1: 2 rows applied
+[incremental] public.order_sent complete: changed=2, deleted=skipped
+[incremental] public.order_status upsert page 1: 5 rows applied
+[incremental] public.order_status complete: changed=5, deleted=skipped
+[incremental] public.order_type upsert page 1: 2 rows applied
+[incremental] public.order_type complete: changed=2, deleted=skipped
+[incremental] public.party upsert page 1: 1 rows applied
+[incremental] public.party complete: changed=1, deleted=skipped
+[incremental] public.party_acctg_preference upsert page 1: 1 rows applied
+[incremental] public.party_acctg_preference complete: changed=1, deleted=skipped
+[incremental] public.party_attribute upsert page 1: 1 rows applied
+[incremental] public.party_attribute complete: changed=1, deleted=skipped
+[incremental] public.party_classification upsert page 1: 1 rows applied
+[incremental] public.party_classification complete: changed=1, deleted=skipped
+[incremental] public.party_classification_group upsert page 1: 1 rows applied
+[incremental] public.party_classification_group complete: changed=1, deleted=skipped
+[incremental] public.party_classification_type upsert page 1: 15 rows applied
+[incremental] public.party_classification_type complete: changed=15, deleted=skipped
+[incremental] public.party_contact_mech upsert page 1: 4 rows applied
+[incremental] public.party_contact_mech complete: changed=4, deleted=skipped
+[incremental] public.party_contact_mech_purpose upsert page 1: 4 rows applied
+[incremental] public.party_contact_mech_purpose complete: changed=4, deleted=skipped
+[incremental] public.party_content_type upsert page 1: 4 rows applied
+[incremental] public.party_content_type complete: changed=4, deleted=skipped
+[incremental] public.party_data_source upsert page 1: 1 rows applied
+[incremental] public.party_data_source complete: changed=1, deleted=skipped
+[incremental] public.party_group upsert page 1: 1 rows applied
+[incremental] public.party_group complete: changed=1, deleted=skipped
+[incremental] public.party_name_history upsert page 1: 1 rows applied
+[incremental] public.party_name_history complete: changed=1, deleted=skipped
+[incremental] public.party_qual_type upsert page 1: 3 rows applied
+[incremental] public.party_qual_type complete: changed=3, deleted=skipped
+[incremental] public.party_relationship upsert page 1: 2 rows applied
+[incremental] public.party_relationship complete: changed=2, deleted=skipped
+[incremental] public.party_relationship_type upsert page 1: 1 rows applied
+[incremental] public.party_relationship_type complete: changed=1, deleted=skipped
+[incremental] public.party_role upsert page 1: 1 rows applied
+[incremental] public.party_role complete: changed=1, deleted=skipped
+[incremental] public.party_status upsert page 1: 1 rows applied
+[incremental] public.party_status complete: changed=1, deleted=skipped
+[incremental] public.party_tax_auth_info upsert page 1: 1 rows applied
+[incremental] public.party_tax_auth_info complete: changed=1, deleted=skipped
+[incremental] public.party_type upsert page 1: 9 rows applied
+[incremental] public.party_type complete: changed=9, deleted=skipped

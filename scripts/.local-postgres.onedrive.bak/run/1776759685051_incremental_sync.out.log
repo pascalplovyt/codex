@@ -1,0 +1,21 @@
+Local PostgreSQL is listening on 127.0.0.1:55432
+{
+  "run_id": 3,
+  "mode": "incremental",
+  "excluded_tables": [
+    "activation_sent",
+    "email_sent",
+    "job_sandbox",
+    "remote_sync_status",
+    "sandvine_*",
+    "scratch_card*",
+    "server_hit*",
+    "site_*",
+    "site_bandwidth*",
+    "visit",
+    "visitor"
+  ],
+  "tables_total": 0,
+  "tables_succeeded": 0,
+  "tables_failed": 0
+}

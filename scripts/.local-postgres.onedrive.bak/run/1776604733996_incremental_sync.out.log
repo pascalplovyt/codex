@@ -1,0 +1,14 @@
+[incremental] public.example
+[incremental] public.example_feature
+[incremental] public.example_feature_appl
+[incremental] public.example_feature_appl_type
+[incremental] public.example_item
+[incremental] public.example_status
+[incremental] public.example_type
+{
+  "run_id": 6,
+  "mode": "incremental",
+  "tables_total": 7,
+  "tables_succeeded": 7,
+  "tables_failed": 0
+}

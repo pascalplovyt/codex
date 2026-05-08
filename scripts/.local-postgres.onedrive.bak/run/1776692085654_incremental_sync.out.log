@@ -1,0 +1,66 @@
+[incremental] public.agreement_party_applic
+[incremental] public.contact_list_party
+[incremental] public.contact_list_party_status
+[incremental] public.cust_request_party
+[incremental] public.facility_party
+[incremental] public.party
+[incremental] public.party_acctg_preference
+[incremental] public.party_attribute
+[incremental] public.party_benefit
+[incremental] public.party_carrier_account
+[incremental] public.party_classification
+[incremental] public.party_classification_group
+[incremental] public.party_classification_type
+[incremental] public.party_contact_mech
+[incremental] public.party_contact_mech_purpose
+[incremental] public.party_content
+[incremental] public.party_content_type
+[incremental] public.party_data_source
+[incremental] public.party_fixed_asset_assignment
+[incremental] public.party_geo_point
+[incremental] public.party_gl_account
+[incremental] public.party_group
+[incremental] public.party_ics_avs_override
+[incremental] public.party_invitation
+[incremental] public.party_invitation_group_assoc
+[incremental] public.party_invitation_role_assoc
+[incremental] public.party_name_history
+[incremental] public.party_need
+[incremental] public.party_note
+[incremental] public.party_profile_default
+[incremental] public.party_qual
+[incremental] public.party_qual_type
+[incremental] public.party_rate
+[incremental] public.party_rate_new
+[incremental] public.party_relationship
+[incremental] public.party_relationship_type
+[incremental] public.party_resume
+[incremental] public.party_role
+[incremental] public.party_skill
+[incremental] public.party_status
+[incremental] public.party_tax_auth_info
+[incremental] public.party_tax_info
+[incremental] public.party_type
+[incremental] public.party_type_attr
+[incremental] public.product_promo_code_party
+[incremental] public.r_c_s_party_content
+[incremental] public.responding_party
+[incremental] public.server_hit_type
+[incremental] public.site_related_party
+[incremental] public.work_effort_party_assignment
+{
+  "run_id": 1,
+  "mode": "incremental",
+  "excluded_tables": [
+    "email_sent",
+    "remote_sync_status",
+    "sandvine_shaper_policy_cir_rule",
+    "sandvine_shaper_policy_mir_rule",
+    "server_hit",
+    "server_hit_bin",
+    "visitor"
+  ],
+  "tables_total": 50,
+  "tables_succeeded": 50,
+  "tables_failed": 0
+}
