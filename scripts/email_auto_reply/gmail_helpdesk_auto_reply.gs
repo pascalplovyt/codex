@@ -33,6 +33,12 @@ function processHelpdeskInbox() {
       thread.addLabel(label);
       return;
     }
+
+    // Do not reply to noreply / automated senders.
+    if (isNoReplyAddress_(firstMessage.getFrom())) {
+      thread.addLabel(label);
+      return;
+    }
     const senderName = buildSmartSalutationName_(firstMessage.getFrom());
     const referenceNumber = buildReferenceNumber_();
     const subject = `Re: ${firstMessage.getSubject()} [${referenceNumber}]`;
@@ -238,7 +244,26 @@ function toProperCase_(value) {
   return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
 
-
-
-
+/**
+ * Returns true if the From address looks like an automated no-reply sender.
+ * Checks both the display name portion and the email address itself.
+ */
+function isNoReplyAddress_(fromValue) {
+  const lower = String(fromValue || '').toLowerCase();
+  return (
+    lower.includes('noreply') ||
+    lower.includes('no-reply') ||
+    lower.includes('no_reply') ||
+    lower.includes('donotreply') ||
+    lower.includes('do-not-reply') ||
+    lower.includes('do_not_reply') ||
+    lower.includes('mailer-daemon') ||
+    lower.includes('postmaster') ||
+    lower.includes('notifications@') ||
+    lower.includes('notification@') ||
+    lower.includes('automated@') ||
+    lower.includes('automailer@') ||
+    lower.includes('bounce')
+  );
+}
 
