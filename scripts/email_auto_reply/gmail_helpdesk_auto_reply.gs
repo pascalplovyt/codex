@@ -2,6 +2,10 @@ const HELPDESK_ADDRESS = 'helpdesk@rcsi-fze.com';
 const HELPDESK_NAME = 'Helpdesk';
 const PROCESSING_LABEL = 'hd-auto-acked';
 const LOGO_FILE_ID = '';
+const EXCLUDED_SENDER_ADDRESSES = [
+  // 'customer.care@thuraya.com',
+'MSP.support@marlink.com',
+];
 
 function setup() {
   getOrCreateLabel_();
@@ -29,13 +33,12 @@ function processHelpdeskInbox() {
     }
 
     const firstMessage = messages[0];
-    if (hasHelpdeskReference_(firstMessage.getSubject())) {
+    const senderEmail = extractSenderEmail_(firstMessage.getFrom());
+    if (isExcludedSender_(senderEmail)) {
       thread.addLabel(label);
       return;
     }
-
-    // Do not reply to noreply / automated senders.
-    if (isNoReplyAddress_(firstMessage.getFrom())) {
+    if (hasHelpdeskReference_(firstMessage.getSubject())) {
       thread.addLabel(label);
       return;
     }
@@ -83,6 +86,27 @@ function buildReferenceNumber_() {
 
 function hasHelpdeskReference_(subject) {
   return /\\bHD-\\d{6}-\\d{6}\\b/.test(String(subject || ''));
+}
+
+function extractSenderEmail_(fromValue) {
+  const text = String(fromValue || '').trim();
+  const angleMatch = text.match(/<([^>]+)>/);
+  if (angleMatch && angleMatch[1]) {
+    return angleMatch[1].trim().toLowerCase();
+  }
+
+  const plainEmailMatch = text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  if (plainEmailMatch && plainEmailMatch[0]) {
+    return plainEmailMatch[0].trim().toLowerCase();
+  }
+
+  return text.toLowerCase();
+}
+
+function isExcludedSender_(senderEmail) {
+  return EXCLUDED_SENDER_ADDRESSES
+    .map((address) => String(address || '').trim().toLowerCase())
+    .includes(String(senderEmail || '').trim().toLowerCase());
 }
 
 function extractSenderName_(fromValue) {
@@ -244,26 +268,7 @@ function toProperCase_(value) {
   return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
 
-/**
- * Returns true if the From address looks like an automated no-reply sender.
- * Checks both the display name portion and the email address itself.
- */
-function isNoReplyAddress_(fromValue) {
-  const lower = String(fromValue || '').toLowerCase();
-  return (
-    lower.includes('noreply') ||
-    lower.includes('no-reply') ||
-    lower.includes('no_reply') ||
-    lower.includes('donotreply') ||
-    lower.includes('do-not-reply') ||
-    lower.includes('do_not_reply') ||
-    lower.includes('mailer-daemon') ||
-    lower.includes('postmaster') ||
-    lower.includes('notifications@') ||
-    lower.includes('notification@') ||
-    lower.includes('automated@') ||
-    lower.includes('automailer@') ||
-    lower.includes('bounce')
-  );
-}
+
+
+
 
