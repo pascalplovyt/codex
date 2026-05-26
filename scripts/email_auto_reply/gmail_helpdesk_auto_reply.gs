@@ -1,11 +1,13 @@
 const HELPDESK_ADDRESS = 'helpdesk@rcsi-fze.com';
 const HELPDESK_NAME = 'Helpdesk';
 const PROCESSING_LABEL = 'hd-auto-acked';
-const LOGO_FILE_ID = '';
+const LOGO_FILE_ID = '1Jj2wlhU6ihwI-UHzBVmj2RRPUw3-0GSM';
 const EXCLUDED_SENDER_ADDRESSES = [
-  // 'customer.care@thuraya.com',
-'MSP.support@marlink.com',
+  'MSP.support@marlink.com',
 ];
+const MAX_THREADS_PER_RUN = 25;
+const RETRY_DELAY_MS = 1500;
+const MAX_RETRIES = 3;
 
 function setup() {
   getOrCreateLabel_();
@@ -22,55 +24,37 @@ function processHelpdeskInbox() {
     '-from:' + HELPDESK_ADDRESS,
     'newer_than:7d',
   ].join(' ');
-
-  const threads = GmailApp.search(query, 0, 50);
+  const alias = resolveFromAlias_();
+  const threads = withRetry_(() => GmailApp.search(query, 0, MAX_THREADS_PER_RUN), 'Gmail search');
+  const summary = {
+    scanned: threads.length,
+    acknowledged: 0,
+    skippedExcluded: 0,
+    skippedReferenced: 0,
+    skippedEmpty: 0,
+    failed: 0,
+    errors: [],
+  };
 
   threads.forEach((thread) => {
-    const messages = thread.getMessages();
-    if (!messages.length) {
-      thread.addLabel(label);
-      return;
+    try {
+      const result = processThread_(thread, label, alias);
+      if (result === 'acknowledged') {
+        summary.acknowledged += 1;
+      } else if (result === 'skippedExcluded') {
+        summary.skippedExcluded += 1;
+      } else if (result === 'skippedReferenced') {
+        summary.skippedReferenced += 1;
+      } else if (result === 'skippedEmpty') {
+        summary.skippedEmpty += 1;
+      }
+    } catch (error) {
+      summary.failed += 1;
+      summary.errors.push(describeThreadError_(thread, error));
     }
-
-    const firstMessage = messages[0];
-    const senderEmail = extractSenderEmail_(firstMessage.getFrom());
-    if (isExcludedSender_(senderEmail)) {
-      thread.addLabel(label);
-      return;
-    }
-    if (hasHelpdeskReference_(firstMessage.getSubject())) {
-      thread.addLabel(label);
-      return;
-    }
-    const senderName = buildSmartSalutationName_(firstMessage.getFrom());
-    const referenceNumber = buildReferenceNumber_();
-    const subject = `Re: ${firstMessage.getSubject()} [${referenceNumber}]`;
-    const body = [
-      `Dear ${senderName},`,
-      '',
-      'Thank you for contacting the RCSi Helpdesk.',
-      'Your request has been received and is being processed.',
-      `Your reference number is ${referenceNumber}.`,
-      '',
-      'We will get back to you as soon as possible.',
-      '',
-      'Kind regards,',
-      HELPDESK_NAME,
-      'RCSi FZ LLC',
-      HELPDESK_ADDRESS,
-    ].join('\n');
-    const sendOptions = buildSendOptions_(senderName, referenceNumber);
-
-    GmailApp.sendEmail(firstMessage.getFrom(), subject, body, {
-      from: resolveFromAlias_(),
-      name: HELPDESK_NAME,
-      replyTo: HELPDESK_ADDRESS,
-      htmlBody: sendOptions.htmlBody,
-      inlineImages: sendOptions.inlineImages,
-    });
-
-    thread.addLabel(label);
   });
+
+  Logger.log(JSON.stringify(summary, null, 2));
 }
 
 function getOrCreateLabel_() {
@@ -85,7 +69,61 @@ function buildReferenceNumber_() {
 }
 
 function hasHelpdeskReference_(subject) {
-  return /\\bHD-\\d{6}-\\d{6}\\b/.test(String(subject || ''));
+  return /\bHD-\d{6}-\d{6}\b/.test(String(subject || ''));
+}
+
+function processThread_(thread, label, alias) {
+  const messages = withRetry_(() => thread.getMessages(), 'Get thread messages');
+  if (!messages.length) {
+    thread.addLabel(label);
+    return 'skippedEmpty';
+  }
+
+  const firstMessage = messages[0];
+  const senderEmail = extractSenderEmail_(firstMessage.getFrom());
+  if (isExcludedSender_(senderEmail)) {
+    thread.addLabel(label);
+    return 'skippedExcluded';
+  }
+
+  if (hasHelpdeskReference_(firstMessage.getSubject())) {
+    thread.addLabel(label);
+    return 'skippedReferenced';
+  }
+
+  const senderName = buildSmartSalutationName_(firstMessage.getFrom());
+  const referenceNumber = buildReferenceNumber_();
+  const subject = `Re: ${firstMessage.getSubject()} [${referenceNumber}]`;
+  const body = [
+    `Dear ${senderName},`,
+    '',
+    'Thank you for contacting the RCSi Helpdesk.',
+    'Your request has been received and is being processed.',
+    `Your reference number is ${referenceNumber}.`,
+    '',
+    'We will get back to you as soon as possible.',
+    '',
+    'Kind regards,',
+    HELPDESK_NAME,
+    'RCSi FZ LLC',
+    HELPDESK_ADDRESS,
+  ].join('\n');
+  const sendOptions = buildSendOptions_(senderName, referenceNumber);
+
+  withRetry_(
+    () =>
+      GmailApp.sendEmail(firstMessage.getFrom(), subject, body, {
+        from: alias,
+        name: HELPDESK_NAME,
+        replyTo: HELPDESK_ADDRESS,
+        htmlBody: sendOptions.htmlBody,
+        inlineImages: sendOptions.inlineImages,
+      }),
+    `Send auto-reply to ${firstMessage.getFrom()}`
+  );
+
+  thread.addLabel(label);
+  return 'acknowledged';
 }
 
 function extractSenderEmail_(fromValue) {
@@ -221,6 +259,41 @@ function diagnostics() {
   }
 
   Logger.log(JSON.stringify(result, null, 2));
+}
+
+function withRetry_(action, actionLabel) {
+  let lastError;
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt += 1) {
+    try {
+      return action();
+    } catch (error) {
+      lastError = error;
+      if (attempt === MAX_RETRIES || !isRetryableError_(error)) {
+        throw new Error(`${actionLabel} failed: ${error.message}`);
+      }
+      Utilities.sleep(RETRY_DELAY_MS * attempt);
+    }
+  }
+
+  throw lastError;
+}
+
+function isRetryableError_(error) {
+  const message = String(error && error.message ? error.message : error).toLowerCase();
+  return (
+    message.includes('server error') ||
+    message.includes('service invoked too many times') ||
+    message.includes('try again later') ||
+    message.includes('temporarily unavailable')
+  );
+}
+
+function describeThreadError_(thread, error) {
+  const firstMessage = thread.getFirstMessageSubject ? thread.getFirstMessageSubject() : '';
+  return {
+    subject: firstMessage,
+    error: String(error && error.message ? error.message : error),
+  };
 }
 
 function buildLogoSrc_() {
