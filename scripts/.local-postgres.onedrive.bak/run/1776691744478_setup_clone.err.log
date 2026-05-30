@@ -1,2 +1,0 @@
-pg_ctl: another server might be running; trying to start server anyway
-psql:C:/Users/PASCA/Documents/Codex/2026-04-19-before-we-start-can-you-access/schema_local.sql:2: NOTICE:  schema "public" already exists, skipping

@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
 import sys
 import traceback
@@ -43,9 +44,33 @@ from lib import pg
 from lib import remote as rmod
 
 
+def _rmtree_force(p: Path) -> None:
+    p = Path(p)
+    if not p.exists():
+        return
+
+    def make_writable(path: str) -> None:
+        try:
+            os.chmod(path, 0o700)
+        except OSError:
+            pass
+
+    def onexc(func, path, exc_info):
+        make_writable(path)
+        func(path)
+
+    try:
+        shutil.rmtree(p, onexc=onexc)
+    except TypeError:
+        def onerror(func, path, exc_info):
+            make_writable(path)
+            func(path)
+        shutil.rmtree(p, onerror=onerror)
+
+
 def _reset_dir(p: Path) -> None:
     if p.exists():
-        shutil.rmtree(p)
+        _rmtree_force(p)
     p.mkdir(parents=True, exist_ok=True)
 
 
@@ -89,7 +114,7 @@ def _copy_source(src_root: Path, source: dict, stage_app: Path) -> Path:
         shutil.copy2(str(src), str(dst))
     else:
         if dst.exists():
-            shutil.rmtree(dst)
+            _rmtree_force(dst)
         shutil.copytree(str(src), str(dst), ignore=ignore)
 
     return src.resolve()
@@ -255,7 +280,7 @@ def run(cfg: dict, dry_run: bool = False) -> int:
             # clean the build dir - keep the archive in staging/ though
             # (it's useful for a quick local restore test).
             try:
-                shutil.rmtree(work)
+                _rmtree_force(work)
             except Exception as e:
                 say(f"warning: could not remove build dir: {e}")
 
