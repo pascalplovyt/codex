@@ -1,0 +1,7 @@
+# One excluded sender email address per line.
+# Blank lines and lines starting with # are ignored.
+
+MSP.support@marlink.com
+jocelyn@xtra-link.com
+support@xtra-link.com
+customer.care@thuraya.com

@@ -2,9 +2,8 @@ const HELPDESK_ADDRESS = 'helpdesk@rcsi-fze.com';
 const HELPDESK_NAME = 'Helpdesk';
 const PROCESSING_LABEL = 'hd-auto-acked';
 const LOGO_FILE_ID = '1Jj2wlhU6ihwI-UHzBVmj2RRPUw3-0GSM';
-const EXCLUDED_SENDER_ADDRESSES = [
-  'MSP.support@marlink.com',
-];
+const EXCLUDED_SENDERS_FILE_ID = '1FF4jvB4uND7lok17b2aG8mCFg0fIYtWn';
+const EXCLUDED_SENDERS_FILE_NAME = 'excluded_senders.txt';
 const MAX_THREADS_PER_RUN = 25;
 const RETRY_DELAY_MS = 1500;
 const MAX_RETRIES = 3;
@@ -142,9 +141,22 @@ function extractSenderEmail_(fromValue) {
 }
 
 function isExcludedSender_(senderEmail) {
-  return EXCLUDED_SENDER_ADDRESSES
+  return getExcludedSenderAddresses_()
     .map((address) => String(address || '').trim().toLowerCase())
     .includes(String(senderEmail || '').trim().toLowerCase());
+}
+
+function getExcludedSenderAddresses_() {
+  const file = DriveApp.getFileById(EXCLUDED_SENDERS_FILE_ID);
+  const text = file.getBlob().getDataAsString();
+  return parseExcludedSenderAddresses_(text);
+}
+
+function parseExcludedSenderAddresses_(text) {
+  return String(text || '')
+    .split(/\r?\n/)
+    .map((line) => line.replace(/#.*/, '').trim())
+    .filter(Boolean);
 }
 
 function extractSenderName_(fromValue) {
@@ -340,8 +352,6 @@ function toProperCase_(value) {
 
   return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
-
-
 
 
 
