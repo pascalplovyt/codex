@@ -4,6 +4,7 @@ const PROCESSING_LABEL = 'hd-auto-acked';
 const LOGO_FILE_ID = '1Jj2wlhU6ihwI-UHzBVmj2RRPUw3-0GSM';
 const EXCLUDED_SENDERS_FILE_ID = '1FF4jvB4uND7lok17b2aG8mCFg0fIYtWn';
 const EXCLUDED_SENDERS_FILE_NAME = 'excluded_senders.txt';
+const EXCLUDED_SENDERS_CACHE_KEY = 'excluded_senders_last_good';
 const MAX_THREADS_PER_RUN = 25;
 const RETRY_DELAY_MS = 1500;
 const MAX_RETRIES = 3;
@@ -24,6 +25,7 @@ function processHelpdeskInbox() {
     'newer_than:7d',
   ].join(' ');
   const alias = resolveFromAlias_();
+  const excludedSenders = loadExcludedSenderAddresses_();
   const threads = withRetry_(() => GmailApp.search(query, 0, MAX_THREADS_PER_RUN), 'Gmail search');
   const summary = {
     scanned: threads.length,
@@ -37,7 +39,7 @@ function processHelpdeskInbox() {
 
   threads.forEach((thread) => {
     try {
-      const result = processThread_(thread, label, alias);
+      const result = processThread_(thread, label, alias, excludedSenders);
       if (result === 'acknowledged') {
         summary.acknowledged += 1;
       } else if (result === 'skippedExcluded') {
@@ -71,7 +73,7 @@ function hasHelpdeskReference_(subject) {
   return /\bHD-\d{6}-\d{6}\b/.test(String(subject || ''));
 }
 
-function processThread_(thread, label, alias) {
+function processThread_(thread, label, alias, excludedSenders) {
   const messages = withRetry_(() => thread.getMessages(), 'Get thread messages');
   if (!messages.length) {
     thread.addLabel(label);
@@ -80,7 +82,7 @@ function processThread_(thread, label, alias) {
 
   const firstMessage = messages[0];
   const senderEmail = extractSenderEmail_(firstMessage.getFrom());
-  if (isExcludedSender_(senderEmail)) {
+  if (isExcludedSender_(senderEmail, excludedSenders)) {
     thread.addLabel(label);
     return 'skippedExcluded';
   }
@@ -140,10 +142,34 @@ function extractSenderEmail_(fromValue) {
   return text.toLowerCase();
 }
 
-function isExcludedSender_(senderEmail) {
-  return getExcludedSenderAddresses_()
+function isExcludedSender_(senderEmail, excludedSenders) {
+  return excludedSenders
     .map((address) => String(address || '').trim().toLowerCase())
     .includes(String(senderEmail || '').trim().toLowerCase());
+}
+
+function loadExcludedSenderAddresses_() {
+  try {
+    const addresses = withRetry_(
+      () => getExcludedSenderAddresses_(),
+      `Read excluded sender file ${EXCLUDED_SENDERS_FILE_NAME}`
+    );
+    PropertiesService.getScriptProperties().setProperty(
+      EXCLUDED_SENDERS_CACHE_KEY,
+      JSON.stringify(addresses)
+    );
+    return addresses;
+  } catch (error) {
+    const cached = PropertiesService.getScriptProperties().getProperty(EXCLUDED_SENDERS_CACHE_KEY);
+    if (cached) {
+      Logger.log(
+        `Using cached excluded sender list because Drive read failed: ${error.message}`
+      );
+      return JSON.parse(cached);
+    }
+
+    throw error;
+  }
 }
 
 function getExcludedSenderAddresses_() {
@@ -295,6 +321,7 @@ function isRetryableError_(error) {
   return (
     message.includes('server error') ||
     message.includes('service invoked too many times') ||
+    message.includes('server error occurred while reading from storage') ||
     message.includes('try again later') ||
     message.includes('temporarily unavailable')
   );
@@ -352,6 +379,5 @@ function toProperCase_(value) {
 
   return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
-
 
 
