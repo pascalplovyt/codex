@@ -9,19 +9,20 @@ What it does, step by step:
 
     1. Load config.
     2. Pick a timestamp and reset staging/
-    3. pg_dump -Fc  ->  staging/database/cluster.dump
-    4. pg_dumpall --globals-only -> staging/database/globals.sql (optional)
-    5. Optionally stop the local PG cluster and snapshot its data directory
+    3. Start the local PG cluster if local_cluster is configured and down.
+    4. pg_dump -Fc  ->  staging/database/cluster.dump
+    5. pg_dumpall --globals-only -> staging/database/globals.sql (optional)
+    6. Optionally stop the local PG cluster and snapshot its data directory
        for fast same-version recovery, then restart it.
-    6. Copy each configured source tree into staging/ (with excludes),
+    7. Copy each configured source tree into staging/ (with excludes),
        record origin paths in app/_sources.json.
-    7. Encrypt the .env file using secrets/env_key.bin (auto-create key
+    8. Encrypt the .env file using secrets/env_key.bin (auto-create key
        if missing) and write it to staging/config/env.enc.
-    8. Build manifest.json (hashes) and drop it into staging/
-    9. Create staging archive staging/<system>_<ts>.tar.gz
-   10. Upload to Google Drive (desktop copy or rclone).
-   11. Prune old archives on the remote to retention_weeks.
-   12. Log everything to logs/backup_<ts>.log; return exit 0/1.
+    9. Build manifest.json (hashes) and drop it into staging/
+   10. Create staging archive staging/<system>_<ts>.tar.gz
+   11. Upload to Google Drive (desktop copy or rclone).
+   12. Prune old archives on the remote to retention_weeks.
+   13. Log everything to logs/backup_<ts>.log; return exit 0/1.
 """
 from __future__ import annotations
 
@@ -50,13 +51,6 @@ def _reset_dir(p: Path) -> None:
 
 
 def _resolve_source_path(src_root: Path, source_path: str) -> Path:
-    """Return the absolute filesystem path for a configured source.
-
-    Absolute paths are returned as-is; relative paths are resolved
-    against *src_root*. This is what lets sources[] entries live under
-    completely different parent folders (for example the RCSi-Catalog-Export
-    folder AND the ERP scripts folder).
-    """
     p = Path(source_path)
     if p.is_absolute():
         return p
@@ -64,10 +58,6 @@ def _resolve_source_path(src_root: Path, source_path: str) -> Path:
 
 
 def _copy_source(src_root: Path, source: dict, stage_app: Path) -> Path:
-    """Copy one source tree (or file) into stage_app/<label>/ honouring
-    the exclude patterns. Returns the absolute source path actually used,
-    so the caller can record it in the sources map.
-    """
     src = _resolve_source_path(src_root, source["path"])
     if not src.exists():
         raise FileNotFoundError(f"source not found: {src}")
@@ -113,7 +103,6 @@ def run(cfg: dict, dry_run: bool = False) -> int:
         try:
             say(f"=== pg_portable_backup start - system={system_name} ts={ts}")
 
-            # 2. reset staging
             work = staging / f"build_{ts}"
             _reset_dir(work)
             say(f"staging: {work}")
@@ -123,20 +112,16 @@ def run(cfg: dict, dry_run: bool = False) -> int:
                 say("preflight: starting local PostgreSQL cluster ...")
                 pg.start_cluster(cfg["postgres"], cluster_cfg, log)
                 if not pg.wait_for_port(cfg["postgres"], timeout_sec=60):
-                    raise RuntimeError(
-                        "local PostgreSQL did not start listening before backup"
-                    )
+                    raise RuntimeError("local PostgreSQL did not start listening before backup")
 
-            # 3. pg_dump
             pg_cfg = cfg["postgres"]
             dump_path = work / "database" / "cluster.dump"
-            say("step 1/7: pg_dump -Fc ...")
+            say("step 1/8: pg_dump -Fc ...")
             pg.dump_database(pg_cfg, dump_path, log_fp=log)
 
-            # 4. globals
             if pg_cfg.get("include_globals", True):
                 globals_path = work / "database" / "globals.sql"
-                say("step 2/7: pg_dumpall --globals-only ...")
+                say("step 2/8: pg_dumpall --globals-only ...")
                 pg.dump_globals(pg_cfg, globals_path, log_fp=log)
 
             pg_version = pg.server_version(pg_cfg, log_fp=log)
@@ -169,12 +154,9 @@ def run(cfg: dict, dry_run: bool = False) -> int:
                     if cluster_was_running:
                         say("  restarting local PostgreSQL cluster ...")
                         pg.start_cluster(pg_cfg, cluster_cfg, log)
-                        if not pg.wait_for_port(pg_cfg, timeout_sec=30):
-                            raise RuntimeError(
-                                "local PostgreSQL did not come back after snapshot"
-                            )
+                        if not pg.wait_for_port(pg_cfg, timeout_sec=60):
+                            raise RuntimeError("local PostgreSQL did not come back after snapshot")
 
-            # 5. source trees
             say("step 4/8: copying source trees ...")
             src_root = Path(cfg.get("source_root") or "")
             app_stage = work / "app"
@@ -185,14 +167,12 @@ def run(cfg: dict, dry_run: bool = False) -> int:
                 used = _copy_source(src_root, s, app_stage)
                 sources_map[s["label"]] = {
                     "original_path": str(used),
-                    "is_directory":  used.is_dir(),
+                    "is_directory": used.is_dir(),
                 }
-            # _sources.json lets restore.py put each label back where it
-            # originally came from (preserves the RCSi / ERP split).
             (app_stage / "_sources.json").write_text(
-                json.dumps(sources_map, indent=2), encoding="utf-8")
+                json.dumps(sources_map, indent=2), encoding="utf-8"
+            )
 
-            # 6. encrypt env
             env_path_str = cfg.get("env_file")
             if env_path_str:
                 env_path = Path(env_path_str)
@@ -204,26 +184,23 @@ def run(cfg: dict, dry_run: bool = False) -> int:
                 else:
                     say(f"  env_file not found ({env_path}) - skipping")
 
-            # small informational text bundled in the archive.
-            (work / "RESTORE.md").write_text(
-                _restore_md(system_name, ts), encoding="utf-8"
-            )
+            (work / "RESTORE.md").write_text(_restore_md(system_name, ts), encoding="utf-8")
 
-            # 7. manifest
             say("step 6/8: building manifest ...")
-            manifest = mf.build(work, cfg, pg_version,
-                                extra={"archive_name":
-                                       f"{system_name}_{ts}.tar.gz",
-                                       "recovery_modes": recovery_modes})
+            manifest = mf.build(
+                work,
+                cfg,
+                pg_version,
+                extra={
+                    "archive_name": f"{system_name}_{ts}.tar.gz",
+                    "recovery_modes": recovery_modes,
+                },
+            )
             mf.write(manifest, work / "manifest.json")
 
-            # 8. archive
             say("step 7/8: creating tar.gz ...")
             archive_name = f"{system_name}_{ts}.tar.gz"
             archive_path = staging / archive_name
-            # we want the archive to unpack directly - so its entries are
-            # relative to *work*, not nested. We do that by seeding
-            # entries with paths as-is and arcroot == the relative name.
             entries = []
             for p in sorted(work.rglob("*")):
                 if p.is_file():
@@ -236,7 +213,6 @@ def run(cfg: dict, dry_run: bool = False) -> int:
             size_mb = archive_path.stat().st_size / (1024 * 1024)
             say(f"archive: {archive_path} ({size_mb:.1f} MB)")
 
-            # 9. upload
             if dry_run:
                 say("step 8/8: DRY-RUN - skipping upload + prune")
             else:
@@ -245,15 +221,12 @@ def run(cfg: dict, dry_run: bool = False) -> int:
                 dest = remote.upload(archive_path, log_fp=log)
                 say(f"uploaded: {dest}")
 
-                # 10. prune
                 keep = int(cfg.get("retention_weeks", 12))
                 say(f"prune: keeping newest {keep} archives")
                 deleted = rmod.prune(remote, system_name, keep, log_fp=log)
                 for d in deleted:
                     say(f"  - deleted {d}")
 
-            # clean the build dir - keep the archive in staging/ though
-            # (it's useful for a quick local restore test).
             try:
                 shutil.rmtree(work)
             except Exception as e:
@@ -287,10 +260,8 @@ def _restore_md(system_name: str, ts: str) -> str:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Create a portable PG + app backup.")
-    ap.add_argument("--config", help="Path to a config JSON file "
-                    "(default: config.<system>.json next to this script)")
-    ap.add_argument("--dry-run", action="store_true",
-                    help="Build the archive locally but skip the upload.")
+    ap.add_argument("--config", help="Path to a config JSON file (default: config.<system>.json next to this script)")
+    ap.add_argument("--dry-run", action="store_true", help="Build the archive locally but skip the upload.")
     args = ap.parse_args()
 
     if args.config:

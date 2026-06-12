@@ -11,6 +11,7 @@ Both versions:
 - generate a reference number automatically
 - say the request is being handled
 - avoid repeated replies to the same message
+- skip explicitly excluded sender addresses
 
 ## Which option to use
 
@@ -36,6 +37,39 @@ Example:
 
 You can change the `HD` prefix if you want something more specific.
 
+## Sender exclusion list
+
+Both versions read excluded sender email addresses from:
+
+`excluded_senders.txt`
+
+Put one email address per line. Blank lines and lines starting with `#` are ignored.
+
+Current excluded senders:
+
+- `MSP.support@marlink.com`
+- `jocelyn@xtra-link.com`
+- `support@xtra-link.com`
+- `customer.care@thuraya.com`
+
+To add another blocked sender, edit only `excluded_senders.txt`.
+
+Outlook reads the local file directly from:
+
+`C:\Users\PASCA\OneDrive\Documents\Codex\scripts\email_auto_reply\excluded_senders.txt`
+
+Gmail / Apps Script cannot read this Windows path directly. For Gmail, upload or sync the same text file to Google Drive with this exact file name:
+
+`excluded_senders.txt`
+
+The current Google Drive file is:
+
+`https://drive.google.com/file/d/1FF4jvB4uND7lok17b2aG8mCFg0fIYtWn`
+
+The Gmail script reads that exact file through `EXCLUDED_SENDERS_FILE_ID`.
+
+After the Gmail script has been updated once, future edits to that Google Drive text file are picked up automatically by the next `processHelpdeskInbox` run. Changing the text file does not require editing the script or re-authorising Google.
+
 ## Outlook setup
 
 1. Open Outlook desktop.
@@ -44,6 +78,7 @@ You can change the `HD` prefix if you want something more specific.
 4. Edit these constants in the file:
    - `HELPDESK_ADDRESS`
    - `HELPDESK_NAME`
+   - `EXCLUDED_SENDERS_FILE_PATH`
 5. Save the project.
 6. Restart Outlook.
 7. In Outlook, allow macros if your policy permits them.
@@ -62,6 +97,8 @@ Important:
    - `HELPDESK_ADDRESS`
    - `HELPDESK_NAME`
    - `PROCESSING_LABEL`
+   - `EXCLUDED_SENDERS_FILE_ID`
+   - `EXCLUDED_SENDERS_FILE_NAME`
 5. Run `setup()` once and approve permissions.
 6. In the Apps Script editor, add a time-driven trigger for `processHelpdeskInbox`.
 7. Set it to run every minute or every 5 minutes.

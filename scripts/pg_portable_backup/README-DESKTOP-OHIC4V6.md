@@ -1,7 +1,15 @@
 # pg_portable_backup
 
-Backup and restore for a PostgreSQL database plus its code tree, aimed at a
-Windows operator workflow with Google Drive storage.
+Combined backup and restore home for the local PostgreSQL systems plus their
+code trees, aimed at a Windows operator workflow with Google Drive storage.
+
+The default backup entry point now runs both configured systems:
+
+* Codex/OFBiz local: `ofbiz_world_local` plus the Codex scripts tree.
+* RCSi ERP: `rcsidatabase` plus the RCSi Catalog Export and ERP script trees.
+* Thuraya Prepay Airtime: the OneDrive Thuraya application package.
+* Local Documents code: the local `C:\Users\PASCA\Documents` code tree.
+* OneDrive Scripts Code: the full `C:\Users\PASCA\OneDrive\Documents\Scripts` project tree.
 
 The package now supports two recovery modes inside one archive:
 
@@ -49,7 +57,17 @@ pg_portable_backup/
 
 ## Operator flow
 
-Use `run_pack.bat` to open the guided packing page with working buttons.
+Use `run_backup.bat` to run the combined backup with a visible progress window.
+The weekly scheduled task uses the same launcher with `--no-pause`, so progress
+is visible while the task is running and the window can close when finished.
+`backup_all.py` uses `.backup_all.lock` to prevent duplicate runs if an older
+scheduled task wakes up at the same time.
+
+Use `backup_all.py --dry-run` to run the same combined workflow without remote
+upload/prune.
+
+Use `run_pack.bat` to open the guided packing page with working buttons for
+the Codex/OFBiz job.
 
 Use `run_unpack.bat` to open the guided unpacking page with:
 
@@ -64,17 +82,26 @@ browser HTML cannot safely launch local backup scripts by itself.
 ## CLI examples
 
 ```powershell
-# dry-run pack
-py -3 backup.py --config config.codex.json --dry-run
+# dry-run combined pack
+py -3 backup_all.py --dry-run
 
-# full pack
-py -3 backup.py --config config.codex.json
+# full combined pack
+py -3 backup_all.py
+
+# dry-run one pack
+py -3 backup.py --config config.codex.logical.json --dry-run
+py -3 backup.py --config config.rcsi.json --dry-run
+
+# full one pack
+py -3 backup.py --config config.codex.logical.json
+py -3 backup.py --config config.rcsi.json
 
 # list remote archives
 py -3 restore.py --config config.codex.json --list
 
 # auto-select restore mode
 py -3 restore.py --config config.codex.json --install latest --restore-mode auto
+py -3 restore.py --config config.rcsi.json --install latest --restore-mode auto
 
 # force the physical fast path
 py -3 restore.py --config config.codex.json --install latest --restore-mode fast
@@ -87,6 +114,11 @@ py -3 restore.py --config config.codex.json --install latest --restore-mode port
 
 * Fast recovery is meant for the same PostgreSQL major version and a closely
   matching local setup.
+* The weekly combined runner uses the logical Codex/OFBiz config so it does
+  not stop the live local PostgreSQL cluster for a physical snapshot.
+* The weekly combined runner also archives the full OneDrive Scripts tree, so
+  individual project folders like QKBK, GDrive_Backup, PC_Audit, and RCSi CDR
+  scripts do not need separate scheduled jobs.
 * Portable recovery remains the fallback when the target machine differs.
 * The archive itself is not fully encrypted; only the configured env/config
   file is encrypted.

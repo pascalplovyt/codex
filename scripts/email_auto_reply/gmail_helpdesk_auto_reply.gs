@@ -1,13 +1,7 @@
 const HELPDESK_ADDRESS = 'helpdesk@rcsi-fze.com';
 const HELPDESK_NAME = 'Helpdesk';
 const PROCESSING_LABEL = 'hd-auto-acked';
-const LOGO_FILE_ID = '1Jj2wlhU6ihwI-UHzBVmj2RRPUw3-0GSM';
-const EXCLUDED_SENDERS_FILE_ID = '1FF4jvB4uND7lok17b2aG8mCFg0fIYtWn';
-const EXCLUDED_SENDERS_FILE_NAME = 'excluded_senders.txt';
-const EXCLUDED_SENDERS_CACHE_KEY = 'excluded_senders_last_good';
-const MAX_THREADS_PER_RUN = 25;
-const RETRY_DELAY_MS = 1500;
-const MAX_RETRIES = 3;
+const LOGO_FILE_ID = '';
 
 function setup() {
   getOrCreateLabel_();
@@ -24,38 +18,50 @@ function processHelpdeskInbox() {
     '-from:' + HELPDESK_ADDRESS,
     'newer_than:7d',
   ].join(' ');
-  const alias = resolveFromAlias_();
-  const excludedSenders = loadExcludedSenderAddresses_();
-  const threads = withRetry_(() => GmailApp.search(query, 0, MAX_THREADS_PER_RUN), 'Gmail search');
-  const summary = {
-    scanned: threads.length,
-    acknowledged: 0,
-    skippedExcluded: 0,
-    skippedReferenced: 0,
-    skippedEmpty: 0,
-    failed: 0,
-    errors: [],
-  };
+
+  const threads = GmailApp.search(query, 0, 50);
 
   threads.forEach((thread) => {
-    try {
-      const result = processThread_(thread, label, alias, excludedSenders);
-      if (result === 'acknowledged') {
-        summary.acknowledged += 1;
-      } else if (result === 'skippedExcluded') {
-        summary.skippedExcluded += 1;
-      } else if (result === 'skippedReferenced') {
-        summary.skippedReferenced += 1;
-      } else if (result === 'skippedEmpty') {
-        summary.skippedEmpty += 1;
-      }
-    } catch (error) {
-      summary.failed += 1;
-      summary.errors.push(describeThreadError_(thread, error));
+    const messages = thread.getMessages();
+    if (!messages.length) {
+      thread.addLabel(label);
+      return;
     }
-  });
 
-  Logger.log(JSON.stringify(summary, null, 2));
+    const firstMessage = messages[0];
+    if (hasHelpdeskReference_(firstMessage.getSubject())) {
+      thread.addLabel(label);
+      return;
+    }
+    const senderName = buildSmartSalutationName_(firstMessage.getFrom());
+    const referenceNumber = buildReferenceNumber_();
+    const subject = `Re: ${firstMessage.getSubject()} [${referenceNumber}]`;
+    const body = [
+      `Dear ${senderName},`,
+      '',
+      'Thank you for contacting the RCSi Helpdesk.',
+      'Your request has been received and is being processed.',
+      `Your reference number is ${referenceNumber}.`,
+      '',
+      'We will get back to you as soon as possible.',
+      '',
+      'Kind regards,',
+      HELPDESK_NAME,
+      'RCSi FZ LLC',
+      HELPDESK_ADDRESS,
+    ].join('\n');
+    const sendOptions = buildSendOptions_(senderName, referenceNumber);
+
+    GmailApp.sendEmail(firstMessage.getFrom(), subject, body, {
+      from: resolveFromAlias_(),
+      name: HELPDESK_NAME,
+      replyTo: HELPDESK_ADDRESS,
+      htmlBody: sendOptions.htmlBody,
+      inlineImages: sendOptions.inlineImages,
+    });
+
+    thread.addLabel(label);
+  });
 }
 
 function getOrCreateLabel_() {
@@ -70,119 +76,7 @@ function buildReferenceNumber_() {
 }
 
 function hasHelpdeskReference_(subject) {
-  return /\bHD-\d{6}-\d{6}\b/.test(String(subject || ''));
-}
-
-function processThread_(thread, label, alias, excludedSenders) {
-  const messages = withRetry_(() => thread.getMessages(), 'Get thread messages');
-  if (!messages.length) {
-    thread.addLabel(label);
-    return 'skippedEmpty';
-  }
-
-  const firstMessage = messages[0];
-  const senderEmail = extractSenderEmail_(firstMessage.getFrom());
-  if (isExcludedSender_(senderEmail, excludedSenders)) {
-    thread.addLabel(label);
-    return 'skippedExcluded';
-  }
-
-  if (hasHelpdeskReference_(firstMessage.getSubject())) {
-    thread.addLabel(label);
-    return 'skippedReferenced';
-  }
-
-  const senderName = buildSmartSalutationName_(firstMessage.getFrom());
-  const referenceNumber = buildReferenceNumber_();
-  const subject = `Re: ${firstMessage.getSubject()} [${referenceNumber}]`;
-  const body = [
-    `Dear ${senderName},`,
-    '',
-    'Thank you for contacting the RCSi Helpdesk.',
-    'Your request has been received and is being processed.',
-    `Your reference number is ${referenceNumber}.`,
-    '',
-    'We will get back to you as soon as possible.',
-    '',
-    'Kind regards,',
-    HELPDESK_NAME,
-    'RCSi FZ LLC',
-    HELPDESK_ADDRESS,
-  ].join('\n');
-  const sendOptions = buildSendOptions_(senderName, referenceNumber);
-
-  withRetry_(
-    () =>
-      GmailApp.sendEmail(firstMessage.getFrom(), subject, body, {
-        from: alias,
-        name: HELPDESK_NAME,
-        replyTo: HELPDESK_ADDRESS,
-        htmlBody: sendOptions.htmlBody,
-        inlineImages: sendOptions.inlineImages,
-      }),
-    `Send auto-reply to ${firstMessage.getFrom()}`
-  );
-
-  thread.addLabel(label);
-  return 'acknowledged';
-}
-
-function extractSenderEmail_(fromValue) {
-  const text = String(fromValue || '').trim();
-  const angleMatch = text.match(/<([^>]+)>/);
-  if (angleMatch && angleMatch[1]) {
-    return angleMatch[1].trim().toLowerCase();
-  }
-
-  const plainEmailMatch = text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
-  if (plainEmailMatch && plainEmailMatch[0]) {
-    return plainEmailMatch[0].trim().toLowerCase();
-  }
-
-  return text.toLowerCase();
-}
-
-function isExcludedSender_(senderEmail, excludedSenders) {
-  return excludedSenders
-    .map((address) => String(address || '').trim().toLowerCase())
-    .includes(String(senderEmail || '').trim().toLowerCase());
-}
-
-function loadExcludedSenderAddresses_() {
-  try {
-    const addresses = withRetry_(
-      () => getExcludedSenderAddresses_(),
-      `Read excluded sender file ${EXCLUDED_SENDERS_FILE_NAME}`
-    );
-    PropertiesService.getScriptProperties().setProperty(
-      EXCLUDED_SENDERS_CACHE_KEY,
-      JSON.stringify(addresses)
-    );
-    return addresses;
-  } catch (error) {
-    const cached = PropertiesService.getScriptProperties().getProperty(EXCLUDED_SENDERS_CACHE_KEY);
-    if (cached) {
-      Logger.log(
-        `Using cached excluded sender list because Drive read failed: ${error.message}`
-      );
-      return JSON.parse(cached);
-    }
-
-    throw error;
-  }
-}
-
-function getExcludedSenderAddresses_() {
-  const file = DriveApp.getFileById(EXCLUDED_SENDERS_FILE_ID);
-  const text = file.getBlob().getDataAsString();
-  return parseExcludedSenderAddresses_(text);
-}
-
-function parseExcludedSenderAddresses_(text) {
-  return String(text || '')
-    .split(/\r?\n/)
-    .map((line) => line.replace(/#.*/, '').trim())
-    .filter(Boolean);
+  return /\\bHD-\\d{6}-\\d{6}\\b/.test(String(subject || ''));
 }
 
 function extractSenderName_(fromValue) {
@@ -299,42 +193,6 @@ function diagnostics() {
   Logger.log(JSON.stringify(result, null, 2));
 }
 
-function withRetry_(action, actionLabel) {
-  let lastError;
-  for (let attempt = 1; attempt <= MAX_RETRIES; attempt += 1) {
-    try {
-      return action();
-    } catch (error) {
-      lastError = error;
-      if (attempt === MAX_RETRIES || !isRetryableError_(error)) {
-        throw new Error(`${actionLabel} failed: ${error.message}`);
-      }
-      Utilities.sleep(RETRY_DELAY_MS * attempt);
-    }
-  }
-
-  throw lastError;
-}
-
-function isRetryableError_(error) {
-  const message = String(error && error.message ? error.message : error).toLowerCase();
-  return (
-    message.includes('server error') ||
-    message.includes('service invoked too many times') ||
-    message.includes('server error occurred while reading from storage') ||
-    message.includes('try again later') ||
-    message.includes('temporarily unavailable')
-  );
-}
-
-function describeThreadError_(thread, error) {
-  const firstMessage = thread.getFirstMessageSubject ? thread.getFirstMessageSubject() : '';
-  return {
-    subject: firstMessage,
-    error: String(error && error.message ? error.message : error),
-  };
-}
-
 function buildLogoSrc_() {
   if (!LOGO_FILE_ID) {
     return '';
@@ -379,5 +237,8 @@ function toProperCase_(value) {
 
   return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
+
+
+
 
 

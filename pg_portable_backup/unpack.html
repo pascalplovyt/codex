@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Unpack a backup onto a new computer - step by step</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root{
+    --bg:#f7f7f8; --panel:#ffffff; --ink:#15181c; --mute:#6a7382;
+    --accent:#7c3aed; --accent-2:#5b21b6; --ok:#2f855a; --warn:#c05621;
+    --danger:#c53030; --soft:#eef2f7; --line:#e3e7ee;
+  }
+  html,body{background:var(--bg);color:var(--ink);margin:0;padding:0;
+    font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:940px;margin:0 auto;padding:40px 22px 80px}
+  .hero{background:linear-gradient(135deg,#7c3aed 0%,#5b21b6 100%);
+    color:#fff;padding:26px 28px;border-radius:14px;margin:18px 0 28px;
+    box-shadow:0 6px 20px rgba(80,30,170,.18)}
+  .hero h1{color:#fff;font-size:28px;margin:0 0 6px}
+  .hero p{margin:0;opacity:.92}
+  .hero .lead-tag{display:inline-block;background:rgba(255,255,255,.18);
+    padding:3px 10px;border-radius:999px;font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;margin-bottom:10px}
+  nav.toc{background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:16px 20px;margin-bottom:28px}
+  nav.toc h2{margin:0 0 8px;font-size:14px;color:var(--mute);
+    letter-spacing:.08em;text-transform:uppercase}
+  nav.toc ol{margin:0;padding-left:22px}
+  nav.toc ol li{margin:3px 0}
+  nav.toc a{color:var(--accent);text-decoration:none}
+  nav.toc a:hover{text-decoration:underline}
+  .phase-label{margin:32px 0 6px;font-size:12px;letter-spacing:.12em;
+    color:var(--mute);text-transform:uppercase}
+  .step{background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;margin:20px 0;padding:26px 28px;
+    box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .step h3{margin:0 0 4px;display:flex;align-items:center;gap:12px;
+    font-size:20px}
+  .step h3 .num{background:var(--accent);color:#fff;width:32px;height:32px;
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:50%;font-size:15px;font-weight:600;flex:0 0 32px}
+  .step .est{color:var(--mute);font-size:13px;margin:0 0 14px 44px}
+  .step p,.step li{margin:8px 0}
+  .step .body{padding-left:44px}
+  .step h4.sub{margin:18px 0 6px;font-size:16px;color:var(--accent-2)}
+  code,kbd{background:var(--soft);border:1px solid var(--line);
+    padding:1px 6px;border-radius:4px;font:13.5px/1.45 ui-monospace,Consolas,Monaco,monospace}
+  pre{background:#0f1419;color:#e6e6e6;border-radius:10px;padding:14px 16px;
+    overflow:auto;position:relative;margin:10px 0;
+    font:13.5px/1.55 ui-monospace,Consolas,Monaco,monospace}
+  pre code{background:none;border:0;color:inherit;padding:0}
+  .copybtn{position:absolute;top:8px;right:8px;background:#7c3aed;color:#fff;
+    border:0;border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer;
+    opacity:.85}
+  .copybtn:hover{opacity:1}
+  .copybtn.done{background:var(--ok)}
+  .box{border-radius:10px;padding:12px 16px;margin:12px 0;
+    border-left:4px solid var(--accent);background:#f3eefd}
+  .box.tip{border-color:var(--ok);background:#effaf2}
+  .box.warn{border-color:var(--warn);background:#fef6ec}
+  .box.danger{border-color:var(--danger);background:#fdecec}
+  .box h4{margin:0 0 4px;font-size:13px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--mute)}
+  .check{display:flex;align-items:flex-start;gap:10px;margin:6px 0;
+    padding:8px 10px;border-radius:8px;background:var(--soft);
+    border:1px solid var(--line)}
+  .check input[type=checkbox]{margin-top:4px;flex:0 0 16px;
+    width:16px;height:16px;accent-color:var(--accent)}
+  .check label{cursor:pointer;flex:1}
+  .check.done{background:#effaf2;border-color:#c7e7d3}
+  .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;
+    background:var(--soft);color:var(--mute);margin-left:6px}
+  .pill.crit{background:#fdecec;color:var(--danger)}
+  .control-panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:0 0 24px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .control-panel h2{margin:0 0 6px;font-size:22px}
+  .control-panel .sub{color:var(--mute);margin:0 0 14px}
+  .summary-pills{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 14px}
+  .summary-pills .pill{margin-left:0}
+  .action-row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px}
+  .action-row button{border:0;border-radius:999px;padding:11px 16px;cursor:pointer;
+    background:var(--accent);color:#fff;font:inherit}
+  .action-row button.secondary{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+  .control-panel select{width:100%;padding:10px 12px;border:1px solid var(--line);
+    border-radius:10px;background:#fff;font:inherit;margin:10px 0 6px}
+  .status-meta{color:var(--mute);font-size:14px}
+  .status-log{min-height:260px;max-height:420px;overflow:auto}
+  .finish{background:linear-gradient(135deg,#2f855a,#225e42);color:#fff;
+    border-radius:14px;padding:22px 26px;margin-top:28px}
+  .finish h3{color:#fff;margin:0 0 6px}
+  table{border-collapse:collapse;width:100%;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;
+    font-size:14px;vertical-align:top}
+  th{background:var(--soft);color:var(--mute);font-weight:600}
+  footer{color:var(--mute);font-size:13px;text-align:center;margin-top:36px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<div class="hero">
+  <div class="lead-tag">Restore · Unpack</div>
+  <h1>Unpack a backup onto a new computer</h1>
+  <p>A full restore guide for this OFBiz local clone package. At the end the new
+  machine can recover the database, the code tree, and the encrypted
+  <code>sync_config.json</code> with either fast same-version restore or portable
+  logical restore.</p>
+</div>
+</header>
+
+<section class="control-panel">
+  <h2>Run The Restore From Here</h2>
+  <p class="sub">Use these controls if you opened this page through <code>run_unpack.bat</code>. The detailed procedure below remains the full reference walkthrough.</p>
+  <div id="summary" class="summary-pills"></div>
+  <label for="archiveSelect"><b>Archive</b></label>
+  <select id="archiveSelect">
+    <option value="latest">latest</option>
+  </select>
+  <div class="action-row">
+    <button id="refreshArchivesBtn" class="secondary">Refresh Archive List</button>
+    <button id="dryRunRestoreBtn" class="secondary">Run Dry-Run Unpack</button>
+    <button id="fastRestoreBtn">Run Fast Restore</button>
+    <button id="portableRestoreBtn">Run Portable Restore</button>
+  </div>
+  <div id="jobMeta" class="status-meta">No restore has run yet.</div>
+  <pre id="jobLog" class="status-log"><code>Waiting for a restore command.</code></pre>
+</section>
+
+<nav class="toc">
+  <h2>The plan</h2>
+  <p style="margin:6px 0 10px;color:var(--mute);font-size:14px">
+    Steps 1-2 explain the archive and what you need in hand. Steps 3-5 are the
+    one-time software installs. Steps 6-12 are the actual recovery flow.
+  </p>
+  <ol>
+    <li><a href="#what">What the archive contains</a></li>
+    <li><a href="#prereq">What you need before starting</a></li>
+    <li><a href="#install-pg">Install PostgreSQL</a></li>
+    <li><a href="#install-py">Install Python and dependencies</a></li>
+    <li><a href="#install-drive">Install Google Drive for Desktop or rclone</a></li>
+    <li><a href="#copy-kit">Copy the <code>pg_portable_backup</code> folder</a></li>
+    <li><a href="#copy-key">Put the encryption key back</a></li>
+    <li><a href="#config">Check the config on the new machine</a></li>
+    <li><a href="#list">See which backups are available</a></li>
+    <li><a href="#run">Run the restore</a></li>
+    <li><a href="#verify">Verify everything is back</a></li>
+    <li><a href="#schedule">Optional: schedule backups on the new machine too</a></li>
+  </ol>
+</nav>
+
+<section class="step" id="what">
+  <h3><span class="num">1</span>What the archive contains</h3>
+  <div class="est">~ 2 minutes of reading</div>
+  <div class="body">
+  <p>Each <code>.tar.gz</code> produced by pack is a self-contained bundle. The
+  restore process extracts it, verifies every file against the manifest, then
+  restores the payload to the configured locations.</p>
+  <table>
+    <tr><th>Inside the archive</th><th>What it is used for</th></tr>
+    <tr><td><code>database/cluster.dump</code></td><td>Portable logical restore into <code>ofbiz_world_local</code>.</td></tr>
+    <tr><td><code>database/globals.sql</code></td><td>Roles and grants for PostgreSQL.</td></tr>
+    <tr><td><code>physical/data/</code></td><td>Fast same-version restore of the local PostgreSQL clone.</td></tr>
+    <tr><td><code>app/codex-project/</code></td><td>The code tree and support scripts from the source machine.</td></tr>
+    <tr><td><code>config/env.enc</code></td><td>Encrypted <code>sync_config.json</code>, decrypted with <code>secrets\env_key.bin</code>.</td></tr>
+    <tr><td><code>manifest.json</code></td><td>SHA-256 integrity list checked before any restore begins.</td></tr>
+  </table>
+  <div class="box">
+    <h4>What the archive does not contain</h4>
+    <p>It does not contain Windows, PostgreSQL installers, Python installers, or
+    Google Drive itself. Those are installed once on the new computer in the
+    next few steps.</p>
+  </div>
+  </div>
+</section>
+
+<section class="step" id="prereq">
+  <h3><span class="num">2</span>What you need before starting</h3>
+  <div class="est">~ 1 minute</div>
+  <div class="body">
+  <table>
+    <tr><th>Item</th><th>Why it matters</th><th>Where it comes from</th></tr>
+    <tr><td><b>Backup archive</b><br><code>codex_ofbiz_local_YYYYMMDDThhmmss.tar.gz</code></td><td>The actual database + code + encrypted config package.</td><td>The Google Drive backup folder.</td></tr>
+    <tr><td><b>The <code>pg_portable_backup</code> folder</b></td><td>The restore program and these operator pages.</td><td>Copy it from the source machine or another trusted copy.</td></tr>
+    <tr><td><b>Encryption key</b><br><code>secrets\env_key.bin</code></td><td>Needed to decrypt the saved <code>sync_config.json</code>.</td><td>The separate safe location where you stored it during pack step 11.</td></tr>
+  </table>
+  <div class="box tip">
+    <h4>Fast restore or portable restore?</h4>
+    <p>Use <b>fast</b> when the new machine matches the source closely: same
+    PostgreSQL major version, same local-clone layout, and same intended restore
+    path. Use <b>portable</b> when in doubt. Portable restore is slower but more
+    forgiving.</p>
+  </div>
+  </div>
+</section>
+
+<div class="phase-label">Phase A — one-time software installs</div>
+
+<section class="step" id="install-pg">
+  <h3><span class="num">3</span>Install PostgreSQL</h3>
+  <div class="est">~ 10 minutes · only once per machine</div>
+  <div class="body">
+  <h4 class="sub">3a. Download the installer</h4>
+  <ol>
+    <li>Open <a href="https://www.postgresql.org/download/windows/" target="_blank" rel="noopener">postgresql.org/download/windows</a>.</li>
+    <li>Download PostgreSQL <b>18</b>. That matches the source machine and is the
+    best option for fast restore.</li>
+    <li>Use the x64 Windows installer.</li>
+  </ol>
+
+  <h4 class="sub">3b. Install it</h4>
+  <ol>
+    <li>Run the installer as administrator.</li>
+    <li>Accept the default installation folder
+    <code>C:\Program Files\PostgreSQL\18</code>.</li>
+    <li>Keep the server and command-line tools installed.</li>
+    <li>Set a <code>postgres</code> password and write it down.</li>
+    <li>Finish the installation.</li>
+  </ol>
+
+  <h4 class="sub">3c. Verify</h4>
+  <pre><code>"C:\Program Files\PostgreSQL\18\bin\pg_restore.exe" --version</code><button class="copybtn" data-copy="&quot;C:\Program Files\PostgreSQL\18\bin\pg_restore.exe&quot; --version">Copy</button></pre>
+
+  <div class="check"><input type="checkbox" id="pg1"><label for="pg1"><code>pg_restore --version</code> works.</label></div>
+  <div class="check"><input type="checkbox" id="pg2"><label for="pg2">I know the new machine's <code>postgres</code> password.</label></div>
+
+  <div class="box warn">
+    <h4>Important for fast restore</h4>
+    <p>Fast restore is designed for the same PostgreSQL major version. If you
+    install a different major version, use portable restore instead.</p>
+  </div>
+  </div>
+</section>
+
+<section class="step" id="install-py">
+  <h3><span class="num">4</span>Install Python and the dependency</h3>
+  <div class="est">~ 5 minutes · only once per machine</div>
+  <div class="body">
+  <ol>
+    <li>Open <a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">python.org/downloads/windows</a>.</li>
+    <li>Install Python 3 and tick <b>Add python.exe to PATH</b>.</li>
+    <li>Open <kbd>cmd</kbd> in the copied <code>pg_portable_backup</code> folder and run:</li>
+  </ol>
+  <pre><code>py --version
+py -3 -m pip install -r requirements.txt</code><button class="copybtn" data-copy="py --version
+py -3 -m pip install -r requirements.txt">Copy</button></pre>
+  <div class="check"><input type="checkbox" id="py1"><label for="py1">Python 3 is available through <code>py</code>.</label></div>
+  <div class="check"><input type="checkbox" id="py2"><label for="py2"><code>cryptography</code> installed successfully.</label></div>
+  </div>
+</section>
+
+<section class="step" id="install-drive">
+  <h3><span class="num">5</span>Install Google Drive for Desktop or rclone</h3>
+  <div class="est">~ 5 minutes · only once per machine</div>
+  <div class="body">
+  <p>You need a way to reach the archived backups. The current config uses Google
+  Drive for Desktop by default.</p>
+  <ol>
+    <li>Preferred: install <a href="https://support.google.com/drive/answer/10838124" target="_blank" rel="noopener">Google Drive for Desktop</a>.</li>
+    <li>Alternative: install <a href="https://rclone.org/downloads/" target="_blank" rel="noopener">rclone</a> and configure a <code>gdrive</code> remote if you plan to switch <code>remote.mode</code>.</li>
+    <li>Confirm you can browse <code>G:\My Drive\PG_Backups\codex_ofbiz_local</code>.</li>
+  </ol>
+  <div class="check"><input type="checkbox" id="gd1"><label for="gd1">The backup archive folder is reachable from this machine.</label></div>
+  </div>
+</section>
+
+<div class="phase-label">Phase B — prepare the restore kit</div>
+
+<section class="step" id="copy-kit">
+  <h3><span class="num">6</span>Copy the <code>pg_portable_backup</code> folder</h3>
+  <div class="est">~ 1 minute</div>
+  <div class="body">
+  <p>Copy this whole folder onto the new computer. The simplest choice is to put
+  it back in the same location:</p>
+  <pre><code>C:\Users\PASCA\OneDrive\Documents\Codex\pg_portable_backup</code></pre>
+  <p>That keeps the launcher scripts and instructions exactly aligned with the
+  paths shown in this guide.</p>
+  <div class="box warn">
+    <h4>Restore targets are path-sensitive</h4>
+    <p>The app payload restores back to the original absolute path recorded at
+    pack time, which for this system is under
+    <code>C:\Users\PASCA\OneDrive\Documents\Codex\2026-04-19-before-we-start-can-you-access</code>.
+    If the new machine uses a different Windows username or different OneDrive
+    layout, plan for that before doing the real restore.</p>
+  </div>
+  </div>
+</section>
+
+<section class="step" id="copy-key">
+  <h3><span class="num">7</span>Put the encryption key back</h3>
+  <div class="est">~ 1 minute</div>
+  <div class="body">
+  <p>Copy the saved key file into the new machine's backup folder at:</p>
+  <pre><code>secrets\env_key.bin</code></pre>
+  <p>Without it, restore can still recover the database and code, but it will
+  not be able to decrypt the backed-up <code>sync_config.json</code>.</p>
+  <div class="check"><input type="checkbox" id="key1"><label for="key1"><code>secrets\env_key.bin</code> is present on the new machine.</label></div>
+  </div>
+</section>
+
+<section class="step" id="config">
+  <h3><span class="num">8</span>Check the config on the new machine</h3>
+  <div class="est">~ 3 minutes</div>
+  <div class="body">
+  <p>Open <code>config.codex.json</code> and confirm it fits the new machine.</p>
+  <table>
+    <tr><th>Setting</th><th>What to confirm</th></tr>
+    <tr><td><code>postgres.bin_dir</code></td><td>Points to the PostgreSQL <code>bin</code> folder you installed.</td></tr>
+    <tr><td><code>postgres.host</code> / <code>port</code></td><td>Usually still <code>127.0.0.1:55432</code> for this local clone flow.</td></tr>
+    <tr><td><code>postgres.database</code></td><td>Should stay <code>ofbiz_world_local</code>.</td></tr>
+    <tr><td><code>local_cluster.data_dir</code></td><td>Must be valid if you want to use fast restore.</td></tr>
+    <tr><td><code>env_file</code></td><td>Where the decrypted <code>sync_config.json</code> should land.</td></tr>
+    <tr><td><code>remote.gdrive_desktop_path</code></td><td>Should match the backup folder accessible on this machine.</td></tr>
+  </table>
+  <div class="box">
+    <h4>Same-machine-style fast restore</h4>
+    <p>For fast restore, keep the same layout as the source machine as closely as
+    possible. The safer fallback is portable restore, which rebuilds from the
+    logical dump.</p>
+  </div>
+  <div class="box danger">
+    <h4>Path remapping is not automatic</h4>
+    <p>The app folder targets come from the archive metadata. If you intend to
+    restore to a different place than the source machine used, do a dry-run first
+    and read the planned target paths carefully before running the real restore.</p>
+  </div>
+  </div>
+</section>
+
+<div class="phase-label">Phase C — the actual restore</div>
+
+<section class="step" id="list">
+  <h3><span class="num">9</span>See which backups are available</h3>
+  <div class="est">~ 1 minute</div>
+  <div class="body">
+  <p>You can either use the archive dropdown above or list them from
+  <kbd>cmd</kbd>:</p>
+  <pre><code>py -3 restore.py --config config.codex.json --list</code><button class="copybtn" data-copy="py -3 restore.py --config config.codex.json --list">Copy</button></pre>
+  <p>The newest backup appears first. If you do not need a specific date, using
+  <code>latest</code> is fine.</p>
+  </div>
+</section>
+
+<section class="step" id="run">
+  <h3><span class="num">10</span>Run the restore</h3>
+  <div class="est">~ 5-30 minutes · depends on archive size</div>
+  <div class="body">
+  <p>Recommended order:</p>
+  <ol>
+    <li>Run a dry-run first so the tool verifies the archive and shows you the
+    exact planned targets.</li>
+    <li>If the machine matches closely and fast restore is intended, use
+    <b>Run Fast Restore</b>.</li>
+    <li>If you are unsure, use <b>Run Portable Restore</b>.</li>
+  </ol>
+
+  <div class="action-row">
+    <button onclick="document.getElementById('dryRunRestoreBtn').click()">Run Dry-Run Unpack Above</button>
+    <button onclick="document.getElementById('fastRestoreBtn').click()">Run Fast Restore Above</button>
+    <button onclick="document.getElementById('portableRestoreBtn').click()">Run Portable Restore Above</button>
+  </div>
+
+  <p>Manual commands:</p>
+  <pre><code>py -3 restore.py --config config.codex.json --install latest --restore-mode auto</code><button class="copybtn" data-copy="py -3 restore.py --config config.codex.json --install latest --restore-mode auto">Copy</button></pre>
+  <pre><code>py -3 restore.py --config config.codex.json --install latest --restore-mode fast</code><button class="copybtn" data-copy="py -3 restore.py --config config.codex.json --install latest --restore-mode fast">Copy</button></pre>
+  <pre><code>py -3 restore.py --config config.codex.json --install latest --restore-mode portable</code><button class="copybtn" data-copy="py -3 restore.py --config config.codex.json --install latest --restore-mode portable">Copy</button></pre>
+  <pre><code>py -3 restore.py --config config.codex.json --install latest --drop --restore-mode portable</code><button class="copybtn" data-copy="py -3 restore.py --config config.codex.json --install latest --drop --restore-mode portable">Copy</button></pre>
+
+  <p>During the real restore, the tool pauses and asks you to type
+  <code>RESTORE</code> before it overwrites files or loads the database.</p>
+
+  <div class="box">
+    <h4>What restore does in plain English</h4>
+    <ol>
+      <li>Downloads or opens the chosen archive.</li>
+      <li>Extracts it into <code>staging\restore_&lt;timestamp&gt;</code>.</li>
+      <li>Verifies every file against <code>manifest.json</code>.</li>
+      <li>Chooses fast or portable database recovery.</li>
+      <li>Restores the database.</li>
+      <li>Takes safety snapshots of any existing app targets before overwriting them.</li>
+      <li>Restores the app tree to the recorded target path.</li>
+      <li>Decrypts <code>env.enc</code> back into <code>sync_config.json</code>.</li>
+    </ol>
+  </div>
+  </div>
+</section>
+
+<section class="step" id="verify">
+  <h3><span class="num">11</span>Verify everything is back</h3>
+  <div class="est">~ 3 minutes</div>
+  <div class="body">
+  <div class="check"><input type="checkbox" id="v1"><label for="v1">The database <code>ofbiz_world_local</code> exists and can be queried.</label></div>
+  <div class="check"><input type="checkbox" id="v2"><label for="v2">The application tree exists under <code>C:\Users\PASCA\OneDrive\Documents\Codex\2026-04-19-before-we-start-can-you-access</code>.</label></div>
+  <div class="check"><input type="checkbox" id="v3"><label for="v3"><code>sync_config.json</code> was recreated at the configured <code>env_file</code> path.</label></div>
+  <div class="check"><input type="checkbox" id="v4"><label for="v4">The local dashboard or application launch flow starts normally after restore.</label></div>
+
+  <div class="box tip">
+    <h4>Need to inspect first?</h4>
+    <p>The dry-run mode is designed for that. It does not change anything; it
+    only verifies the archive and prints the planned targets.</p>
+  </div>
+
+  <div class="box warn">
+    <h4>Need to recover the pre-restore app state?</h4>
+    <p>The tool makes safety zips in
+    <code>staging\preinstall_&lt;timestamp&gt;\</code> before overwriting app files.
+    The run log is also saved in <code>logs\</code>.</p>
+  </div>
+  </div>
+</section>
+
+<section class="step" id="schedule">
+  <h3><span class="num">12</span>Optional: schedule backups on the new machine too</h3>
+  <div class="est">~ 3 minutes</div>
+  <div class="body">
+  <p>If this machine becomes the new primary machine, create a weekly Windows
+  Task Scheduler job that runs:</p>
+  <pre><code>/c "C:\Users\PASCA\OneDrive\Documents\Codex\pg_portable_backup\run_backup.bat"</code><button class="copybtn" data-copy="/c &quot;C:\Users\PASCA\OneDrive\Documents\Codex\pg_portable_backup\run_backup.bat&quot;">Copy</button></pre>
+  <p>Use the same Task Scheduler approach described in the pack guide. Test the
+  task once manually before relying on it.</p>
+  </div>
+</section>
+
+<div class="finish">
+  <h3>You are done.</h3>
+  <p>The new machine now has the documented procedure, the working live restore
+  controls, and the step-by-step fallback commands needed to recover this OFBiz
+  package again in the future.</p>
+</div>
+
+<footer>
+  <p>pg_portable_backup — local unpack guide. Safely close this page when you are done.</p>
+</footer>
+
+</div>
+<script>
+  async function getJson(url){
+    const response = await fetch(url);
+    return response.json();
+  }
+  async function postJson(url,payload){
+    const response = await fetch(url,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(payload||{})
+    });
+    return response.json();
+  }
+  function renderSummary(config){
+    const root = document.getElementById("summary");
+    if(!root) return;
+    root.innerHTML = `
+      <span class="pill">System: ${config.system_name || "-"}</span>
+      <span class="pill">Database: ${config.database || "-"}</span>
+      <span class="pill">Host: ${config.host || "-"}:${config.port || "-"}</span>
+      <span class="pill">Remote: ${config.remote_target || "-"}</span>
+      <span class="pill">Fast restore: ${config.has_fast_restore ? "Enabled" : "Not configured"}</span>
+    `;
+  }
+  function renderJob(job){
+    const meta = document.getElementById("jobMeta");
+    const log = document.getElementById("jobLog");
+    if(!meta || !log) return;
+    if(!job || !job.command || !job.command.length){
+      meta.textContent = "No restore has run yet.";
+      log.textContent = "Waiting for a restore command.";
+      return;
+    }
+    const state = job.running ? "Running" : (job.exit_code === 0 ? "Finished OK" : `Finished with exit ${job.exit_code}`);
+    meta.innerHTML = `${state}<br>Started: ${job.started_at || "-"}<br>Ended: ${job.ended_at || "-"}`;
+    log.textContent = (job.lines || []).join("\n");
+    log.scrollTop = log.scrollHeight;
+  }
+  async function refreshArchives(){
+    const select = document.getElementById("archiveSelect");
+    if(!select) return;
+    try{
+      const data = await getJson("/api/archives");
+      select.innerHTML = `<option value="latest">latest</option>`;
+      if(data.ok && Array.isArray(data.archives)){
+        for(const item of data.archives){
+          const opt = document.createElement("option");
+          opt.value = item.name;
+          opt.textContent = `${item.timestamp} - ${item.name}`;
+          select.appendChild(opt);
+        }
+      }
+    } catch (_err) {
+    }
+  }
+  async function refreshAll(){
+    try{
+      const [configData,statusData] = await Promise.all([
+        getJson("/api/config"),
+        getJson("/api/status")
+      ]);
+      renderSummary(configData.config || {});
+      renderJob(statusData.job || {});
+    } catch (_err){
+      const meta = document.getElementById("jobMeta");
+      const log = document.getElementById("jobLog");
+      if(meta) meta.textContent = "Interactive controls are unavailable in this browser session.";
+      if(log && !log.textContent.trim()) log.textContent = "Open this page via run_unpack.bat to enable live controls.";
+    }
+  }
+  async function runRestore(mode,dryRun=false){
+    const selector = document.getElementById("archiveSelect")?.value || "latest";
+    const result = await postJson("/api/restore/run", {
+      selector,
+      restore_mode: mode,
+      dry_run: dryRun
+    });
+    if(!result.ok){
+      alert(result.message || result.error || "Could not start restore.");
+    }
+    await refreshAll();
+  }
+  document.getElementById("refreshArchivesBtn")?.addEventListener("click", refreshArchives);
+  document.getElementById("dryRunRestoreBtn")?.addEventListener("click", ()=>runRestore("auto", true));
+  document.getElementById("fastRestoreBtn")?.addEventListener("click", ()=>runRestore("fast"));
+  document.getElementById("portableRestoreBtn")?.addEventListener("click", ()=>runRestore("portable"));
+  refreshAll();
+  refreshArchives();
+  setInterval(refreshAll, 2000);
+
+  document.querySelectorAll(".copybtn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const t = btn.getAttribute("data-copy") || btn.parentElement.innerText;
+      navigator.clipboard.writeText(t).then(()=>{
+        const old = btn.textContent;
+        btn.textContent = "Copied!";
+        btn.classList.add("done");
+        setTimeout(()=>{btn.textContent=old;btn.classList.remove("done")},1400);
+      });
+    });
+  });
+  document.querySelectorAll(".check input[type=checkbox]").forEach(cb=>{
+    cb.addEventListener("change",()=>{
+      cb.closest(".check").classList.toggle("done", cb.checked);
+    });
+  });
+</script>
+</body>
+</html>
