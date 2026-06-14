@@ -5,8 +5,6 @@ import argparse
 import json
 import os
 import shutil
-import socket
-import time
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -56,56 +54,6 @@ def _powershell_command() -> list[str]:
     return ["powershell"]
 
 
-
-def _is_tcp_open(host: str, port: int, timeout: float = 1.0) -> bool:
-    try:
-        with socket.create_connection((host, port), timeout=timeout):
-            return True
-    except OSError:
-        return False
-
-
-def _ensure_local_ofbiz_postgres(config_path: Path, log_fp) -> None:
-    try:
-        with config_path.open("r", encoding="utf-8") as f:
-            config = json.load(f)
-    except OSError as exc:
-        log_fp.write(f"[preflight] warning: cannot read postgres config {config_path}: {exc}\n")
-        return
-
-    postgres = config.get("postgres") or {}
-    if config.get("system_name") != "codex_ofbiz_local":
-        return
-
-    host = postgres.get("host", "127.0.0.1")
-    port = int(postgres.get("port", 55432))
-    if _is_tcp_open(host, port):
-        log_fp.write(f"[preflight] local OFBiz PostgreSQL already listening on {host}:{port}\n")
-        return
-
-    data_dir = ROOT.parent / ".local-postgres" / "data"
-    log_path = ROOT.parent / ".local-postgres" / "logs" / "postgres.log"
-    pg_ctl = Path(postgres.get("bin_dir", "")) / "pg_ctl.exe"
-    if not pg_ctl.exists() or not data_dir.exists():
-        log_fp.write(f"[preflight] warning: cannot start local OFBiz PostgreSQL; pg_ctl={pg_ctl} data_dir={data_dir}\n")
-        return
-
-    log_fp.write(f"[preflight] starting local OFBiz PostgreSQL on {host}:{port}\n")
-    log_fp.flush()
-    subprocess.run(
-        [str(pg_ctl), "-D", str(data_dir), "-l", str(log_path), "-o", f"-p {port}", "start"],
-        check=False,
-        stdout=log_fp,
-        stderr=subprocess.STDOUT,
-        text=True,
-    )
-    for _ in range(20):
-        if _is_tcp_open(host, port):
-            log_fp.write(f"[preflight] local OFBiz PostgreSQL is listening on {host}:{port}\n")
-            return
-        time.sleep(0.5)
-    log_fp.write(f"[preflight] warning: local OFBiz PostgreSQL did not open {host}:{port}\n")
-
 def _command_for_job(job: dict, dry_run: bool) -> tuple[list[str], Path, str]:
     job_type = job.get("type", "postgres")
     cwd = _resolve(job.get("working_directory", "."), ROOT)
@@ -146,8 +94,6 @@ def _command_for_job(job: dict, dry_run: bool) -> tuple[list[str], Path, str]:
 def _run_job(job: dict, dry_run: bool, log_fp) -> dict:
     name = job.get("name") or job.get("config") or job.get("script") or "backup job"
     command, cwd, target = _command_for_job(job, dry_run)
-    if job.get("type", "postgres") == "postgres":
-        _ensure_local_ofbiz_postgres(Path(target), log_fp)
 
     started = _utc_now()
     log_fp.write(f"\n=== {name} started {started} ===\n")
@@ -257,4 +203,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

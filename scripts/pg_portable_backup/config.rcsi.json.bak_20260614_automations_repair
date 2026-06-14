@@ -1,0 +1,53 @@
+{
+    "system_name":         "rcsi_erp",
+
+    "postgres": {
+        "bin_dir":         "C:\\Program Files\\PostgreSQL\\18\\bin",
+        "host":            "localhost",
+        "port":            5432,
+        "user":            "postgres",
+        "password":        "comm1985",
+        "database":        "rcsidatabase",
+        "include_globals": true
+    },
+
+    "source_root":         "",
+    "sources": [
+        {
+            "label":   "rcsi-catalog-export",
+            "path":    "C:\\Users\\PASCA\\OneDrive\\Documents\\Scripts\\RCSi - Catalog Export",
+            "exclude": [
+                "__pycache__", "*.pyc", "*.pyo",
+                ".venv", "venv", "env", "node_modules",
+                ".git", ".mirrors",
+                "staging", "logs", "secrets", "pg_portable_backup",
+                "catalog_csv", "cdr_exports",
+                "*.log", "*.tmp"
+            ]
+        },
+        {
+            "label":   "erp-scripts",
+            "path":    "C:\\Users\\PASCA\\OneDrive\\Documents\\Scripts\\ERP",
+            "exclude": [
+                "__pycache__", "*.pyc", "*.pyo",
+                ".venv", "venv", "env", "node_modules",
+                ".git", ".mirrors",
+                "*.log", "*.tmp"
+            ]
+        }
+    ],
+
+    "env_file":            "C:\\Users\\PASCA\\OneDrive\\Documents\\Scripts\\RCSi - Catalog Export\\rcsidatabase\\.env",
+
+    "remote": {
+        "mode":                "gdrive_desktop",
+        "gdrive_desktop_path": "G:\\My Drive\\PG_Backups\\rcsi_erp",
+        "rclone_binary":       "rclone",
+        "rclone_remote":       "gdrive:PG_Backups/rcsi_erp"
+    },
+
+    "retention_weeks":     12,
+    "secrets_dir":         "secrets",
+    "staging_dir":         "C:\\Users\\PASCA\\AppData\\Local\\Temp\\pg_portable_backup\\staging\\rcsi",
+    "logs_dir":            "logs\\rcsi"
+}
