@@ -15,6 +15,7 @@ import os
 import shutil
 import socket
 import subprocess
+import tempfile
 import time
 from pathlib import Path
 
@@ -42,6 +43,64 @@ def _tool(pg_cfg: dict, name: str) -> str:
         if p.exists():
             return str(p)
     return name
+
+
+def _powershell() -> str:
+    pwsh = shutil.which("pwsh")
+    if pwsh:
+        return pwsh
+    windows_pwsh = Path(r"C:\Program Files\PowerShell\7\pwsh.exe")
+    if windows_pwsh.exists():
+        return str(windows_pwsh)
+    powershell = shutil.which("powershell")
+    if powershell:
+        return powershell
+    return "powershell"
+
+
+def _run_via_powershell(cmd: list[str], env: dict) -> subprocess.CompletedProcess:
+    """Run PostgreSQL CLI tools through PowerShell on Windows.
+
+    This avoids Windows Application Control blocking pg_dump when Python tries
+    to CreateProcess it directly, while preserving the exact PostgreSQL binary.
+    """
+    launcher = Path(tempfile.gettempdir()) / "pg_portable_backup_pg_tool.ps1"
+    launcher.write_text(
+        "\n".join(
+            [
+                "$ErrorActionPreference = 'Stop'",
+                "$exe = $args[0]",
+                "$toolArgs = @()",
+                "if ($args.Count -gt 1) { $toolArgs = $args[1..($args.Count - 1)] }",
+                "& $exe @toolArgs",
+                "exit $LASTEXITCODE",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    return subprocess.run(
+        [_powershell(), "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(launcher), *cmd],
+        env=env,
+        capture_output=True,
+        text=True,
+    )
+
+
+def _should_use_powershell_wrapper(cmd: list) -> bool:
+    if os.name != "nt" or not cmd:
+        return False
+    exe = Path(str(cmd[0]))
+    postgres_tools = {
+        "pg_dump.exe",
+        "pg_dumpall.exe",
+        "pg_restore.exe",
+        "psql.exe",
+        "createdb.exe",
+        "dropdb.exe",
+        "pg_ctl.exe",
+    }
+    return exe.name.lower() in postgres_tools and exe.exists()
 
 
 def _base_args(pg_cfg: dict, include_db: bool = True) -> list:
@@ -305,7 +364,10 @@ def _run(cmd: list, env: dict, log_fp, allow_fail: bool = False) -> None:
         log_fp.write("> " + " ".join(cmd) + "\n")
         log_fp.flush()
     try:
-        result = subprocess.run(cmd, env=env, capture_output=True, text=True)
+        if _should_use_powershell_wrapper(cmd):
+            result = _run_via_powershell([str(part) for part in cmd], env)
+        else:
+            result = subprocess.run(cmd, env=env, capture_output=True, text=True)
     except FileNotFoundError as e:
         if log_fp is not None:
             log_fp.write(f"FileNotFoundError: {e}\n")
